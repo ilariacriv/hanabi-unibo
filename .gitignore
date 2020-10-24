@@ -1,4 +1,5 @@
-hanabi-api
-hanabi-game
-hanabi-human-player
-json-v2
+/hanabi-api/
+/hanabi-game/
+/hanabi-human-player/
+/json-v2/
+
