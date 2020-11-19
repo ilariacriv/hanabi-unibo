@@ -1,0 +1,455 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="hanabi-game" />
+    </artifacts-to-build>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="427543c5-1373-4049-8dbb-b1595605220d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../hanabi-game.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../hanabi-game.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/hanabi-game/hanabi/engine/GameServer$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/hanabi-game/hanabi/engine/GameServer$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/hanabi-game/hanabi/engine/GameServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/hanabi-game/hanabi/engine/GameServer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/v1/META-INF/v1.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/v1/game/hanabi/main/GameClient.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/v1/game/hanabi/main/GameServer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hanabi/engine/GameServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/hanabi/engine/GameServer.java" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/out/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="isMigrated" value="true" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/hanabi/engine/GameServer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="486">
+              <caret line="199" column="12" selection-start-line="199" selection-start-column="12" selection-end-line="199" selection-end-column="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://$PROJECT_DIR$/../../hanabi-api/hanabi-api.jar!/hanabi/game/State.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="6647">
+              <caret line="434" column="57" selection-start-line="434" selection-start-column="57" selection-end-line="434" selection-end-column="57" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>frame.set</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/v1/src/game/hanabi/gui/Board2.java" />
+        <option value="$PROJECT_DIR$/v1/src/game/hanabi/gui/HandGUI.java" />
+        <option value="$PROJECT_DIR$/v1/src/game/hanabi/gui/OtherCard.java" />
+        <option value="$PROJECT_DIR$/v1/src/game/hanabi/gui/OwnCard.java" />
+        <option value="$PROJECT_DIR$/v1/src/game/hanabi/gui/OwnHand.java" />
+        <option value="$PROJECT_DIR$/v1/src/game/hanabi/main/Main.java" />
+        <option value="$PROJECT_DIR$/v1/src/game/hanabi/gui/CardGUI.java" />
+        <option value="$PROJECT_DIR$/v1/src/game/hanabi/main/IllegalActionException.java" />
+        <option value="$PROJECT_DIR$/v1/src/game/hanabi/main/GameServer.java" />
+        <option value="$PROJECT_DIR$/v1/src/game/hanabi/main/GameClient.java" />
+        <option value="$PROJECT_DIR$/v1/src/hanabi/game/GameClient.java" />
+        <option value="$PROJECT_DIR$/v1/src/hanabi/game/v1/GameClient.java" />
+        <option value="$PROJECT_DIR$/v1/src/hanabi/game/v1/GameServer.java" />
+        <option value="$PROJECT_DIR$/src/hanabi/game/GameClient.java" />
+        <option value="$PROJECT_DIR$/src/hanabi/game/GameServer.java" />
+        <option value="$PROJECT_DIR$/src/hanabi/engine/IntroPanel.java" />
+        <option value="$PROJECT_DIR$/src/hanabi/engine/GameServer.java" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="683" />
+    <option name="width" value="683" />
+    <option name="height" value="743" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="hanabi-game" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hanabi-game" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hanabi-game" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="engine" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hanabi-game" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../hanabi-human-player/project" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.18505748" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Francesco\Desktop\Workspace\hanabi-unibo\hanabi-game\project" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Francesco\Desktop\Workspace\hanabi-game\project\v1\src\game\hanabi" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="GameServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="hanabi.engine.GameServer" />
+      <module name="hanabi-game" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="hanabi.engine.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.GameServer" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="StructureViewFactory">
+    <option name="ACTIVE_ACTIONS" value=",SHOW_FIELDS" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="427543c5-1373-4049-8dbb-b1595605220d" name="Default Changelist" comment="" />
+      <created>1588498592426</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1588498592426</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1456" height="876" extended-state="7" />
+    <editor active="true" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.46567968" visible="true" weight="0.2965616" />
+      <window_info active="true" id="Structure" order="1" sideWeight="0.5343203" side_tool="true" visible="true" weight="0.2965616" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32974428" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32974428" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.32974428" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Maven" order="4" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="right" id="Capture Analysis" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+    </layout>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="jar://$PROJECT_DIR$/../../hanabi-api/hanabi-api-v1.jar!/api/hanabi/Card.java" />
+    <entry file="file://$PROJECT_DIR$/v1/src/game/hanabi/gui/HandGUI.java" />
+    <entry file="file://$PROJECT_DIR$/v1/src/game/hanabi/gui/OtherCard.java" />
+    <entry file="jar://$PROJECT_DIR$/../../hanabi-api/hanabi-api-v1.jar!/api/hanabi/Game.java" />
+    <entry file="jar://$PROJECT_DIR$/../../hanabi-api/hanabi-api-v1.jar!/api/hanabi/CardList.java" />
+    <entry file="file://$PROJECT_DIR$/v1/src/game/hanabi/gui/OwnCard.java" />
+    <entry file="file://$PROJECT_DIR$/v1/src/game/hanabi/gui/OwnHand.java" />
+    <entry file="jar://$PROJECT_DIR$/../../json/json.jar!/META-INF/project/src/json/JSONData.java" />
+    <entry file="file://$PROJECT_DIR$/v1/src/game/hanabi/gui/OtherHand.java" />
+    <entry file="jar://$PROJECT_DIR$/../../json/json.jar!/META-INF/project/src/json/TypedJSONObject.java" />
+    <entry file="file://$PROJECT_DIR$/v1/src/game/hanabi/gui/StartingGameComponent.java" />
+    <entry file="file://$PROJECT_DIR$/v1/src/game/hanabi/gui/EnvironmentComponentExample.java" />
+    <entry file="file://$PROJECT_DIR$/v1/src/game/hanabi/gui/Board2.java" />
+    <entry file="file://$PROJECT_DIR$/v1/src/game/hanabi/gui/CardGUI.java" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/net/ServerSocket.java" />
+    <entry file="file://$PROJECT_DIR$/v1/src/game/hanabi/main/IllegalActionException.java" />
+    <entry file="jar://$PROJECT_DIR$/../../hanabi-api/hanabi-api-v1.jar!/api/hanabi/Firework.java" />
+    <entry file="jar://$PROJECT_DIR$/../../json/json.jar!/META-INF/project/src/json/JSONObject.java" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/util/Stack.java" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/util/Random.java" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/util/List.java" />
+    <entry file="jar://$PROJECT_DIR$/../../hanabi-api/hanabi-api-v1.jar!/api/hanabi/State.java" />
+    <entry file="jar://$PROJECT_DIR$/../../hanabi-api/hanabi-api-v1.jar!/api/hanabi/Action.java" />
+    <entry file="file://$PROJECT_DIR$/src/hanabi/game/GameClient.java" />
+    <entry file="jar://$PROJECT_DIR$/../../hanabi-api-v1/hanabi-api.jar!/api/hanabi/Action.java" />
+    <entry file="jar://$PROJECT_DIR$/../../hanabi-api-v1/hanabi-api.jar!/api/hanabi/State.java" />
+    <entry file="jar://$PROJECT_DIR$/../../hanabi-api-v1/hanabi-api.jar!/api/hanabi/Card.java" />
+    <entry file="jar://$PROJECT_DIR$/../../json-v2/json.jar!/META-INF/project/src/json/JSONObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="122" column="22" selection-start-line="122" selection-start-column="22" selection-end-line="122" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../../json-v2/json.jar!/META-INF/project/src/json/TypedJSONObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="236">
+          <caret line="29" column="37" selection-start-line="29" selection-start-column="37" selection-end-line="29" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../../hanabi-api-v1/hanabi-api.jar!/hanabi/api/State.java" />
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="413">
+          <caret line="245" column="33" lean-forward="true" selection-start-line="245" selection-start-column="33" selection-end-line="245" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/javax/swing/JComboBox.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="290">
+          <caret line="80" column="13" selection-start-line="80" selection-start-column="13" selection-end-line="80" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/net/InetAddress.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="239">
+          <caret line="679" column="18" selection-start-line="679" selection-start-column="18" selection-end-line="679" selection-end-column="18" />
+          <folding>
+            <element signature="e#24417#24418#0" expanded="true" />
+            <element signature="e#24445#24446#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/javax/swing/JTextField.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-149">
+          <caret line="181" column="11" selection-start-line="181" selection-start-column="11" selection-end-line="181" selection-end-column="11" />
+          <folding>
+            <element signature="e#6436#6437#0" expanded="true" />
+            <element signature="e#6471#6472#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../../hanabi-api/hanabi-api.jar!/hanabi/gui/RefreshablePanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-119">
+          <caret line="6" column="22" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/hanabi/engine/IntroPanel.java" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/awt/Component.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="201">
+          <caret line="8179" column="16" selection-start-line="8179" selection-start-column="16" selection-end-line="8179" selection-end-column="16" />
+          <folding>
+            <element signature="e#302934#302935#0" expanded="true" />
+            <element signature="e#302969#302970#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/lang/Runtime.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="239">
+          <caret line="440" column="19" selection-start-line="440" selection-start-column="19" selection-end-line="440" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/javax/swing/JTextArea.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-200">
+          <caret line="138" column="11" selection-start-line="138" selection-start-column="11" selection-end-line="138" selection-end-column="11" />
+          <folding>
+            <element signature="e#4796#4797#0" expanded="true" />
+            <element signature="e#4834#4835#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/lang/System.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="443">
+          <caret line="969" column="23" selection-start-line="969" selection-start-column="23" selection-end-line="969" selection-end-column="23" />
+          <folding>
+            <element signature="e#40171#40172#0" expanded="true" />
+            <element signature="e#40220#40221#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/hanabi/engine/GameServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="486">
+          <caret line="199" column="12" selection-start-line="199" selection-start-column="12" selection-end-line="199" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../../hanabi-api/hanabi-api.jar!/hanabi/game/State.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6647">
+          <caret line="434" column="57" selection-start-line="434" selection-start-column="57" selection-end-line="434" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <last-edited>hanabi-game</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.18505748" />
+                <option value="0.5" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>hanabi-game</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.18505748" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>11</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>hanabi-api</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.18505748" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

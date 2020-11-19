@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Class-Path: ../json-v2/json.jar ../hanabi-api/hanabi-api.jar
+Main-Class: hanabi.human.HumanPlayer
+

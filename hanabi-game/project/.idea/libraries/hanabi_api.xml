@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="hanabi-api">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../hanabi-api/hanabi-api.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../../hanabi-api/hanabi-api.jar!/" />
+    </SOURCES>
+  </library>
+</component>

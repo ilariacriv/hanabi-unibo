@@ -1,3 +1,0 @@
-#!/bin/bash
-./pull hanabi-game
-./pull hanabi-human-player

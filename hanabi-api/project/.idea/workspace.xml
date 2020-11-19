@@ -1,0 +1,940 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="hanabi-api" />
+    </artifacts-to-build>
+  </component>
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/src/hanabi/player/Analitics.java" line="276" mnemonic="8" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="9bb3ffe2-fc5e-4a49-aa44-7276be755617" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/hanabi/gui/Board.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/hanabi/gui/DetailPanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/hanabi/gui/LogPanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/hanabi/gui/NavigationPanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/hanabi/gui/SelectedListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/hanabi/gui/StateListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/hanabi/gui/StateShownListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/hanabi/player/Old_Analitics.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hanabi-api.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../hanabi-api.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/hanabi-api/hanabi/game/Action.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/hanabi-api/hanabi/game/Action.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/hanabi-api/hanabi/game/Card.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/hanabi-api/hanabi/game/Card.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/hanabi-api/hanabi/game/CardList.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/hanabi-api/hanabi/game/CardList.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/hanabi-api/hanabi/game/State.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/hanabi-api/hanabi/game/State.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/hanabi-api/hanabi/gui/Board2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/hanabi-api/hanabi/gui/CardGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/hanabi-api/hanabi/gui/CardGUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/hanabi-api/hanabi/gui/CenterBoard.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/hanabi-api/hanabi/gui/DiscardedCardsGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/hanabi-api/hanabi/gui/DiscardedCardsGUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/hanabi-api/hanabi/gui/HandGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/hanabi-api/hanabi/gui/HandGUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/hanabi-api/hanabi/gui/HandSpan.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/hanabi-api/hanabi/gui/InfoPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/hanabi-api/hanabi/gui/InfoPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/hanabi-api/hanabi/player/Analitics.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/hanabi-api/hanabi/player/Analitics.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/hanabi-api/hanabi/player/GameClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/hanabi-api/hanabi/player/GameClient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/hanabi-api/hanabi/player/Hint.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/hanabi-api/hanabi/player/Hint.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hanabi/game/Action.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/hanabi/game/Action.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hanabi/game/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/hanabi/game/Card.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hanabi/game/CardList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/hanabi/game/CardList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hanabi/game/Firework.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hanabi/game/Game.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hanabi/game/Hand.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hanabi/game/State.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/hanabi/game/State.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hanabi/game/Turn.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hanabi/gui/ActionsPanel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hanabi/gui/Board2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hanabi/gui/CardGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/hanabi/gui/CardGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hanabi/gui/CenterBoard.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hanabi/gui/DiscardedCardsGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/hanabi/gui/DiscardedCardsGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hanabi/gui/HandGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/hanabi/gui/HandGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hanabi/gui/HandSpan.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hanabi/gui/InfoPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/hanabi/gui/InfoPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hanabi/gui/RefreshablePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/hanabi/gui/RefreshablePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hanabi/player/Analitics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/hanabi/player/Analitics.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hanabi/player/GameClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/hanabi/player/GameClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hanabi/player/Hint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/hanabi/player/Hint.java" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/out/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="isMigrated" value="true" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/hanabi/player/Analitics.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="19" column="16" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="16" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#8902#8903#0" expanded="true" />
+                <element signature="e#9479#9480#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/hanabi/player/GameClient.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="219">
+              <caret line="168" lean-forward="true" selection-start-line="168" selection-end-line="168" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/util/HashSet.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1139">
+              <caret line="91" column="17" selection-start-line="91" selection-start-column="17" selection-end-line="91" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/util/Set.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1037">
+              <caret line="84" column="17" selection-start-line="84" selection-start-column="17" selection-end-line="84" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/hanabi/gui/Board.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2703">
+              <caret line="166" column="12" selection-start-line="166" selection-start-column="12" selection-end-line="166" selection-end-column="12" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#5432#5433#0" expanded="true" />
+                <element signature="e#5470#5471#0" expanded="true" />
+                <element signature="e#5528#5529#0" expanded="true" />
+                <element signature="e#5563#5564#0" expanded="true" />
+                <element signature="e#5700#5701#0" expanded="true" />
+                <element signature="e#5717#5718#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/hanabi/game/CardList.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2414">
+              <caret line="198" column="5" selection-start-line="198" selection-start-column="5" selection-end-line="198" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/hanabi/gui/LogPanel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="16" column="58" selection-start-line="16" selection-start-column="58" selection-end-line="16" selection-end-column="58" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/hanabi/gui/DiscardedCardsGUI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1649">
+              <caret line="105" column="13" selection-start-line="105" selection-start-column="13" selection-end-line="105" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/hanabi/gui/DetailPanel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1955">
+              <caret line="125" column="41" selection-start-line="125" selection-start-column="41" selection-end-line="125" selection-end-column="42" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>turn</find>
+      <find>Game.getInstance().getPlayerTurn(player)</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>GameClient.getIndexPlayerFromName(player)</replace>
+    </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/api/hanabi/ActionType.java" />
+        <option value="$PROJECT_DIR$/src/api/hanabi/Color.java" />
+        <option value="$PROJECT_DIR$/src/api/hanabi/Game.java" />
+        <option value="$PROJECT_DIR$/src/api/hanabi/Hand.java" />
+        <option value="$PROJECT_DIR$/src/api/hanabi/Turn.java" />
+        <option value="$PROJECT_DIR$/src/api/hanabi/Firework.java" />
+        <option value="$PROJECT_DIR$/src/api/hanabi/CardList.java" />
+        <option value="$PROJECT_DIR$/src/api/hanabi/Card.java" />
+        <option value="$PROJECT_DIR$/src/api/hanabi/Action.java" />
+        <option value="$PROJECT_DIR$/src/api/hanabi/State.java" />
+        <option value="$PROJECT_DIR$/src/api/hanabi/GameClient.java" />
+        <option value="$PROJECT_DIR$/src/hanabi/SingleHandContainer.java" />
+        <option value="$PROJECT_DIR$/src/hanabi/gui/RefreshablePanel.java" />
+        <option value="$PROJECT_DIR$/src/hanabi/ActionsPanel.java" />
+        <option value="$PROJECT_DIR$/src/hanabi/gui/ActionsPanel.java" />
+        <option value="$PROJECT_DIR$/src/hanabi/Board2.java" />
+        <option value="$PROJECT_DIR$/src/hanabi/api/Action.java" />
+        <option value="$PROJECT_DIR$/src/hanabi/api/GameClient.java" />
+        <option value="$PROJECT_DIR$/src/hanabi/api/CardList.java" />
+        <option value="$PROJECT_DIR$/src/hanabi/api/Card.java" />
+        <option value="$PROJECT_DIR$/src/hanabi/api/State.java" />
+        <option value="$PROJECT_DIR$/src/hanabi/game/Analitics.java" />
+        <option value="$PROJECT_DIR$/src/hanabi/player/Hint.java" />
+        <option value="$PROJECT_DIR$/src/hanabi/game/ColorSet.java" />
+        <option value="$PROJECT_DIR$/src/hanabi/game/ValueSet.java" />
+        <option value="$PROJECT_DIR$/src/hanabi/gui/AddressInsertionDialog.java" />
+        <option value="$PROJECT_DIR$/src/hanabi/gui/PlayerConnectionDialog.java" />
+        <option value="$PROJECT_DIR$/src/hanabi/gui/WaitingDialog.java" />
+        <option value="$PROJECT_DIR$/src/hanabi/gui/SingleHandContainer.java" />
+        <option value="$PROJECT_DIR$/src/hanabi/gui/FireworksPanel.java" />
+        <option value="$PROJECT_DIR$/src/hanabi/gui/StateListener.java" />
+        <option value="$PROJECT_DIR$/src/hanabi/gui/SelectedListener.java" />
+        <option value="$PROJECT_DIR$/src/hanabi/gui/InfoPanel.java" />
+        <option value="$PROJECT_DIR$/src/hanabi/gui/CenterBoard.java" />
+        <option value="$PROJECT_DIR$/src/hanabi/game/Action.java" />
+        <option value="$PROJECT_DIR$/src/hanabi/gui/HandSpan.java" />
+        <option value="$PROJECT_DIR$/src/hanabi/player/Old_Analitics.java" />
+        <option value="$PROJECT_DIR$/src/hanabi/gui/StateShownListener.java" />
+        <option value="$PROJECT_DIR$/src/hanabi/gui/NavigationPanel.java" />
+        <option value="$PROJECT_DIR$/src/hanabi/game/Card.java" />
+        <option value="$PROJECT_DIR$/src/hanabi/gui/DetailPanel.java" />
+        <option value="$PROJECT_DIR$/src/hanabi/gui/HandGUI.java" />
+        <option value="$PROJECT_DIR$/src/hanabi/gui/CardGUI.java" />
+        <option value="$PROJECT_DIR$/src/hanabi/gui/Board2.java" />
+        <option value="$PROJECT_DIR$/src/hanabi/gui/Board.java" />
+        <option value="$PROJECT_DIR$/src/hanabi/game/State.java" />
+        <option value="$PROJECT_DIR$/src/hanabi/game/CardList.java" />
+        <option value="$PROJECT_DIR$/src/hanabi/gui/LogPanel.java" />
+        <option value="$PROJECT_DIR$/src/hanabi/gui/DiscardedCardsGUI.java" />
+        <option value="$PROJECT_DIR$/src/hanabi/player/GameClient.java" />
+        <option value="$PROJECT_DIR$/src/hanabi/player/Analitics.java" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="683" />
+    <option name="width" value="683" />
+    <option name="height" value="743" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="hanabi-api" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hanabi-api" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hanabi-api" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="hanabi" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hanabi-api" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="hanabi" type="462c0819:PsiDirectoryNode" />
+              <item name="game" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hanabi-api" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="hanabi" type="462c0819:PsiDirectoryNode" />
+              <item name="gui" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hanabi-api" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="hanabi" type="462c0819:PsiDirectoryNode" />
+              <item name="player" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hanabi-api" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.18505748" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Francesco\Desktop\Workspace\hanabi-unibo\hanabi-api-v1\project" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="hanabi.game" />
+      <recent name="api.hanabi" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Francesco\Desktop\Workspace\hanabi-unibo\hanabi-api-v1\project\src\hanabi\gui" />
+      <recent name="C:\Users\Francesco\Desktop\Workspace\hanabi-unibo\hanabi-api-v1\project\src" />
+      <recent name="C:\Users\Francesco\Desktop\Workspace\hanabi-api\project\v1\src" />
+      <recent name="C:\Users\Francesco\Desktop\Workspace\hanabi-api\project\src\api\hanabi\v1" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="CardGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="hanabi.gui.CardGUI" />
+      <module name="hanabi-api" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="hanabi.gui.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.CardGUI" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="StructureViewFactory">
+    <option name="ACTIVE_ACTIONS" value=",ALPHA_COMPARATOR,SHOW_FIELDS" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9bb3ffe2-fc5e-4a49-aa44-7276be755617" name="Default Changelist" comment="" />
+      <created>1588498659124</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1588498659124</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1456" height="876" extended-state="7" />
+    <editor active="true" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4589502" visible="true" weight="0.26862463" />
+      <window_info id="Structure" order="1" sideWeight="0.5410498" side_tool="true" visible="true" weight="0.26862463" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32974428" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32974428" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.32839838" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="right" id="Maven" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+    </layout>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/awt/TextComponent.java" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/awt/TextField.java" />
+    <entry file="jar://$PROJECT_DIR$/../../json-v2/json.jar!/META-INF/project/src/json/JSONObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="122" column="22" selection-start-line="122" selection-start-column="22" selection-end-line="122" selection-end-column="22" />
+          <folding>
+            <element signature="e#3599#3600#0" expanded="true" />
+            <element signature="e#3636#3637#0" expanded="true" />
+            <element signature="e#4069#4070#0" expanded="true" />
+            <element signature="e#4095#4096#0" expanded="true" />
+            <element signature="e#4131#4132#0" expanded="true" />
+            <element signature="e#4162#4163#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/lang/String.java" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/util/List.java" />
+    <entry file="jar://$PROJECT_DIR$/../../json-v2/json.jar!/META-INF/project/src/json/JSONComposite.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="15" column="7" lean-forward="true" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/hanabi/player/Hint.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="593">
+          <caret line="41" column="30" selection-start-line="41" selection-start-column="30" selection-end-line="41" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/hanabi/game/ColorSet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="59" column="17" selection-start-line="59" selection-start-column="17" selection-end-line="59" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#481#482#0" expanded="true" />
+            <element signature="e#543#544#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/awt/Component.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="717" column="16" selection-start-line="717" selection-start-column="16" selection-end-line="717" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/hanabi/game/ValueSet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="54" column="33" selection-start-line="54" selection-start-column="33" selection-end-line="54" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/hanabi/gui/PlayerConnectionDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1105">
+          <caret line="84" column="42" selection-start-line="84" selection-start-column="42" selection-end-line="84" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/hanabi/gui/WaitingDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="20" selection-start-line="20" selection-end-line="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/hanabi/gui/ActionsPanel.java" />
+    <entry file="file://$PROJECT_DIR$/src/hanabi/gui/RefreshablePanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1098">
+          <caret line="75" column="22" selection-start-line="75" selection-start-column="22" selection-end-line="75" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/hanabi/gui/FireworksPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1598">
+          <caret line="98" column="19" selection-start-line="98" selection-start-column="19" selection-end-line="98" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/hanabi/gui/SingleHandContainer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="37" column="2" selection-start-line="37" selection-start-column="2" selection-end-line="37" selection-end-column="2" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/hanabi/gui/StateListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="9" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/hanabi/gui/SelectedListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="24" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/awt/ScrollPane.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1278">
+          <caret line="99" column="4" selection-start-line="99" selection-start-column="4" selection-end-line="99" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/javax/swing/JScrollPane.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="1002" column="16" selection-start-line="1002" selection-start-column="16" selection-end-line="1002" selection-end-column="16" />
+          <folding>
+            <element signature="e#10946#10947#0" expanded="true" />
+            <element signature="e#11034#11035#0" expanded="true" />
+            <element signature="e#11832#11833#0" expanded="true" />
+            <element signature="e#11920#11921#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/hanabi/gui/CenterBoard.java" />
+    <entry file="file://$PROJECT_DIR$/src/hanabi/game/Action.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="174" column="45" selection-start-line="174" selection-start-column="45" selection-end-line="174" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2162#2163#0" expanded="true" />
+            <element signature="e#2219#2220#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/hanabi/gui/HandSpan.java" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/awt/event/MouseListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="56" column="17" selection-start-line="56" selection-start-column="17" selection-end-line="56" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/javax/swing/JDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="239">
+          <caret line="231" column="11" selection-start-line="231" selection-start-column="11" selection-end-line="231" selection-end-column="11" />
+          <folding>
+            <element signature="e#8334#8335#0" expanded="true" />
+            <element signature="e#8375#8376#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../../json-v2/json.jar!/META-INF/project/src/json/TypedJSONObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="22" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/hanabi/gui/StateShownListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="57" selection-start-line="3" selection-start-column="57" selection-end-line="3" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/hanabi/player/Old_Analitics.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2754">
+          <caret line="184" column="20" selection-start-line="184" selection-start-column="20" selection-end-line="184" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/hanabi/gui/Orientation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/javax/swing/BoxLayout.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="35">
+          <caret line="178" column="11" selection-start-line="178" selection-start-column="11" selection-end-line="178" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/hanabi/gui/HandGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="107" column="48" selection-start-line="107" selection-start-column="48" selection-end-line="107" selection-end-column="48" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4205#4206#0" expanded="true" />
+            <element signature="e#4253#4254#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/javax/swing/Action.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="463">
+          <caret line="213" column="17" selection-start-line="213" selection-start-column="17" selection-end-line="213" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/hanabi/game/Card.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2346">
+          <caret line="163" column="22" selection-start-line="163" selection-start-column="22" selection-end-line="163" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#792#793#0" expanded="true" />
+            <element signature="e#810#811#0" expanded="true" />
+            <element signature="e#1240#1241#0" expanded="true" />
+            <element signature="e#1306#1307#0" expanded="true" />
+            <element signature="e#1497#1498#0" expanded="true" />
+            <element signature="e#1542#1543#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/hanabi/game/State.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1258">
+          <caret line="85" column="50" selection-start-line="85" selection-start-column="50" selection-end-line="85" selection-end-column="50" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1291#1292#0" expanded="true" />
+            <element signature="e#1311#1312#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/hanabi/gui/NavigationPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="680">
+          <caret line="45" column="25" selection-start-line="45" selection-start-column="25" selection-end-line="45" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/hanabi/gui/CardGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2839">
+          <caret line="173" column="36" selection-start-line="173" selection-start-column="36" selection-end-line="173" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/util/ArrayList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="290">
+          <caret line="522" column="19" selection-start-line="522" selection-start-column="19" selection-end-line="522" selection-end-column="19" />
+          <folding>
+            <element signature="e#11079#11080#0" expanded="true" />
+            <element signature="e#11117#11118#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../../json-v2/json.jar!/META-INF/project/src/json/JSONArray.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding>
+            <element signature="e#4666#4667#0" expanded="true" />
+            <element signature="e#4696#4697#0" expanded="true" />
+            <element signature="e#4886#4887#0" expanded="true" />
+            <element signature="e#4914#4915#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../../json-v2/json.jar!/META-INF/project/src/json/TypedJSONArray.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="19" lean-forward="true" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/util/Collection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="545">
+          <caret line="251" column="12" selection-start-line="251" selection-start-column="12" selection-end-line="251" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/hanabi/gui/InfoPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="229">
+          <caret line="83" column="18" selection-start-line="83" selection-start-column="18" selection-end-line="83" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/javax/swing/JScrollBar.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="473" column="16" selection-start-line="473" selection-start-column="16" selection-end-line="473" selection-end-column="16" />
+          <folding>
+            <element signature="e#15484#15485#0" expanded="true" />
+            <element signature="e#15530#15531#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/util/HashSet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1139">
+          <caret line="91" column="17" selection-start-line="91" selection-start-column="17" selection-end-line="91" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/util/Set.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1037">
+          <caret line="84" column="17" selection-start-line="84" selection-start-column="17" selection-end-line="84" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/hanabi/gui/Board.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2703">
+          <caret line="166" column="12" selection-start-line="166" selection-start-column="12" selection-end-line="166" selection-end-column="12" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#5432#5433#0" expanded="true" />
+            <element signature="e#5470#5471#0" expanded="true" />
+            <element signature="e#5528#5529#0" expanded="true" />
+            <element signature="e#5563#5564#0" expanded="true" />
+            <element signature="e#5700#5701#0" expanded="true" />
+            <element signature="e#5717#5718#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/hanabi/game/CardList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2414">
+          <caret line="198" column="5" selection-start-line="198" selection-start-column="5" selection-end-line="198" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/hanabi/gui/LogPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="16" column="58" selection-start-line="16" selection-start-column="58" selection-end-line="16" selection-end-column="58" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/hanabi/gui/DiscardedCardsGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1649">
+          <caret line="105" column="13" selection-start-line="105" selection-start-column="13" selection-end-line="105" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/hanabi/gui/DetailPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1955">
+          <caret line="125" column="41" selection-start-line="125" selection-start-column="41" selection-end-line="125" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/hanabi/player/GameClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="219">
+          <caret line="168" lean-forward="true" selection-start-line="168" selection-end-line="168" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/hanabi/player/Analitics.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="19" column="16" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#8902#8903#0" expanded="true" />
+            <element signature="e#9479#9480#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <last-edited>hanabi-api</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.18505748" />
+                <option value="0.5" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>11</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>json</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.18505748" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>
