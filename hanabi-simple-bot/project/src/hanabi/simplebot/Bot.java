@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class Bot extends GameClient
 {
 	private JFrame frame;
-	private Thread ui = new Thread(() -> frame.setVisible(true));
+//	private Thread ui = new Thread(() -> frame.setVisible(true));
 	private java.util.List<String> players;
 	private Analitics analitics;
 
@@ -34,6 +34,7 @@ public class Bot extends GameClient
 	{
 		analitics.setState(getCurrentState());
 		String worst = getPlayerInWorstConditions(analitics);
+		System.out.println("Rilevato giocatore in stato peggiore: "+worst);
 		if (getCurrentState().getHintTokens()>0)
 		{//Posso suggerire
 			if (getConditions(worst,analitics) < 4)
@@ -150,13 +151,13 @@ public class Bot extends GameClient
 		{//Cerco tra tutti i giocatori che non sono io
 			conditions[i-1]=getConditions(players.get(i),analitics);
 		}
-		int max = 1;
-		for (int i=2; i<conditions.length; i++)
+		int max = 0;
+		for (int i=1; i<conditions.length; i++)
 		{
 			if (conditions[i] > conditions[max])
 				max = i;
 		}
-		return players.get(max);
+		return players.get(max+1);
 	}
 
 	private int getConditions(String player, Analitics analitics)
@@ -204,7 +205,8 @@ public class Bot extends GameClient
 			int y = Toolkit.getDefaultToolkit().getScreenSize().height / 2 - frame.getSize().height / 2;
 			frame.setLocation(x, y);
 
-			ui.start();
+	//		ui.start();
+			frame.setVisible(true);
 		}
 	}
 	/*
@@ -231,13 +233,13 @@ public class Bot extends GameClient
 			bot = new Bot(dialog.getIP(),dialog.getPort(),true);
 		}
 		bot.run();
-		try
+	/*	try
 		{
 			bot.ui.join();
 		}
 		catch (InterruptedException e)
 		{
 
-		}
+		}*/
 	}
 }

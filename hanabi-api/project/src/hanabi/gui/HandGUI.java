@@ -169,8 +169,16 @@ public class HandGUI extends JPanel
 	public void setHand(CardList hand)
 	{
 		if (hand.size() > cards.size())
-			throw new IllegalStateException("Hand length can not increase");
-		if (hand.size() < cards.size()) {
+		{
+			//Aggiungo una carta perché è impossibile doverne aggiungere di piu.
+			cards.add(new CardGUI(this, hand.size()-1, orientation.rotate()));
+			JPanel box = new JPanel();
+			box.setBackground(null);
+			box.add(cards.get(cards.size()-1));
+			this.add(box);
+
+		}
+		else if (hand.size() < cards.size()) {
 			//Devo rimuovere le carte in più. Rimuovo da indice "hand.size()" in poi
 			while (cards.size() > hand.size()) {
 				this.remove(hand.size());

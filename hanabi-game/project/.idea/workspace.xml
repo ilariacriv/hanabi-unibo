@@ -8,22 +8,11 @@
   <component name="ChangeListManager">
     <list default="true" id="427543c5-1373-4049-8dbb-b1595605220d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../../hanabi-api/hanabi-api.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-api/hanabi-api.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../hanabi-api/project/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-api/project/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../hanabi-api/project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-api/project/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../hanabi-api/project/out/production/hanabi-api/hanabi/player/Hint.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../hanabi-api/project/out/production/hanabi-api/hanabi/player/Old_Analitics.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../hanabi-api/project/src/hanabi/player/Analitics.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-api/project/src/hanabi/player/Analitics.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../hanabi-api/project/src/hanabi/player/Hint.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-api/project/src/hanabi/player/Hint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../hanabi-api/project/src/hanabi/player/Old_Analitics.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-api/project/src/hanabi/player/Old_Analitics.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../hanabi-human-player/project/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-human-player/project/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../hanabi-human-player/project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-human-player/project/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../hanabi-simple-bot/lastinsertion" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-simple-bot/lastinsertion" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../hanabi-api/project/src/hanabi/gui/HandGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-api/project/src/hanabi/gui/HandGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../hanabi-simple-bot/hanabi-simple-bot.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-simple-bot/hanabi-simple-bot.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../hanabi-simple-bot/project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-simple-bot/project/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../hanabi-simple-bot/project/src/hanabi/simplebot/Bot.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-simple-bot/project/src/hanabi/simplebot/Bot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../json-v2/project/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../json-v2/project/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../json-v2/project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../json-v2/project/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -95,7 +84,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="683" />
     <option name="width" value="683" />
     <option name="height" value="743" />
@@ -200,8 +189,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1456" height="876" extended-state="7" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.461642" visible="true" weight="0.20916906" />
       <window_info active="true" id="Structure" order="1" sideWeight="0.53835803" side_tool="true" visible="true" weight="0.20916906" />
