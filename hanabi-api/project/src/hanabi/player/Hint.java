@@ -3,7 +3,7 @@ package hanabi.player;
 import hanabi.game.Card;
 
 import java.util.List;
-
+/*
 public class Hint implements Cloneable
 {
 	private boolean is;
@@ -60,3 +60,4 @@ public class Hint implements Cloneable
 		return new Hint(!is, color, value);
 	}
 }
+*/

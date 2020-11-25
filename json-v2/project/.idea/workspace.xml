@@ -7,18 +7,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="30380aab-3901-4041-b6b2-8645a17271d2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../json.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../json.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/json/json/JSONArray.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/json/json/JSONArray.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/json/json/JSONComposite.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/json/json/JSONComposite.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/json/json/JSONObject.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/json/json/JSONObject.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/json/json/TypedJSONArray.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/json/json/TypedJSONArray.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/json/json/TypedJSONObject.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/json/json/TypedJSONObject.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/json/JSONArray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/json/JSONArray.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/json/JSONComposite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/json/JSONComposite.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/json/JSONObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/json/JSONObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/json/TypedJSONArray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/json/TypedJSONArray.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/json/TypedJSONObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/json/TypedJSONObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../hanabi-api/hanabi-api.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-api/hanabi-api.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../hanabi-api/project/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-api/project/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../hanabi-api/project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-api/project/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../hanabi-api/project/out/production/hanabi-api/hanabi/player/Hint.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../hanabi-api/project/out/production/hanabi-api/hanabi/player/Old_Analitics.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../hanabi-api/project/src/hanabi/player/Analitics.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-api/project/src/hanabi/player/Analitics.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../hanabi-api/project/src/hanabi/player/Hint.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-api/project/src/hanabi/player/Hint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../hanabi-api/project/src/hanabi/player/Old_Analitics.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-api/project/src/hanabi/player/Old_Analitics.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../hanabi-game/project/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-game/project/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../hanabi-game/project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-game/project/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../hanabi-human-player/project/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-human-player/project/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../hanabi-human-player/project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-human-player/project/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../hanabi-simple-bot/lastinsertion" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-simple-bot/lastinsertion" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../hanabi-simple-bot/project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-simple-bot/project/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../hanabi-simple-bot/project/src/hanabi/simplebot/Bot.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-simple-bot/project/src/hanabi/simplebot/Bot.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -41,11 +44,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/json/TypedJSONArray.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="49">
-              <caret line="4" column="90" lean-forward="true" selection-start-line="4" selection-start-column="90" selection-end-line="4" selection-end-column="90" />
+            <state relative-caret-position="187">
+              <caret line="11" column="17" lean-forward="true" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -53,8 +56,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/json/TypedJSONObject.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="50" selection-start-line="9" selection-start-column="50" selection-end-line="9" selection-end-column="50" />
+            <state relative-caret-position="187">
+              <caret line="11" column="25" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -80,10 +83,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/json/JSONArray.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4386">
+            <state relative-caret-position="661">
               <caret line="291" column="63" selection-start-line="291" selection-start-column="63" selection-end-line="291" selection-end-column="63" />
             </state>
           </provider>
@@ -113,7 +116,7 @@
     </replaceStrings>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -198,13 +201,6 @@
               <item name="project" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="json" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="json" type="b2602c69:ProjectViewProjectNode" />
-              <item name="project" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="json" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -318,8 +314,8 @@
     <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.5693136" visible="true" weight="0.30802292" />
-      <window_info id="Structure" order="1" sideWeight="0.4306864" side_tool="true" visible="true" weight="0.30802292" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.5679677" visible="true" weight="0.31232092" />
+      <window_info id="Structure" order="1" sideWeight="0.4320323" side_tool="true" visible="true" weight="0.31232092" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
@@ -437,10 +433,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/json/TypedJSONObject.java">
+    <entry file="file://$PROJECT_DIR$/src/json/JSONObject.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="50" selection-start-line="9" selection-start-column="50" selection-end-line="9" selection-end-column="50" />
+        <state relative-caret-position="2125">
+          <caret line="132" column="59" selection-start-line="132" selection-start-column="59" selection-end-line="132" selection-end-column="59" />
         </state>
       </provider>
     </entry>
@@ -461,24 +457,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/json/JSONObject.java">
+    <entry file="file://$PROJECT_DIR$/src/json/JSONArray.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2125">
-          <caret line="132" column="59" selection-start-line="132" selection-start-column="59" selection-end-line="132" selection-end-column="59" />
+        <state relative-caret-position="661">
+          <caret line="291" column="63" selection-start-line="291" selection-start-column="63" selection-end-line="291" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/json/TypedJSONObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="25" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="25" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/json/TypedJSONArray.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="49">
-          <caret line="4" column="90" lean-forward="true" selection-start-line="4" selection-start-column="90" selection-end-line="4" selection-end-column="90" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/json/JSONArray.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4386">
-          <caret line="291" column="63" selection-start-line="291" selection-start-column="63" selection-end-line="291" selection-end-column="63" />
+        <state relative-caret-position="187">
+          <caret line="11" column="17" lean-forward="true" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="17" />
         </state>
       </provider>
     </entry>

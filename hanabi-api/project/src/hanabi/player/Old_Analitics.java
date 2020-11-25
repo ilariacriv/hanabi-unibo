@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+/*
 public class Old_Analitics
 {
 	private List<State> history;
@@ -132,7 +132,7 @@ public class Old_Analitics
 	 * @param player
 	 * @return
 	 */
-	public double[] getPlayability(String player)
+/*	public double[] getPlayability(String player)
 	{
 		double[] p = playbox.get(player);
 		if (p == null) {
@@ -210,7 +210,7 @@ public class Old_Analitics
 	}
 */
 
-	private Map<Card,Double> fromCountToProb(List<Card> list)
+/*	private Map<Card,Double> fromCountToProb(List<Card> list)
 	{
 		HashMap<Card,Double> map = new HashMap();
 		Card card;
@@ -336,7 +336,7 @@ public class Old_Analitics
 		}
 	}
 */
-
+/*
 	private int countCard(Card card, List<Card> list)
 	{
 		int count = 0;
@@ -352,7 +352,7 @@ public class Old_Analitics
 	 * Inizializza le possibili carte del giocatore guardando quelle possedute dagli altri.
 	 * @param state lo stato iniziale del gioco
 	 */
-	private void firstState(State state)
+/*	private void firstState(State state)
 	{
 		for (String name:state.getPlayersNames())
 		{
@@ -369,7 +369,7 @@ public class Old_Analitics
 			initCards(i);
 
  */
-	}
+//	}
 
 	/*	/**
 	 * @param i la posizione nella mano del giocatore della carta da resettare
@@ -390,7 +390,7 @@ public class Old_Analitics
 			possibleCards[i].remove(c);
 	}
 */
-	public boolean isPlayable(Card card)
+/*	public boolean isPlayable(Card card)
 	{
 		//	System.out.println("Checking if "+card+" is playable");
 		int fire = getLastState().getFirework(card.getColor());
@@ -403,7 +403,7 @@ public class Old_Analitics
 	 * @param card
 	 * @return
 	 */
-	public boolean isUseless(Card card)
+/*	public boolean isUseless(Card card)
 	{
 		return countCardsInGame(card)>1 || !isPlayableYet(card);
 	}
@@ -479,3 +479,4 @@ public class Old_Analitics
 	}
 
 }
+*/

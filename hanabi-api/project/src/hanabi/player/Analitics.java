@@ -91,8 +91,8 @@ public class Analitics
 				}*/
 				result = cont / tot;
 			}
-			if (result<0 || result>1)
-				System.out.println(result+" per "+cardowner+"/"+index+"/"+color);
+			/*if (result<0 || result>1)
+				System.out.println(result+" per "+cardowner+"/"+index+"/"+color);*/
 			buffer.put(cardowner+"/"+index+"/"+color,result);
 			return result;
 		}

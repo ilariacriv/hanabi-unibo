@@ -15,7 +15,6 @@ import java.util.ArrayList;
 
 public class Bot extends GameClient
 {
-
 	private JFrame frame;
 	private Thread ui = new Thread(() -> frame.setVisible(true));
 	private java.util.List<String> players;
@@ -34,10 +33,9 @@ public class Bot extends GameClient
 	public Action chooseAction()
 	{
 		analitics.setState(getCurrentState());
-
+		String worst = getPlayerInWorstConditions(analitics);
 		if (getCurrentState().getHintTokens()>0)
 		{//Posso suggerire
-			String worst = getPlayerInWorstConditions(analitics);
 			if (getConditions(worst,analitics) < 4)
 			{//il giocatore messo peggio NON è in condizioni critiche
 				//Gioco un eventuale carta con playability=1
@@ -62,6 +60,13 @@ public class Bot extends GameClient
 		}
 		else
 		{//Non posso suggerire
+			boolean playfirst;
+
+			if (getConditions(worst,analitics) == 4)
+				playfirst = true;
+			else
+				playfirst = false;
+
 			//Cerco la carta con uselessness maggiore
 			int l = getCurrentState().getHand(players.get(0)).size();
 			double u[] = new double[l];
@@ -80,9 +85,11 @@ public class Bot extends GameClient
 				}
 			}
 
-			//Se è sicura la scarto
-			if (umax == 1)
-				return Action.createDiscardAction(players.get(0),max);
+			if (!playfirst) {
+				//Se è sicura la scarto
+				if (umax == 1)
+					return Action.createDiscardAction(players.get(0), max);
+			}
 
 			//Gioco un eventuale carta con playability=1
 			for (int i=0; i<getCurrentState().getHand(players.get(0)).size(); i++)
@@ -165,7 +172,8 @@ public class Bot extends GameClient
 			if (analitics.getUselessness(player,i) == 1)
 				return 2;
 		}
-		if (getCurrentState().getHintTokens()>players.size()-1)
+//		if (getCurrentState().getHintTokens()>players.size()-1) //Probabilmente la condizione è sbagliata. Se siamo in 5 e controllo il prossimo bastano 2 token
+		if (getCurrentState().getHintTokens()>=players.indexOf(player))
 			return 3;
 		return 4;
 	}
