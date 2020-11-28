@@ -28,7 +28,7 @@ public class HumanPlayer extends GameClient
 	@Override
 	public void init()
 	{
-
+		super.init();
 		keyboard = new Keyboard(players.get(0),board);
 
 		board.add(keyboard,BorderLayout.SOUTH);

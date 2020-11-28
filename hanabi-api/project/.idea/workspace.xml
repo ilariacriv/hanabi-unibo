@@ -10,12 +10,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9bb3ffe2-fc5e-4a49-aa44-7276be755617" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../hanabi-bot1/project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-bot1/project/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../hanabi-bot2/lastinsertion" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-bot2/lastinsertion" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../hanabi-bot2/project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-bot2/project/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../hanabi-bot2/project/src/hanabi/bot2/Bot.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-bot2/project/src/hanabi/bot2/Bot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../hanabi-game/project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-game/project/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../hanabi-human-player/lastinsertion" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-human-player/lastinsertion" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../hanabi-human-player/project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-human-player/project/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../hanabi-human-player/project/src/hanabi/human/HumanPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-human-player/project/src/hanabi/human/HumanPlayer.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
