@@ -166,7 +166,10 @@ public class Board extends JPanel
 		if (expected > 1)
 			log(printAction(state.getLastAction())+"\n\n");
 		String curr = state.getCurrentPlayer();
-		log("Turno "+state.getRound()+", tocca a "+(curr.equals(myname)?"te":curr)+"\n");
+		if (state.isLastState())
+			log("Partita finita");
+		else
+			log("Turno "+state.getRound()+", tocca a "+(curr.equals(myname)?"te":curr)+"\n");
 	}
 
 	public void addSelectedListener(SelectedListener listener)

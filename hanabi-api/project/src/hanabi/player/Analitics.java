@@ -98,7 +98,7 @@ public class Analitics
 		}
 	}
 
-	private CardList getPossibleCards(String cardowner, int index)
+	public CardList getPossibleCards(String cardowner, int index)
 	{
 		//Restituisco la lista di carte che quella indicata potrebbe essere prendendo le carte rimaste in gioco e applicando 2 filtri.
 		//Nota che se cardowner!=me restituisco le carte che io penso lui veda possibili.

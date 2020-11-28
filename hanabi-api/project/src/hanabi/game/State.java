@@ -219,6 +219,8 @@ public class State extends TypedJSONObject
 			//Se questa era l'ultima carta da giocare la partita è finita
 			if (getScore() == 24)
 				nextState.object.put("final", getRound()+1);
+			if (firework == 4 && getHintTokens()<8)
+				nextState.object.put("hints",nextState.getHintTokens()+1);
 		}
 		else
 		{
@@ -313,6 +315,11 @@ public class State extends TypedJSONObject
 	public int getDeckSize()
 	{
 		return object.get(Number.class,"deck").intValue();
+	}
+
+	public boolean isLastState()
+	{
+		return (getFinalRound()>0 && getRound() == getFinalRound()+1) || getFuseTokens() == 0;
 	}
 
 	/*

@@ -14,12 +14,10 @@ public class HumanPlayer extends GameClient
 {
 	private JFrame frame;
 	private Keyboard keyboard;
-	private Thread ui = new Thread(() -> frame.setVisible(true));
-
 
 	public HumanPlayer(String ip, int port)
 	{
-		super(ip,port,"Human");
+		super(ip,port,"Human",true);
 	}
 
 	@Override
@@ -30,35 +28,17 @@ public class HumanPlayer extends GameClient
 	@Override
 	public void init()
 	{
-		frame = new JFrame();
-		frame.setTitle("Hanabi - "+getName());
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setResizable(false);
-		frame.getContentPane().setLayout(new BorderLayout());
-
-		java.util.List<String> players = reorderPlayers(getCurrentState().getPlayersNames());
-		String[] others = new String[players.size()-1];
-		for (int i=0; i< others.length; i++)
-			others[i] = players.get(i+1);
-
-		board = new Board(players.get(0),others);
 
 		keyboard = new Keyboard(players.get(0),board);
 
 		board.add(keyboard,BorderLayout.SOUTH);
-		frame.add(board,BorderLayout.CENTER);
-
-
 		board.addSelectedListener(keyboard);
 		board.addStateListener(keyboard);
-		board.addState(getCurrentState());
 
 		frame.pack();
 		int x = Toolkit.getDefaultToolkit().getScreenSize().width/2-frame.getSize().width/2;
 		int y = Toolkit.getDefaultToolkit().getScreenSize().height/2-frame.getSize().height/2;
 		frame.setLocation(x,y);
-
-		ui.start();
 	}
 /*
 	public String waitForName() throws IOException
@@ -84,14 +64,6 @@ public class HumanPlayer extends GameClient
 			human = new HumanPlayer(dialog.getIP(),dialog.getPort());
 		}
 		human.run();
-		try
-		{
-			human.ui.join();
-		}
-		catch (InterruptedException e)
-		{
-
-		}
 	}
 
 }

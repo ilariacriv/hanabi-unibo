@@ -6,7 +6,6 @@ import hanabi.game.Action;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.*;
 import java.net.InetAddress;
 import java.net.ServerSocket;
@@ -21,13 +20,15 @@ public final class GameServer
 	private static List<String> names = new ArrayList<>();
 	private static ServerSocket serverSocket;
 	private static int n = 0;
-	private static int port = 0;
 	private static boolean gui = true;
 	private static JFrame frame = null;
-	private static JButton aggiungi;
+	private static JTextArea textArea;
+//	private static JButton aggiungi;
 	private static JButton inizia;
-	private static JPanel center;
+//	private static JPanel center;
 	private static JTextField portf;
+	private static JTextField games;
+	private static JPanel[] combos;
 
 	private GameServer()
 	{
@@ -46,197 +47,182 @@ public final class GameServer
 	 */
 	public static void main(String args[]) throws IOException
 	{
-		//Leggo gli argomenti e setto le impostazioni di conseguenza
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
-		if (args.length > 0)
-		{
-			for (int i=0; i<args.length; i++)
-			{
-				if (args[i].equals("-g"))
-				{
-					i++;
-					if (i<args.length)
-						n = Integer.parseInt(args[i]);
-				}
-				else if (args[i].equals("-p"))
-				{
-					i++;
-					if (i<args.length)
-						port = Integer.parseInt(args[i]);
-				}
-				else if (args[i].equals("-t"))
-				{
-					gui = false;
-				}
-			}
-		}
-
-		////////////////////
-		serverSocket = new ServerSocket(port);
-		port = serverSocket.getLocalPort();
+		//Ottengo una porta libera
+		serverSocket = new ServerSocket(0);
+		int port = serverSocket.getLocalPort();
 		serverSocket.close();
 
-		if (gui) {
-			frame = new JFrame("Hanabi");
-			frame.setResizable(false);
-			frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-			JLabel[] ip = new JLabel[] {new JLabel(getInternalIp()),new JLabel(getExternalIp())};
-			portf = new JTextField("" + port,5);
-			JPanel north = new JPanel();
-			JPanel north0 = new JPanel();
-			JPanel ipp = new JPanel();
-			JPanel north1 = new JPanel();
-			JPanel portp = new JPanel();
-			center = new JPanel();
-			addNewComboBox();
-			addNewComboBox();
-			aggiungi = new JButton("Aggiungi giocatore");
-			aggiungi.addActionListener(e -> {
-				if (n<5) {
-					addNewComboBox();
-					frame.pack();
-				}
-				if (n==5)
-					aggiungi.setEnabled(false);
-			});
+		frame = new JFrame("Hanabi");
+		frame.setResizable(false);
+		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		frame.setLayout(new BorderLayout());
 
-			inizia = new JButton("Inizia partita");
-			inizia.addActionListener(e -> new Thread(() -> {
-				try {
-					start();
-				}
-				catch (Exception ex)
-				{
-					ex.printStackTrace(System.err);
-					System.exit(1);
-				}
-			}).start());
+		JPanel north = new JPanel();
+		north.setLayout(new GridLayout(1,2));
+		JLabel[] ip = new JLabel[] {new JLabel(getInternalIp()),new JLabel(getExternalIp())};
+		portf = new JTextField("" + port,5);
+		JPanel ipp = new JPanel();
+		JPanel portp = new JPanel();
+		ipp.setLayout(new FlowLayout(FlowLayout.CENTER));
+		portp.setLayout(new FlowLayout(FlowLayout.CENTER));
+		portp.add(new JLabel("Porta"));
+		portp.add(portf);
+		ipp.add(new JLabel("IP"));
+		ipp.add(ip[0]);
+		ipp.add(new JLabel(" - "));
+		ipp.add(ip[1]);
+		north.add(ipp);
+		north.add(portp);
+		frame.add(north,BorderLayout.NORTH);
 
-			frame.getContentPane().setLayout(new BorderLayout());
-			north0.setLayout(new GridLayout(1,2));
-			north1.setLayout(new GridLayout(1,2));
-			north.setLayout(new GridLayout(2,1));
-
-			portp.add(new JLabel("Porta"));
-			portp.add(portf);
-			ipp.add(new JLabel("IP"));
-			ipp.add(ip[0]);
-			ipp.add(new JLabel(" - "));
-			ipp.add(ip[1]);
-			north0.add(ipp);
-			north0.add(portp);
-			north1.add(aggiungi);
-			north1.add(inizia);
-			north.add(north0);
-			north.add(north1);
-			frame.add(north,BorderLayout.NORTH);
-			frame.add(center,BorderLayout.CENTER);
-
-			frame.pack();
-			int x = Toolkit.getDefaultToolkit().getScreenSize().width/2-frame.getSize().width/2;
-			int y = Toolkit.getDefaultToolkit().getScreenSize().height/2-frame.getSize().height/2;
-			frame.setLocation(x,y);
-			frame.setVisible(true);
+		JPanel center = new JPanel();
+		center.setLayout(new GridLayout(1,2));
+		JPanel cleft = new JPanel();
+		JPanel cright = new JPanel();
+		cleft.setLayout(new GridLayout(6,1));
+		cright.setLayout(new BorderLayout());
+		JPanel header = new JPanel();
+		header.setLayout(new GridLayout(1,2));
+		header.add(new JLabel("GUI"));
+		header.add(new JLabel("Giocatore"));
+		cleft.add(header);
+		combos = new JPanel[5];
+		for (int i=0; i<5; i++) {
+			combos[i] = createComboBox(i);
+			cleft.add(combos[i]);
 		}
-		else
-		{
+		center.add(cleft);
+		JPanel crn = new JPanel();
+		JPanel crs = new JPanel();
+		cright.add(crn,BorderLayout.NORTH);
+		cright.add(crs,BorderLayout.SOUTH);
+		crn.setLayout(new FlowLayout(FlowLayout.CENTER));
+		crs.setLayout(new FlowLayout(FlowLayout.CENTER));
+		inizia = new JButton("Inizia partita");
+		inizia.addActionListener(e -> new Thread(() -> {
+			try {
+				start();
+			}
+			catch (Exception ex)
+			{
+				ex.printStackTrace(System.err);
+				System.exit(1);
+			}
+		}).start());
+		crs.add(inizia);
+		crn.add(new JLabel("Numero partite"));
+		games = new JTextField("1",5);
+		crn.add(games);
+		center.add(cright);
+		frame.add(center,BorderLayout.CENTER);
 
-		}
+		JPanel south = new JPanel();
+		south.setLayout(new BorderLayout());
+		textArea = new JTextArea(8,20);
+		textArea.setEditable(false);
+		textArea.append("Impostazioni partita Hanabi\n");
+		JScrollPane scrollPane = new JScrollPane(textArea);
+		south.add(scrollPane,BorderLayout.CENTER);
+		frame.add(south,BorderLayout.SOUTH);
+
+		frame.pack();
+		int x = Toolkit.getDefaultToolkit().getScreenSize().width/2-frame.getSize().width/2;
+		int y = Toolkit.getDefaultToolkit().getScreenSize().height/2-frame.getSize().height/2;
+		frame.setLocation(x,y);
+		frame.setVisible(true);
+
 	}
 
 
 	private static void start() throws Exception
 	{
 		//Disattivo i componenti grafici precedenti
-		for (int i=0; i<center.getComponentCount(); i++)
-			center.getComponent(i).setEnabled(false);
-		aggiungi.setEnabled(false);
+		for (int i=0; i<combos.length; i++)
+			combos[i].setEnabled(false);
 		inizia.setEnabled(false);
 		portf.setEnabled(false);
-
-		//Aggiungo alla finestra un componente textarea per log di starting
-		JPanel south = new JPanel();
-		JTextArea textarea = new JTextArea(8,20);
-		textarea.setEditable(false);
-		south.add(textarea);
-		frame.add(south,BorderLayout.SOUTH);
-		frame.pack();
+		games.setEnabled(false);
 
 		serverSocket = new ServerSocket(Integer.parseInt(portf.getText()));
-		textarea.append("Aperta porta "+serverSocket.getLocalPort()+"\n");
+		textArea.append("Aperta porta "+serverSocket.getLocalPort()+"\n");
 
-
-		//Cerco nel pannello center le varie combobox. A seconda del loro valore imposto le connessioni con i giocatori
-		for (int i=0; i<center.getComponentCount(); i++)
+		int games = Integer.parseInt(GameServer.games.getText());
+		double medscore = 0;
+		for (int g = 0; g<games; g++)
 		{
-			String player = ((JComboBox<String>)center.getComponent(i)).getSelectedItem().toString();
+			textArea.append("Gioco "+(g+1)+"/"+games+"\n");
 
-			Thread l = new Thread(() -> {
-				try
+			//Cerco nel pannello center le varie combobox. A seconda del loro valore imposto le connessioni con i giocatori
+			for (int i=0; i<combos.length; i++)
+			{
+				String player = ((JComboBox<String>)(combos[i].getComponent(1))).getSelectedItem().toString();
+				boolean gui = ((JCheckBox)(combos[i].getComponent(0))).isSelected();
+				if (player.equals("Chiuso"))
+					continue;
+				Thread l = new Thread(() -> {
+					try
+					{
+						textArea.append("Attendo connessione... ");
+						Socket s = serverSocket.accept();
+						sockets.add(s);
+						names.add(connect(s));
+						textArea.append("aggiunto "+names.get(names.size()-1)+" @ "+s.getInetAddress()+"\n");
+					}
+					catch (IOException e)
+					{
+						System.exit(1);
+					}
+				});
+
+				l.start();
+
+				if (player.equals("HumanPlayer"))
+					Runtime.getRuntime().exec("java -jar hanabi-human-player.jar localhost "+serverSocket.getLocalPort(),null,new File(new File(System.getProperty("user.dir")).getParent()+"/hanabi-human-player"));
+				else if (player.equals("Bot1"))
+					Runtime.getRuntime().exec("java -jar hanabi-simple-bot.jar localhost "+serverSocket.getLocalPort()+" "+gui,null,new File(new File(System.getProperty("user.dir")).getParent()+"/hanabi-simple-bot"));
+
+
+				try //Attendo che il thread finisca
 				{
-					textarea.append("Attendo connessione... ");
-					Socket s = serverSocket.accept();
-					sockets.add(s);
-					names.add(connect(s));
-					textarea.append("aggiunto "+names.get(names.size()-1)+" @ "+s.getInetAddress()+"\n");
-					frame.pack();
+					l.join();
 				}
-				catch (IOException e)
+				catch (InterruptedException e)
 				{
-					System.exit(1);
+
 				}
-			});
-
-			l.start();
-
-			if (player.equals("HumanPlayer"))
-				Runtime.getRuntime().exec("java -jar hanabi-human-player.jar localhost "+serverSocket.getLocalPort(),null,new File(new File(System.getProperty("user.dir")).getParent()+"/hanabi-human-player"));
-			else if (player.equals("SimpleBot con GUI"))
-				Runtime.getRuntime().exec("java -jar hanabi-simple-bot.jar localhost "+serverSocket.getLocalPort()+" true",null,new File(new File(System.getProperty("user.dir")).getParent()+"/hanabi-simple-bot"));
-			else if (player.equals("SimpleBot senza GUI"))
-				Runtime.getRuntime().exec("java -jar hanabi-simple-bot.jar localhost "+serverSocket.getLocalPort()+" false",null,new File(new File(System.getProperty("user.dir")).getParent()+"/hanabi-simple-bot"));
-
-			try //Attendo che il thread finisca
-			{
-				l.join();
 			}
-			catch (InterruptedException e)
+
+//		frame.setVisible(true);
+
+			textArea.append("Partita iniziata\n");
+			textArea.setCaretPosition(textArea.getDocument().getLength());
+
+			//Mescolo (10 scambi casuali) i giocatori collegati e definisco così l'ordine dei turni. Poi mando il nome completo
+			shufflePlayers(sockets,names);
+			System.out.println("Nomi e turni comunicati");
+
+			//Creo e mescolo un mazzo di carte
+			Stack<Card> deck = Card.createDeck();
+			System.out.println("Mazzo mescolato");
+
+			//Creo le mani di partenza e quindi lo stato iniziale
+			State currentState = State.createInitialState(names.toArray(new String[0]),deck);
+			System.out.println("Stato iniziale creato. Inizia la partita");
+
+			//Creo una variabile per mantenere l'ultima mossa effettuata
+			Action currentAction;
+
+			//Inizia il ciclo di gioco
+			while(true)
 			{
+				System.out.println("Invio dello stato corrente. Round: "+currentState.getRound());
+				//Invio stato corrente mascherato a tutti i giocatori
+				sendMaskedStates(currentState,sockets,names);
 
-			}
-		}
+				//Controllo se la partita è finita
+				if (currentState.isLastState())
+					break;
 
-		frame.setVisible(false);
-
-		//Mescolo (10 scambi casuali) i giocatori collegati e definisco così l'ordine dei turni. Poi mando il nome completo
-		shufflePlayers(sockets,names);
-		System.out.println("Nomi e turni comunicati");
-
-		//Creo e mescolo un mazzo di carte
-		Stack<Card> deck = Card.createDeck();
-		System.out.println("Mazzo mescolato");
-
-		//Creo le mani di partenza e quindi lo stato iniziale
-		State currentState = State.createInitialState(names.toArray(new String[0]),deck);
-		System.out.println("Stato iniziale creato. Inizia la partita");
-
-		//Creo una variabile per mantenere l'ultima mossa effettuata
-		Action currentAction = null;
-
-		//Inizia il ciclo di gioco
-		boolean finished = false;
-		while(!finished)
-		{
-			System.out.println("Invio dello stato corrente. Round: "+currentState.getRound());
-			//Invio stato corrente mascherato a tutti i giocatori
-			sendMaskedStates(currentState,sockets,names);
-
-			//Controllo se la partita è finita
-			if (isGameFinished(currentState))
-				finished = true;
-			else
-			{
 				//Attendo la mossa dal giocatore cui tocca giocare
 				String player = currentState.getCurrentPlayer();
 				int indexOfPlayer = names.indexOf(player);
@@ -244,11 +230,87 @@ public final class GameServer
 
 				//Verifico la legittimità della mossa e ne applico gli effetti allo stato corrente per ottenere un nuovo stato.
 				currentState = currentState.applyAction(currentAction,deck,names);
+
 			}
+
+			textArea.append("Gioco finito. ");
+			int score = 0;
+			if (currentState.getFuseTokens()==0)
+				textArea.append("Partita persa.\n");
+			else
+			{
+				score = currentState.getScore();
+				textArea.append("Punteggio: "+score+"\n");
+			}
+			medscore = (medscore*g+score)/(g+1);
+			textArea.append("Punteggio medio: "+medscore+"\n\n");
+			textArea.setCaretPosition(textArea.getDocument().getLength());
+
+			for (Socket s:sockets)
+				s.close();
+			sockets.clear();
+			names.clear();
 		}
+
+
+
+
+
 	}
 
-	private static void addNewComboBox()
+	private static JPanel createComboBox(int index)
+	{
+		JCheckBox check = new JCheckBox();
+		JComboBox<String> combo = new JComboBox<>();
+		JPanel panel = new JPanel(){
+			public void setEnabled(boolean enabled)
+			{
+				super.setEnabled(true);
+				check.setEnabled(enabled);
+				combo.setEnabled(enabled);
+			}
+		};
+
+		panel.setLayout(new GridLayout(1,2));
+
+		if (index>1)
+			combo.addItem("Chiuso");
+		combo.addItem("Aperto");
+		combo.addItem("HumanPlayer");
+		combo.addItem("Bot1");
+//		combo.addItem("SimpleBot senza GUI");
+
+		combo.addActionListener(e -> {
+			JComboBox cb = (JComboBox)e.getSource();
+			String player = (String)cb.getSelectedItem();
+
+			if (player != null)
+			{
+				if (player.equals("Chiuso") || player.equals("Aperto"))
+				{
+					check.setSelected(false);
+					check.setEnabled(false);
+				}
+				else if (player.equals("HumanPlayer"))
+				{
+					check.setSelected(true);
+					check.setEnabled(false);
+				}
+				else
+				{
+					check.setEnabled(true);
+					check.setSelected(false);
+				}
+
+			}
+		});
+		check.setEnabled(false);
+		check.setSelected(false);
+		panel.add(check);
+		panel.add(combo);
+		return panel;
+	}
+/*	private static void addNewComboBox()
 	{
 		JComboBox<String> combo = new JComboBox<>();
 		combo.addItem("Aperto");
@@ -273,7 +335,7 @@ public final class GameServer
 		center.add(combo);
 		n++;
 	}
-
+*/
 	private static String getInternalIp()
 	{
 		try
@@ -302,12 +364,6 @@ public final class GameServer
 		Dimension size = frame.getSize();
 		frame.setSize(size.width+1,size.height);
 		frame.setSize(size);
-	}
-
-	public static boolean isGameFinished(State currentState)
-	{
-		return (currentState.getFinalRound()>0 && currentState.getRound() == currentState.getFinalRound()+1) ||
-				currentState.getFuseTokens() == 0;
 	}
 
 	private static void sendMaskedStates(State currentState, List<Socket> sockets, List<String> names) throws IOException

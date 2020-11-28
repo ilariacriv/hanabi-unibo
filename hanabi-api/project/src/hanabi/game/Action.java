@@ -170,6 +170,17 @@ public class Action extends TypedJSONObject
 	}
 */
 
+	public boolean equals(Object o)
+	{
+		Action a;
+		if (o instanceof Action)
+		{
+			a = (Action)o;
+			return object.equals(a.object);
+		}
+		return false;
+	}
+
 	public static Action createHintColorAction(String player, String hinted, String color) throws JSONException
 	{
 		JSONObject action = new JSONObject();

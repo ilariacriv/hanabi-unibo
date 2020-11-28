@@ -6,6 +6,8 @@ import hanabi.gui.Board;
 import hanabi.gui.WaitingDialog;
 import json.JSONException;
 
+import javax.swing.*;
+import java.awt.*;
 import java.io.*;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -25,20 +27,50 @@ public abstract class GameClient implements Runnable
 	private final Object stateMonitor = new Object();
 	private WaitingDialog wd;
 	public Board board;
-//	private boolean gui;
+	private boolean gui;
+	public JFrame frame;
+	public java.util.List<String> players;
 
-	public GameClient(String serverip, int serverport, String name/*, boolean gui*/)
+	public GameClient(String serverip, int serverport, String name, boolean gui)
 	{
 		this.serverip = serverip;
 		this.serverport = serverport;
 		this.name = ""+name;
 		wd = new WaitingDialog();
-//		this.gui = gui;
+		this.gui = gui;
+		if (gui)
+			frame = new JFrame();
+		else
+			frame = null;
 	}
 
 	public abstract Action chooseAction();
 
-	public abstract void init();
+	public void init()
+	{
+		players = reorderPlayers(getCurrentState().getPlayersNames());
+//		System.out.println(players);
+		if (frame!=null) {
+			frame.setTitle("Hanabi - " + getName());
+			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			frame.setResizable(false);
+			frame.getContentPane().setLayout(new BorderLayout());
+
+
+			String[] others = new String[players.size() - 1];
+			for (int i = 0; i < others.length; i++)
+				others[i] = players.get(i + 1);
+
+			board = new Board(players.get(0), others);
+			frame.add(board, BorderLayout.CENTER);
+			board.addState(getCurrentState());
+
+			frame.pack();
+			int x = Toolkit.getDefaultToolkit().getScreenSize().width / 2 - frame.getSize().width / 2;
+			int y = Toolkit.getDefaultToolkit().getScreenSize().height / 2 - frame.getSize().height / 2;
+			frame.setLocation(x, y);
+		}
+	}
 
 	public State getCurrentState()
 	{
@@ -127,31 +159,31 @@ public abstract class GameClient implements Runnable
 
 			//Inizializzo il giocatore
 			init();
-
+			if (frame!=null)
+				frame.setVisible(true);
 			//Player routine
-			while (!finished)
+			while (true)
 			{
 				//Controllo se la partita è finita
-				if (currentState.getFinalRound() > 0 && currentState.getRound() == currentState.getFinalRound() + 1)
-					finished = true;
-				else
-				{
-					//Se è il mio turno scelgo una mossa e la mando.
-					if (currentState.getCurrentPlayer().equals(name))
-					{
-						bw.write(chooseAction().toString(0));
-						bw.flush();
-					}
+				if (currentState.isLastState())
+					break;
 
-					//Attendo dal server la comunicazione del nuovo stato
-					System.out.println("Attendo nuovo stato");
-					synchronized (stateMonitor)
-					{
-						currentState = new State(br);
-					}
-					if (board!=null)
-						board.addState(currentState);
+				//Se è il mio turno scelgo una mossa e la mando.
+				if (currentState.getCurrentPlayer().equals(name))
+				{
+					bw.write(chooseAction().toString(0));
+					bw.flush();
 				}
+
+				//Attendo dal server la comunicazione del nuovo stato
+				System.out.println("Attendo nuovo stato");
+				synchronized (stateMonitor)
+				{
+					currentState = new State(br);
+				}
+				if (board!=null)
+					board.addState(currentState);
+
 			}
 		}
 		catch (IOException | JSONException e)
