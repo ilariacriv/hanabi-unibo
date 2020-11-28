@@ -7,19 +7,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="197bae71-a341-4aa6-bc68-da1c90c8d16a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../../hanabi-bot2/project/.idea/artifacts/hanabi_bot2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../hanabi-bot2/project/META-INF/MANIFEST.MF" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../hanabi-api/project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-api/project/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hanabi-simple-bot.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/hanabi_simple_bot.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/hanabi_bot1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../hanabi-bot2/lastinsertion" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-bot2/lastinsertion" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../hanabi-bot2/project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-bot2/project/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../hanabi-bot2/project/src/hanabi/bot2/Bot.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-bot2/project/src/hanabi/bot2/Bot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../hanabi-game/hanabi-game.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-game/hanabi-game.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../hanabi-game/project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-game/project/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../hanabi-game/project/out/production/hanabi-game/hanabi/engine/GameServer$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-game/project/out/production/hanabi-game/hanabi/engine/GameServer$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../hanabi-game/project/out/production/hanabi-game/hanabi/engine/GameServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-game/project/out/production/hanabi-game/hanabi/engine/GameServer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../hanabi-game/project/src/hanabi/engine/GameServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-game/project/src/hanabi/engine/GameServer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../hanabi-human-player/project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-human-player/project/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />

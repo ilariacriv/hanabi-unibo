@@ -74,6 +74,8 @@ public class Bot extends GameClient
 			action = securePlay();
 		if (action == null)
 			action = discardBest();
+		if (action == null)
+			System.exit(1);
 		return action;
 	}
 
@@ -81,24 +83,33 @@ public class Bot extends GameClient
 	{
 		CardList hand;
 		System.out.println(getCurrentState()==null);
+		Analitics boxanalitics = new Analitics(players.get(0));
+		Action h;
 		for (int i=1; i<players.size(); i++)
 		{
 			hand = getCurrentState().getHand(players.get(i));
 			Set<Action> hints = new HashSet<>();
 			for (int j=0; j<hand.size(); j++)
 			{
-				System.out.println(hand.get(j));
+	//			System.out.println(hand.get(j));
 				if (analitics.isPlayable(hand.get(j)) && analitics.getPlayability(players.get(i),j) < 1)
 				{
-					hints.add(Action.createHintColorAction(players.get(0),players.get(i),hand.get(j).getColor()));
-					hints.add(Action.createHintValueAction(players.get(0),players.get(i),hand.get(j).getValue()));
+					h = Action.createHintColorAction(players.get(0),players.get(i),hand.get(j).getColor());
+					boxanalitics.setState(getCurrentState().applyAction(h,null,players));
+					if (boxanalitics.getPlayability(players.get(i),j)==1)
+						hints.add(h);
+
+					h = Action.createHintValueAction(players.get(0),players.get(i),hand.get(j).getValue());
+					boxanalitics.setState(getCurrentState().applyAction(h,null,players));
+					if (boxanalitics.getPlayability(players.get(i),j)==1)
+						hints.add(h);
 				}
 			}
+
 			if (hints.size()>0)
 			{
 				Action max = null;
 				double maxe = 0, e=0;
-				Analitics boxanalitics = new Analitics(players.get(0));
 				for (Action action : hints) {
 					boxanalitics.setState(getCurrentState().applyAction(action,null,players));
 					e = analitics.getHandEntropy(players.get(i))-boxanalitics.getHandEntropy(players.get(i));
