@@ -1,0 +1,12 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="hanabi-bot2">
+    <output-path>$PROJECT_DIR$/../</output-path>
+    <root id="archive" name="hanabi-bot2.jar">
+      <element id="module-source" name="hanabi-bot2" />
+      <element id="module-output" name="hanabi-bot2" />
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
+      </element>
+    </root>
+  </artifact>
+</component>

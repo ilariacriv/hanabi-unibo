@@ -17,18 +17,11 @@ import java.util.List;
 
 public class Bot extends GameClient
 {
-	private JFrame frame;
-//	private Thread ui = new Thread(() -> frame.setVisible(true));
-	private java.util.List<String> players;
 	private Analitics analitics;
 
 	public Bot(String ip, int port, boolean gui)
 	{
-		super(ip,port,"SimpleBot");
-		if (gui)
-			frame = new JFrame();
-		else
-			frame = null;
+		super(ip,port,"Bot2",gui);
 	}
 
 	/**
@@ -65,6 +58,7 @@ public class Bot extends GameClient
 	@Override
 	public Action chooseAction()
 	{
+		analitics.setState(getCurrentState());
 		Action action = null;
 		int tokens = getCurrentState().getHintTokens();
 		if (tokens > 0) {
@@ -86,12 +80,14 @@ public class Bot extends GameClient
 	private Action hintForPlay()
 	{
 		CardList hand;
+		System.out.println(getCurrentState()==null);
 		for (int i=1; i<players.size(); i++)
 		{
 			hand = getCurrentState().getHand(players.get(i));
 			Set<Action> hints = new HashSet<>();
 			for (int j=0; j<hand.size(); j++)
 			{
+				System.out.println(hand.get(j));
 				if (analitics.isPlayable(hand.get(j)) && analitics.getPlayability(players.get(i),j) < 1)
 				{
 					hints.add(Action.createHintColorAction(players.get(0),players.get(i),hand.get(j).getColor()));
@@ -115,172 +111,120 @@ public class Bot extends GameClient
 		return null;
 	}
 
-	private Action securePlay()
+	private Action securePlay() {
+		CardList hand;
+		hand = getCurrentState().getHand(players.get(0));
+		List<Action> plays = new ArrayList<>();
+		for (int j = 0; j < hand.size(); j++) {
+			if (analitics.getPlayability(players.get(0), j) == 1) {
+				plays.add(Action.createPlayAction(players.get(0), j));
+				if (hand.get(j).getValue() == 5 && getCurrentState().getHintTokens() < 8)
+					return plays.get(plays.size() - 1);
+			}
+		}
+		if (plays.size() == 0)
+			return null;
+		if (plays.size() == 1)
+			return plays.get(0);
+
+		for (int j = 0; j < plays.size(); j++) {
+			if (analitics.getCardEntropy(players.get(0), plays.get(j).getCard()) == 0) {
+				Card card = analitics.getPossibleCards(players.get(0), plays.get(j).getCard()).get(0);
+				Card playable = Card.createCard(card.getValue() + 1, card.getColor());
+				for (int k = 1; k < players.size(); k++) {
+					if (getCurrentState().getHand(players.get(k)).contains(playable))
+						return plays.get(j);
+				}
+			}
+		}
+		return plays.get(0);
+	}
+
+	public Action secureDiscard()
 	{
+		CardList hand = getCurrentState().getHand(players.get(0));
+		for (int i = 0; i < hand.size(); i++)
+		{
+			if (analitics.getUselessness(players.get(0), i) == 1)
+				return Action.createDiscardAction(players.get(0),i);
+		}
+		return null;
+	}
+
+	public Action bestHint()
+	{
+		Set<Action> hints = new HashSet<>();
 		CardList hand;
 		for (int i=1; i<players.size(); i++)
 		{
 			hand = getCurrentState().getHand(players.get(i));
-			List<Action> plays = new ArrayList<>();
-			for (int j=0; j<hand.size(); j++)
+			for (String color: Card.colors)
 			{
-				if (analitics.getPlayability(players.get(i),j) == 1)
-					plays.add(Action.createPlayAction(players.get(0),j));
-				if (hand.get(j).getValue() == 5 && getCurrentState().getHintTokens()<8)
-					return plays.get(plays.size()-1);
-			}
-			if (plays.size() == 0)
-				return null;
-			if (plays.size() == 1)
-				return plays.get(0);
-
-			for (int j = 0; j<plays.size(); j++)
-			{
-				if (analitics.getCardEntropy(players.get(0),plays.get(j).getCard()) == 0)
+				for (Card card:hand)
 				{
-					Card card = analitics.getPossibleCards(players.get(0),plays.get(j).getCard()).get(0);
-					Card playable = Card.createCard(card.getValue()+1,card.getColor());
-					for (int k=1; k<players.size(); k++)
+					if (card.getColor().equals(color))
 					{
-						if (getCurrentState().getHand(players.get(k)).contains(playable))
-							return plays.get(j);
+						hints.add(Action.createHintColorAction(players.get(0),players.get(i),color));
+						break;
 					}
 				}
 			}
-			return plays.get(0);
-
-	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	private Action getBestHint(String hinted)
-	{
-		ArrayList<Action> hints = new ArrayList<>();
-		Action a;
-		for (Card card: getCurrentState().getHand(hinted))
-		{
-			a = Action.createHintColorAction(players.get(0),hinted,card.getColor());
-			if (!hints.contains(a))
-				hints.add(a);
-
-			a = Action.createHintValueAction(players.get(0),hinted,card.getValue());
-			if (!hints.contains(a))
-				hints.add(a);
-		}
-
-		int best = 0;
-		Analitics boxanalitics = new Analitics(analitics.me);
-		boxanalitics.setState(getCurrentState().applyAction(hints.get(0),null,players));
-		int bestcondition = getConditions(hinted,boxanalitics);
-		int newcondition;
-		double besthandentropy = boxanalitics.getHandEntropy(hinted);
-		double handentropy;
-
-		for (int i=1; i<hints.size(); i++)
-		{
-			boxanalitics.setState(getCurrentState().applyAction(hints.get(i),null,players));
-			newcondition = getConditions(hinted,boxanalitics);
-			handentropy = boxanalitics.getHandEntropy(hinted);
-			if (newcondition<bestcondition || (newcondition == bestcondition && handentropy<besthandentropy))
+			for (double value: Card.values)
 			{
-				best = i;
-				bestcondition = newcondition;
-				besthandentropy = handentropy;
+				for (Card card:hand)
+				{
+					if (card.getValue() == value)
+					{
+						hints.add(Action.createHintValueAction(players.get(0),players.get(i),(int)value));
+						break;
+					}
+				}
 			}
 		}
 
-		return hints.get(best);
+		if (hints.size()>0)
+		{
+			Action max = null;
+			double maxe = 0, e;
+			Analitics boxanalitics = new Analitics(players.get(0));
+			for (Action action : hints) {
+				boxanalitics.setState(getCurrentState().applyAction(action,null,players));
+				e = analitics.getHandEntropy(action.getHinted())-boxanalitics.getHandEntropy(action.getHinted());
+				if (e>maxe)
+					max = action;
+			}
+			return max;
+		}
+		return null;
 	}
 
-	private String getPlayerInWorstConditions(Analitics analitics)
+	public Action discardBest()
 	{
-		int[] conditions = new int[players.size()-1];
-		for(int i=1; i<players.size(); i++)
-		{//Cerco tra tutti i giocatori che non sono io
-			conditions[i-1]=getConditions(players.get(i),analitics);
-		}
-		int max = 0;
-		for (int i=1; i<conditions.length; i++)
+		double max = analitics.getUselessness(players.get(0),0);
+		if (max == 1)
+			return Action.createDiscardAction(players.get(0),0);
+		double u;
+		int index=0;
+		for (int i=1; i<getCurrentState().getHand(players.get(0)).size(); i++)
 		{
-			if (conditions[i] > conditions[max])
-				max = i;
+			u = analitics.getUselessness(players.get(0),i);
+			if (u==1)
+				return Action.createDiscardAction(players.get(0),i);
+			if (u>max)
+			{
+				max = u;
+				index = i;
+			}
 		}
-		return players.get(max+1);
+		return Action.createDiscardAction(players.get(0),index);
 	}
 
-	private int getConditions(String player, Analitics analitics)
-	{
-		CardList hand = getCurrentState().getHand(player);
-		for(int i=0; i<hand.size(); i++)
-		{
-			if (analitics.getPlayability(player,i) == 1)
-				return 1;
-		}
-		for(int i=0; i<hand.size(); i++)
-		{
-			if (analitics.getUselessness(player,i) == 1)
-				return 2;
-		}
-//		if (getCurrentState().getHintTokens()>players.size()-1) //Probabilmente la condizione è sbagliata. Se siamo in 5 e controllo il prossimo bastano 2 token
-		if (getCurrentState().getHintTokens()>=players.indexOf(player))
-			return 3;
-		return 4;
-	}
-
-	@Override
 	public void init()
 	{
-		players = reorderPlayers(getCurrentState().getPlayersNames());
-		System.out.println(players);
+		super.init();
 		analitics = new Analitics(players.get(0));
-		if (frame!=null) {
-			frame.setTitle("Hanabi - " + getName());
-			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			frame.setResizable(false);
-			frame.getContentPane().setLayout(new BorderLayout());
-
-
-			String[] others = new String[players.size() - 1];
-			for (int i = 0; i < others.length; i++)
-				others[i] = players.get(i + 1);
-
-			board = new Board(players.get(0), others);
-			frame.add(board, BorderLayout.CENTER);
-			board.addState(getCurrentState());
-
-			frame.pack();
-			int x = Toolkit.getDefaultToolkit().getScreenSize().width / 2 - frame.getSize().width / 2;
-			int y = Toolkit.getDefaultToolkit().getScreenSize().height / 2 - frame.getSize().height / 2;
-			frame.setLocation(x, y);
-
-	//		ui.start();
-			frame.setVisible(true);
-		}
 	}
-	/*
-		public String waitForName() throws IOException
-		{
-	//		wd.setVisible(true);
-			String s = super.waitForName();
-	//		wd.setVisible(false);
-			return s;
-		}
-	*/
+
 	public static void main(String args[])
 	{
 		Bot bot;

@@ -179,7 +179,9 @@ public final class GameServer
 				if (player.equals("HumanPlayer"))
 					Runtime.getRuntime().exec("java -jar hanabi-human-player.jar localhost "+serverSocket.getLocalPort(),null,new File(new File(System.getProperty("user.dir")).getParent()+"/hanabi-human-player"));
 				else if (player.equals("Bot1"))
-					Runtime.getRuntime().exec("java -jar hanabi-simple-bot.jar localhost "+serverSocket.getLocalPort()+" "+gui,null,new File(new File(System.getProperty("user.dir")).getParent()+"/hanabi-simple-bot"));
+					Runtime.getRuntime().exec("java -jar hanabi-bot1.jar localhost "+serverSocket.getLocalPort()+" "+gui,null,new File(new File(System.getProperty("user.dir")).getParent()+"/hanabi-bot1"));
+				else if (player.equals("Bot2"))
+					Runtime.getRuntime().exec("java -jar hanabi-bot2.jar localhost "+serverSocket.getLocalPort()+" "+gui,null,new File(new File(System.getProperty("user.dir")).getParent()+"/hanabi-bot2"));
 
 
 				try //Attendo che il thread finisca
@@ -278,6 +280,7 @@ public final class GameServer
 		combo.addItem("Aperto");
 		combo.addItem("HumanPlayer");
 		combo.addItem("Bot1");
+		combo.addItem("Bot2");
 //		combo.addItem("SimpleBot senza GUI");
 
 		combo.addActionListener(e -> {
