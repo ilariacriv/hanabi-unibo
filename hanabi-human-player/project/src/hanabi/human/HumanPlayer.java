@@ -12,7 +12,6 @@ import java.io.IOException;
 
 public class HumanPlayer extends GameClient
 {
-	private JFrame frame;
 	private Keyboard keyboard;
 
 	public HumanPlayer(String ip, int port)
