@@ -1,4 +1,0 @@
-Manifest-Version: 1.0
-Class-Path: ../hanabi-api/hanabi-api.jar ../json-v2/json.jar
-Main-Class: hanabi.simplebot.Bot
-
