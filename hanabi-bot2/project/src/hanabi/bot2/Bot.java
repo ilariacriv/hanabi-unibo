@@ -60,29 +60,51 @@ public class Bot extends GameClient
 	{
 		analitics.setState(getCurrentState());
 		Action action = null;
+		System.out.println("Scelgo la mossa:");
 		int tokens = getCurrentState().getHintTokens();
 		if (tokens > 0) {
+			System.out.print("\thintForPlay... ");
 			action = hintForPlay();
-			if (action == null)
+			if (action == null) {
+				System.out.println("no");
 				action = securePlay();
+				System.out.print("\tsecurePlay... ");
+			}
 		}
-		if (action == null && tokens < 8)
+		if (action == null && tokens < players.size())
+		{
+			System.out.println("no");
 			action = secureDiscard();
+			System.out.print("\tsecureDiscard... ");
+		}
 		if (action == null && tokens > 0)
+		{
+			System.out.println("no");
 			action = bestHint();
+			System.out.print("\tbestHint... ");
+		}
 		if (action == null)
+		{
+			System.out.println("no");
 			action = securePlay();
+			System.out.print("\tsecurePlay... ");
+		}
 		if (action == null)
+		{
+			System.out.println("no");
 			action = discardBest();
+			System.out.print("\tdiscardBest... ");
+		}
 		if (action == null)
 			System.exit(1);
+		System.out.println();
 		return action;
 	}
 
 	private Action hintForPlay()
 	{
 		CardList hand;
-		System.out.println(getCurrentState()==null);
+//		System.out.println(getCurrentState()==null);
 		Analitics boxanalitics = new Analitics(players.get(0));
 		Action h;
 		for (int i=1; i<players.size(); i++)
@@ -109,12 +131,14 @@ public class Bot extends GameClient
 			if (hints.size()>0)
 			{
 				Action max = null;
-				double maxe = 0, e=0;
+				double maxe = 0, e;
 				for (Action action : hints) {
 					boxanalitics.setState(getCurrentState().applyAction(action,null,players));
 					e = analitics.getHandEntropy(players.get(i))-boxanalitics.getHandEntropy(players.get(i));
-					if (e>maxe)
+					if (e>maxe) {
 						max = action;
+						maxe = e;
+					}
 				}
 				return max;
 			}
@@ -154,12 +178,28 @@ public class Bot extends GameClient
 	public Action secureDiscard()
 	{
 		CardList hand = getCurrentState().getHand(players.get(0));
+		List<Action> secure = new ArrayList<>();
 		for (int i = 0; i < hand.size(); i++)
 		{
 			if (analitics.getUselessness(players.get(0), i) == 1)
-				return Action.createDiscardAction(players.get(0),i);
+				secure.add(Action.createDiscardAction(players.get(0),i));
 		}
-		return null;
+		if (secure.size() == 0)
+			return null;
+		int index = 0;
+		double minp = analitics.getPlayability(players.get(0),secure.get(index).getCard());
+		double p;
+		for (int i=1; i<secure.size(); i++)
+		{
+			p = analitics.getPlayability(players.get(0),secure.get(i).getCard());
+			if (p<minp)
+			{
+				minp = p;
+				index = i;
+			}
+		}
+
+			return secure.get(index);
 	}
 
 	public Action bestHint()
@@ -201,8 +241,10 @@ public class Bot extends GameClient
 			for (Action action : hints) {
 				boxanalitics.setState(getCurrentState().applyAction(action,null,players));
 				e = analitics.getHandEntropy(action.getHinted())-boxanalitics.getHandEntropy(action.getHinted());
-				if (e>maxe)
+				if (e>maxe) {
 					max = action;
+					maxe = e;
+				}
 			}
 			return max;
 		}
