@@ -7,15 +7,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7cc540a9-cb7b-4488-aeb3-6f287d534f85" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../hanabi-api/project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-api/project/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../hanabi-bot1/project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-bot1/project/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../hanabi-bot2.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../hanabi-bot2.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lastinsertion" beforeDir="false" afterPath="$PROJECT_DIR$/../lastinsertion" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/hanabi/bot2/Bot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/hanabi/bot2/Bot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../hanabi-game/hanabi-game.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-game/hanabi-game.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../hanabi-game/project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-game/project/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../hanabi-human-player/lastinsertion" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-human-player/lastinsertion" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../hanabi-human-player/project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-human-player/project/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../hanabi-game/project/src/hanabi/engine/GameServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-game/project/src/hanabi/engine/GameServer.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -32,8 +28,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/hanabi/bot2/Bot.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="401">
-              <caret line="187" column="24" selection-start-line="187" selection-start-column="24" selection-end-line="187" selection-end-column="24" />
+            <state relative-caret-position="503">
+              <caret line="175" column="17" selection-start-line="175" selection-start-column="17" selection-end-line="175" selection-end-column="17" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -109,7 +105,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="683" />
     <option name="width" value="683" />
     <option name="height" value="743" />
@@ -120,7 +116,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -143,6 +138,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -184,10 +180,11 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
+    <frame x="-8" y="-8" width="1456" height="876" extended-state="7" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49663526" visible="true" weight="0.25716332" />
-      <window_info active="true" id="Structure" order="1" sideWeight="0.50336474" side_tool="true" visible="true" weight="0.25716332" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49528936" visible="true" weight="0.260745" />
+      <window_info active="true" id="Structure" order="1" sideWeight="0.5047106" side_tool="true" visible="true" weight="0.260745" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
@@ -224,8 +221,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/hanabi/bot2/Bot.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="401">
-          <caret line="187" column="24" selection-start-line="187" selection-start-column="24" selection-end-line="187" selection-end-column="24" />
+        <state relative-caret-position="503">
+          <caret line="175" column="17" selection-start-line="175" selection-start-column="17" selection-end-line="175" selection-end-column="17" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

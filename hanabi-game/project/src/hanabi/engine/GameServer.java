@@ -176,13 +176,29 @@ public final class GameServer
 
 				l.start();
 
+				final Process p;
 				if (player.equals("HumanPlayer"))
-					Runtime.getRuntime().exec("java -jar hanabi-human-player.jar localhost "+serverSocket.getLocalPort(),null,new File(new File(System.getProperty("user.dir")).getParent()+"/hanabi-human-player"));
+					p = Runtime.getRuntime().exec("java -jar hanabi-human-player.jar localhost " + serverSocket.getLocalPort(), null, new File(new File(System.getProperty("user.dir")).getParent() + "/hanabi-human-player"));
 				else if (player.equals("Bot1"))
-					Runtime.getRuntime().exec("java -jar hanabi-bot1.jar localhost "+serverSocket.getLocalPort()+" "+gui,null,new File(new File(System.getProperty("user.dir")).getParent()+"/hanabi-bot1"));
+					p = Runtime.getRuntime().exec("java -jar hanabi-bot1.jar localhost "+serverSocket.getLocalPort()+" "+gui,null,new File(new File(System.getProperty("user.dir")).getParent()+"/hanabi-bot1"));
 				else if (player.equals("Bot2"))
-					Runtime.getRuntime().exec("java -jar hanabi-bot2.jar localhost "+serverSocket.getLocalPort()+" "+gui,null,new File(new File(System.getProperty("user.dir")).getParent()+"/hanabi-bot2"));
+					p = Runtime.getRuntime().exec("java -jar hanabi-bot2.jar localhost "+serverSocket.getLocalPort()+" "+gui,null,new File(new File(System.getProperty("user.dir")).getParent()+"/hanabi-bot2"));
+				else
+					p = null;
 
+				//Se creo un processo devo svuotarne il buffer di scrittura (System.out) altrimenti si riempe e il programma si blocca
+				if (p!=null)
+				{
+					new Thread(() -> {
+						BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream()));
+						try
+						{
+							while(true)
+								br.readLine();
+						}
+						catch (IOException e){}
+					}).start();
+				}
 
 				try //Attendo che il thread finisca
 				{

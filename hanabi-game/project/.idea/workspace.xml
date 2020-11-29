@@ -7,10 +7,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="427543c5-1373-4049-8dbb-b1595605220d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../hanabi-api/project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-api/project/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../hanabi-bot1/project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-bot1/project/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../hanabi-bot2/hanabi-bot2.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-bot2/hanabi-bot2.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../hanabi-bot2/project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-bot2/project/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../hanabi-human-player/project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-human-player/project/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../hanabi-bot2/project/out/production/hanabi-bot2/hanabi/bot2/Bot.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-bot2/project/out/production/hanabi-bot2/hanabi/bot2/Bot.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../hanabi-bot2/project/src/hanabi/bot2/Bot.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-bot2/project/src/hanabi/bot2/Bot.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -27,12 +27,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/hanabi/engine/GameServer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="96">
-              <caret line="183" column="46" lean-forward="true" selection-start-line="183" selection-start-column="46" selection-end-line="183" selection-end-column="46" />
-              <folding>
-                <element signature="e#9247#9350#0" expanded="true" />
-                <element signature="e#9349#9350#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="287">
+              <caret line="181" column="47" selection-start-line="181" selection-start-column="47" selection-end-line="181" selection-end-column="47" />
             </state>
           </provider>
         </entry>
@@ -40,7 +36,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/awt/event/ActionEvent.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="62">
+            <state relative-caret-position="2261">
               <caret line="158" column="11" selection-start-line="158" selection-start-column="11" selection-end-line="158" selection-end-column="11" />
               <folding>
                 <element signature="e#4685#4686#0" expanded="true" />
@@ -53,7 +49,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="jar://$PROJECT_DIR$/../../hanabi-api/hanabi-api.jar!/hanabi/game/State.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5066">
+            <state relative-caret-position="5100">
               <caret line="346" column="3" selection-start-line="346" selection-start-column="3" selection-end-line="346" selection-end-column="3" />
             </state>
           </provider>
@@ -110,7 +106,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -137,7 +133,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -204,11 +200,11 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
+    <frame x="-8" y="-8" width="1456" height="876" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.45760432" visible="true" weight="0.15759312" />
-      <window_info active="true" id="Structure" order="1" sideWeight="0.5423957" side_tool="true" visible="true" weight="0.15759312" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.45625842" visible="true" weight="0.15974212" />
+      <window_info active="true" id="Structure" order="1" sideWeight="0.5437416" side_tool="true" visible="true" weight="0.15974212" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
@@ -362,13 +358,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$PROJECT_DIR$/../../hanabi-api/hanabi-api.jar!/hanabi/game/State.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5066">
-          <caret line="346" column="3" selection-start-line="346" selection-start-column="3" selection-end-line="346" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/javax/swing/JCheckBox.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -376,9 +365,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/hanabi/engine/GameServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="287">
+          <caret line="181" column="47" selection-start-line="181" selection-start-column="47" selection-end-line="181" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/awt/event/ActionEvent.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="62">
+        <state relative-caret-position="2261">
           <caret line="158" column="11" selection-start-line="158" selection-start-column="11" selection-end-line="158" selection-end-column="11" />
           <folding>
             <element signature="e#4685#4686#0" expanded="true" />
@@ -387,14 +383,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/hanabi/engine/GameServer.java">
+    <entry file="jar://$PROJECT_DIR$/../../hanabi-api/hanabi-api.jar!/hanabi/game/State.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="183" column="46" lean-forward="true" selection-start-line="183" selection-start-column="46" selection-end-line="183" selection-end-column="46" />
-          <folding>
-            <element signature="e#9247#9350#0" expanded="true" />
-            <element signature="e#9349#9350#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="5100">
+          <caret line="346" column="3" selection-start-line="346" selection-start-column="3" selection-end-line="346" selection-end-column="3" />
         </state>
       </provider>
     </entry>

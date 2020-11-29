@@ -147,13 +147,14 @@ public class Bot extends GameClient
 	}
 
 	private Action securePlay() {
+		//Cerco nella mia mano carte con playability 1.
 		CardList hand;
 		hand = getCurrentState().getHand(players.get(0));
 		List<Action> plays = new ArrayList<>();
 		for (int j = 0; j < hand.size(); j++) {
 			if (analitics.getPlayability(players.get(0), j) == 1) {
 				plays.add(Action.createPlayAction(players.get(0), j));
-				if (hand.get(j).getValue() == 5 && getCurrentState().getHintTokens() < 8)
+				if (analitics.getValueProbability(players.get(0),j,5) == 1 && getCurrentState().getHintTokens() < 8)
 					return plays.get(plays.size() - 1);
 			}
 		}
@@ -162,13 +163,16 @@ public class Bot extends GameClient
 		if (plays.size() == 1)
 			return plays.get(0);
 
+		//Se ho più carte giocabili gioco la prima che trovo che rende giocabile almeno una carta di un altro giocatore
 		for (int j = 0; j < plays.size(); j++) {
 			if (analitics.getCardEntropy(players.get(0), plays.get(j).getCard()) == 0) {
 				Card card = analitics.getPossibleCards(players.get(0), plays.get(j).getCard()).get(0);
-				Card playable = Card.createCard(card.getValue() + 1, card.getColor());
-				for (int k = 1; k < players.size(); k++) {
-					if (getCurrentState().getHand(players.get(k)).contains(playable))
-						return plays.get(j);
+				if (card.getValue()<5) {
+					Card playable = Card.createCard(card.getValue() + 1, card.getColor());
+					for (int k = 1; k < players.size(); k++) {
+						if (getCurrentState().getHand(players.get(k)).contains(playable))
+							return plays.get(j);
+					}
 				}
 			}
 		}
