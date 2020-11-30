@@ -30,6 +30,7 @@ public final class GameServer
 	private static JTextField games;
 	private static JPanel[] combos;
 
+
 	private GameServer()
 	{
 		//Per impedire la costruzione di oggetti GameServer. La logica di esecuzione è nel main
@@ -148,6 +149,9 @@ public final class GameServer
 
 		int games = Integer.parseInt(GameServer.games.getText());
 		double medscore = 0;
+
+//		List<BufferedReader> bufflist = new ArrayList<>();
+
 		for (int g = 0; g<games; g++)
 		{
 			textArea.append("Gioco "+(g+1)+"/"+games+"\n");
@@ -189,12 +193,24 @@ public final class GameServer
 				//Se creo un processo devo svuotarne il buffer di scrittura (System.out) altrimenti si riempe e il programma si blocca
 				if (p!=null)
 				{
+				//	bufflist.add(new BufferedReader(new InputStreamReader(p.getInputStream())));
 					new Thread(() -> {
-						BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream()));
+						BufferedReader br1 = new BufferedReader(new InputStreamReader(p.getInputStream()));
+						BufferedReader br2 = new BufferedReader(new InputStreamReader(p.getErrorStream()));
 						try
 						{
-							while(true)
-								br.readLine();
+							String box="";
+							while(box!=null)
+							{
+							//	if (br1.ready())
+									box = br1.readLine();
+
+							//	System.out.println(box);
+							//	if (br2.ready())
+							//		box = br2.readLine();
+							//	System.out.println(box);
+							}
+							//Se devi svuotare anche System.err usa un altro thread
 						}
 						catch (IOException e){}
 					}).start();
@@ -233,6 +249,12 @@ public final class GameServer
 			//Inizia il ciclo di gioco
 			while(true)
 			{
+		/*		//svuoto i buffer di scrittura dei processi
+				for (BufferedReader br:bufflist)
+				{
+					while(br.readLine()!=null);
+				}
+*/
 				System.out.println("Invio dello stato corrente. Round: "+currentState.getRound());
 				//Invio stato corrente mascherato a tutti i giocatori
 				sendMaskedStates(currentState,sockets,names);

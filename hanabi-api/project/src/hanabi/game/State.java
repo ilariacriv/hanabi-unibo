@@ -319,7 +319,7 @@ public class State extends TypedJSONObject
 
 	public boolean isLastState()
 	{
-		return (getFinalRound()>0 && getRound() == getFinalRound()+1) || getFuseTokens() == 0;
+		return (getFinalRound()>0 && getRound() == getFinalRound()+1) || getFuseTokens() == 0 || getScore() == 25;
 	}
 
 	/*

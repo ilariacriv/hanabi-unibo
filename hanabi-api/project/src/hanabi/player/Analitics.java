@@ -25,6 +25,15 @@ public class Analitics
 	{
 		me = player;
 	}
+
+	public double round(double x)
+	{
+		double r = (double)Math.round(x * 100000d) / 100000d;
+		if (r>1)
+			return 1;
+		return r;
+	}
+
 /*
 	public double getProbability(String cardowner, int index, Card sample)
 	{
@@ -94,7 +103,7 @@ public class Analitics
 			/*if (result<0 || result>1)
 				System.out.println(result+" per "+cardowner+"/"+index+"/"+color);*/
 			buffer.put(cardowner+"/"+index+"/"+color,result);
-			return result;
+			return round(result);
 		}
 	}
 
@@ -138,6 +147,22 @@ public class Analitics
 					}
 				}
 
+			}
+		}
+
+		for (int i=0; i<state.getHand(cardowner).size(); i++)
+		{
+			if (i>index)
+			{
+				for (String color: Card.colors)
+				{
+					for (double value: Card.values)
+					{
+						if (getValueProbability(cardowner, i, value) == 1 && getColorProbability(cardowner,i,color) == 1) {
+							possible.remove(Card.createCard((int)value,color));
+						}
+					}
+				}
 			}
 		}
 
@@ -246,7 +271,7 @@ public class Analitics
 					p+=getValueProbability(cardowner,index,c.getValue())*getColorProbability(cardowner,index,c.getColor());
 			}
 			buffer.put(cardowner+"/"+index+"/P",p);
-			return p;
+			return round(p);
 		}
 	}
 
@@ -309,7 +334,7 @@ public class Analitics
 					p+=getValueProbability(cardowner,index,c.getValue())*getColorProbability(cardowner,index,c.getColor());
 			}
 			buffer.put(cardowner+"/"+index+"/U",p);
-			return p;
+			return round(p);
 		}
 	}
 
@@ -343,7 +368,7 @@ public class Analitics
 			if (result<0 || result>1)
 				System.out.println(result+" per "+cardowner+"/"+index+"/"+value);
 			buffer.put(cardowner + "/" + index + "/" + value, result);
-			return result;
+			return round(result);
 		}
 	}
 

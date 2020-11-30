@@ -33,6 +33,11 @@ public class HumanPlayer extends GameClient
 		board.add(keyboard,BorderLayout.SOUTH);
 		board.addSelectedListener(keyboard);
 		board.addStateListener(keyboard);
+		board.addStateShownListener(keyboard);
+
+		//Correzione bug di prima selezione
+		if (keyboard.currentState == null && board.history.size()>0)
+			keyboard.onNewState(board.history.get(0));
 
 		frame.pack();
 		int x = Toolkit.getDefaultToolkit().getScreenSize().width/2-frame.getSize().width/2;

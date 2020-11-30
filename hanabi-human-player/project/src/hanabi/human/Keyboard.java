@@ -18,7 +18,7 @@ public class Keyboard extends JPanel implements ActionListener, SelectedListener
 	private String player;
 
 	private CardGUI selectedCard = null;
-	private State currentState = null;
+	public State currentState = null;
 
 	private Object actionMonitor = new Object();
 	private Action action;
@@ -47,11 +47,13 @@ public class Keyboard extends JPanel implements ActionListener, SelectedListener
 		this.add(hintc);
 		this.add(hintv);
 
-		board.addStateShownListener(this);
+		System.out.println("Board created!");
 	}
 
 	private void refresh()
 	{
+
+		System.out.println(currentState);
 		if (board.history.size() == board.shownTurn && currentState.getCurrentPlayer().equals(player) && selectedCard!=null)
 		{
 			if (selectedCard.getOwner().getPlayer().equals(player))
@@ -112,6 +114,7 @@ public class Keyboard extends JPanel implements ActionListener, SelectedListener
 	public void onNewState(State state)
 	{
 		currentState = state;
+		System.out.println("Stato della keyboard aggiornato");
 		refresh();
 	}
 

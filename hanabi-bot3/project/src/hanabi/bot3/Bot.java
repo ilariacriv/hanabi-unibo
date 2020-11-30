@@ -97,10 +97,10 @@ public class Bot extends GameClient
 			}
 			if (action == null)
 			{*/
-				System.out.println("no");
-				action = discardBest();
-				System.out.print("\tdiscardBest... ");
-		//	}
+			System.out.println("no");
+			action = discardBest();
+			System.out.print("\tdiscardBest... ");
+			//	}
 		}
 		if (action == null)
 			System.exit(1);
@@ -120,7 +120,7 @@ public class Bot extends GameClient
 			Set<Action> hints = new HashSet<>();
 			for (int j=0; j<hand.size(); j++)
 			{
-	//			System.out.println(hand.get(j));
+				//			System.out.println(hand.get(j));
 				if (analitics.isPlayable(hand.get(j)) && analitics.getPlayability(players.get(i),j) < 1)
 				{
 					h = Action.createHintColorAction(players.get(0),players.get(i),hand.get(j).getColor());
