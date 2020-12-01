@@ -7,35 +7,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="17c541d0-5a6f-4105-b3a1-29f4d39b271f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../../hanabi-bot3/project/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../hanabi-bot3/project/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../hanabi-bot3/project/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../hanabi-bot3/project/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../hanabi-bot3/project/hanabi-bot3.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../hanabi-bot3/project/src/hanabi/bot3/Bot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../hanabi-api/hanabi-api.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-api/hanabi-api.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../hanabi-api/project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-api/project/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../hanabi-api/project/out/production/hanabi-api/hanabi/game/State.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-api/project/out/production/hanabi-api/hanabi/game/State.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../hanabi-api/project/out/production/hanabi-api/hanabi/player/Analitics.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-api/project/out/production/hanabi-api/hanabi/player/Analitics.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../hanabi-api/project/src/hanabi/game/State.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-api/project/src/hanabi/game/State.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../hanabi-api/project/src/hanabi/player/Analitics.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-api/project/src/hanabi/player/Analitics.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../hanabi-bot2/hanabi-bot2.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-bot2/hanabi-bot2.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../hanabi-bot2/lastinsertion" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-bot2/lastinsertion" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../hanabi-bot2/project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-bot2/project/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../hanabi-bot2/project/out/production/hanabi-bot2/hanabi/bot2/Bot.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-bot2/project/out/production/hanabi-bot2/hanabi/bot2/Bot.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../hanabi-bot2/project/src/hanabi/bot2/Bot.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-bot2/project/src/hanabi/bot2/Bot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../hanabi-game/hanabi-game.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-game/hanabi-game.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../hanabi-bot3/project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-bot3/project/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../hanabi-bot3/project/src/hanabi/bot3/Bot.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-bot3/project/src/hanabi/bot3/Bot.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../hanabi-game/project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-game/project/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../hanabi-game/project/out/production/hanabi-game/hanabi/engine/GameServer$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-game/project/out/production/hanabi-game/hanabi/engine/GameServer$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../hanabi-game/project/out/production/hanabi-game/hanabi/engine/GameServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-game/project/out/production/hanabi-game/hanabi/engine/GameServer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../hanabi-game/project/src/hanabi/engine/GameServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-game/project/src/hanabi/engine/GameServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hanabi-human-player.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../hanabi-human-player.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lastinsertion" beforeDir="false" afterPath="$PROJECT_DIR$/../lastinsertion" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/hanabi-human-player/hanabi/human/HumanPlayer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/hanabi-human-player/hanabi/human/HumanPlayer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/hanabi-human-player/hanabi/human/Keyboard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/hanabi-human-player/hanabi/human/Keyboard.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hanabi/human/HumanPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/hanabi/human/HumanPlayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hanabi/human/Keyboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/hanabi/human/Keyboard.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -255,7 +230,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Image Layers" order="0" />
       <window_info id="Designer" order="1" />

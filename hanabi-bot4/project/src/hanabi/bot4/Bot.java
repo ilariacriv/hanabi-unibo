@@ -1,7 +1,8 @@
-package hanabi.bot2;
+package hanabi.bot4;
 
 import hanabi.game.Card;
 import hanabi.game.CardList;
+import hanabi.game.State;
 import hanabi.gui.Board;
 import hanabi.game.Action;
 import hanabi.gui.PlayerConnectionDialog;
@@ -18,6 +19,7 @@ import java.util.List;
 public class Bot extends GameClient
 {
 	private Analitics analitics;
+	private State mylastturn = null;
 
 	public Bot(String ip, int port, boolean gui)
 	{
@@ -27,30 +29,32 @@ public class Bot extends GameClient
 	/**
 	 * <ol>
 	 *     <li>
+	 *         Se ho ricevuto un suggerimento che coinvolge una sola carta e la sua playability è >0 la gioco
+	 *     </li>
+	 *     <li>
 	 *         Se ho una carta giocabile sicura la gioco. Nel caso in cui avessi più carte giocabili gioco
 	 *         quella che rende giocabili il maggior numero di carte possedute dai giocatori.
 	 *     </li>
 	 *     <li>
-	 *         Se ho hint token, controllo gli altri giocatori: se uno ha una carta giocabile non sicura dagli il
-	 *         suggerimento più significativo (in termini di diminuzione dell'entropia della mano) che coinvolge quella carta.
-	 *         Nel caso in cui il giocatore avesse più carte giocabili non sicure indicagli quella che, se giocata, rende
-	 *         giocabili il maggior numero di carte possedute dai giocatori.
+	 *         Se ho hint token, controllo gli altri giocatori.
+	 *         Nel caso in cui il giocatore avesse più carte giocabili non sicure cicla prendendo prima quella che, se giocata, rende
+	 * 	       giocabili il maggior numero di carte possedute dai giocatori.
+	 * 	       Se è possibile dare un suggerimento che coinvolge solo lei fallo.
+	 * 	       Altrimenti dai il suggerimento che porta la sua playability a 1.
+	 * 	       Se non esiste continua a ciclare.
 	 *     </li>
 	 *     <li>
 	 *         Se non ho un hint token per giocatore e ho una carta sicura da scartare la scarto.
-	 *       ( Mi piacerebbe fare in modo che nel caso in cui avessi più carte scartabili scarto quella pi&ugrave; lontana
-	 *         dall'attuale picco del firework dello stesso colore, ma per farlo dovrei conoscere valore e colore della carta
-	 *         che non è scontato! )
 	 *     </li>
 	 *     <li>
-	 *         Se ho hint token dai il suggerimento (a qualsiasi giocatore) che diminuisce del massimo l'entropia delle carte.
+	 *         Se un giocatore ha una carta da non scartare e puoi portare la sua uselessness a 0 con un suggerimento fallo.
 	 *     </li>
 	 *     <li>
-	 *         Se ho una carta giocabile sicura la gioco. Vedi punto 2 per casi di molteplicità di carte.
+	 *         Se ho hint token dai il suggerimento (a qualsiasi giocatore) che diminuisce del massimo l'entropia delle carte
+	 *         e non coinvolge una sola carta.
 	 *     </li>
 	 *     <li>
 	 *         Scarta la carta con uselessness maggiore.
-	 *         Anche qui mi piacerebbe fare come nel punto 3.
 	 *     </li>
 	 * </ol>
 	 * @return
@@ -63,8 +67,13 @@ public class Bot extends GameClient
 		System.out.println("Scelgo la mossa:");
 		int tokens = getCurrentState().getHintTokens();
 
-		System.out.print("\tsecurePlay... ");
-		action = securePlay();
+		System.out.println("\tconventionPlay... ");
+		action = conventionPlay();
+		if (action == null) {
+			System.out.println("no");
+			System.out.print("\tsecurePlay... ");
+			action = securePlay();
+		}
 		if (action == null && tokens > 0) {
 			System.out.println("no");
 			System.out.print("\thintForPlay... ");
@@ -80,7 +89,7 @@ public class Bot extends GameClient
 		{
 			System.out.println("no");
 			System.out.print("\tbestHintForFuturePlay... ");
-			action = bestHintForFuturePlay();
+			action = bestHintForNotDiscard();
 			if (action == null) {
 				System.out.println("no");
 				action = bestHint();
@@ -89,26 +98,18 @@ public class Bot extends GameClient
 		}
 		if (action == null)
 		{
-/*			System.out.println("no");
-			if (getCurrentState().getFuseTokens()>1) {
-				action = discardUnknown();
-				System.out.print("\tdiscardUnknown... ");
-
-			}
-			if (action == null)
-			{*/
-				System.out.println("no");
-				action = discardBest();
-				System.out.print("\tdiscardBest... ");
-		//	}
+			System.out.println("no");
+			action = discardBest();
+			System.out.print("\tdiscardBest... ");
 		}
 		if (action == null)
 			System.exit(1);
 		System.out.println();
+		mylastturn = getCurrentState();
 		return action;
 	}
 
-	private Action hintForPlay()
+	public Action hintForPlay()
 	{
 		CardList hand;
 //		System.out.println(getCurrentState()==null);
@@ -120,7 +121,7 @@ public class Bot extends GameClient
 			Set<Action> hints = new HashSet<>();
 			for (int j=0; j<hand.size(); j++)
 			{
-	//			System.out.println(hand.get(j));
+				//			System.out.println(hand.get(j));
 				if (analitics.isPlayable(hand.get(j)) && analitics.getPlayability(players.get(i),j) < 1)
 				{
 					h = Action.createHintColorAction(players.get(0),players.get(i),hand.get(j).getColor());
@@ -153,7 +154,20 @@ public class Bot extends GameClient
 		return null;
 	}
 
-	private Action securePlay() {
+	public Action conventionPlay()
+	{
+		CardList myhand = getCurrentState().getHand(players.get(0));
+		CardList myoldhand = mylastturn.getHand(players.get(0));
+		for (int i=0; i<myhand.size(); i++)
+		{
+			if (myhand.get(i).getPossibleColors().size() == 1 && myoldhand.get(i).getPossibleColors().size()>1)
+			{
+
+			}
+		}
+	}
+
+	public Action securePlay() {
 		//Cerco nella mia mano carte con playability 1.
 		CardList hand;
 		hand = getCurrentState().getHand(players.get(0));
@@ -208,6 +222,11 @@ public class Bot extends GameClient
 		return null;
 	}
 
+	public Action bestHintForNotDiscard()
+	{
+
+	}
+/*
 	public Action bestHintForFuturePlay()
 	{
 		CardList hand;
@@ -242,7 +261,7 @@ public class Bot extends GameClient
 		}
 		return null;
 	}
-
+*/
 	public Action bestHint()
 	{
 		Set<Action> hints = new HashSet<>();
@@ -332,7 +351,6 @@ public class Bot extends GameClient
 	{
 		//Tra le carte con uselessness maggiore scarta quella con playability minore
 
-		//Se hai più di un gettone errore scarta una carta senza consigli
 		List<Action> box = new ArrayList<>();
 		box.add(Action.createDiscardAction(players.get(0),0));
 		double max = analitics.getUselessness(players.get(0),0);

@@ -46,6 +46,11 @@ public abstract class GameClient implements Runnable
 
 	public abstract Action chooseAction();
 
+	public void manageNewState(State currentState)
+	{
+		//Qui vuoto , da sovrascrivere se il Bot ha bisogno di conoscere la storia della partita
+	}
+
 	public void init()
 	{
 		players = reorderPlayers(getCurrentState().getPlayersNames());
@@ -164,6 +169,8 @@ public abstract class GameClient implements Runnable
 			//Player routine
 			while (true)
 			{
+				manageNewState(currentState);
+
 				//Controllo se la partita è finita
 				if (currentState.isLastState())
 					break;
