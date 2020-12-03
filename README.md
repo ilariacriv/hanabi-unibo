@@ -11,7 +11,7 @@ Il progetto è suddiviso in moduli, per ognuno dei quali è disponibile sorgente
 - hanabi-bot3: incompleto, implementa un bot che segue una terza strategia che fa uso di convenzioni tra giocatori
 - hanabi-bot4: incompleto, implementa un bot che cerca di migliorare la seconda strategia facendo uso di convenzioni 
 
-##Come giocare
+## Come giocare
 Per iniziare una partita avviare il server host hanabi-game.jar e attraverso la GUI impostare il numero e tipo di giocatori. 
 Successivamente avviare un jar (human-player o bot) per ogni giocatore definito come "aperto".
 Inserire attraverso la GUI del giocatore l'indirizzo ip e la porta della server host.
