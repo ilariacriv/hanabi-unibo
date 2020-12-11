@@ -4,7 +4,7 @@ Il progetto è suddiviso in moduli, per ognuno dei quali è disponibile sorgente
 
 - hanabi-api: contiene classi di supporto agli altri moduli
 - json-v2: implementa oggetti json, attraverso i quali sono definite le entità di una partita
-- hanabi-game: eseguibile, implementa il server host della partita. I giocatori si connetteranno all'host attraverso java socket.
+- hanabi-game: eseguibile, implementa il server host della partita. 
 - hanabi-human-player: eseguibile, offre una GUI di gioco per utente reale.
 - hanabi-bot1: eseguibile, implementa un bot che segue una strategia predefinita
 - hanabi-bot2: eseguibile, implementa un bot che migliora le performance di bot1 adottando una nuova strategia predefinita più aggressiva
