@@ -6,12 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="427543c5-1373-4049-8dbb-b1595605220d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../hanabi-bot2/project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-bot2/project/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../hanabi-bot3/project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-bot3/project/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../hanabi-bot3/project/src/hanabi/bot3/Bot.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-bot3/project/src/hanabi/bot3/Bot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../hanabi-human-player/project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../hanabi-human-player/project/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="427543c5-1373-4049-8dbb-b1595605220d" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -27,8 +22,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/hanabi/engine/GameServer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="207" column="56" selection-start-line="207" selection-start-column="56" selection-end-line="207" selection-end-column="56" />
+            <state relative-caret-position="422">
+              <caret line="317" column="70" selection-start-line="317" selection-start-column="70" selection-end-line="317" selection-end-column="70" />
             </state>
           </provider>
         </entry>
@@ -49,7 +44,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="jar://$PROJECT_DIR$/../../hanabi-api/hanabi-api.jar!/hanabi/game/State.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5100">
+            <state relative-caret-position="5151">
               <caret line="346" column="3" selection-start-line="346" selection-start-column="3" selection-end-line="346" selection-end-column="3" />
             </state>
           </provider>
@@ -95,7 +90,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="683" />
     <option name="width" value="683" />
     <option name="height" value="743" />
@@ -138,7 +133,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../hanabi-bot2/project" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.18505748" />
@@ -200,10 +195,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1456" height="876" extended-state="7" />
+    <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4549125" visible="true" weight="0.16189112" />
-      <window_info id="Structure" order="1" sideWeight="0.54508746" side_tool="true" visible="true" weight="0.16189112" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4535666" visible="true" weight="0.16404012" />
+      <window_info id="Structure" order="1" sideWeight="0.5464334" side_tool="true" visible="true" weight="0.16404012" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
@@ -373,8 +368,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/hanabi/engine/GameServer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="207" column="56" selection-start-line="207" selection-start-column="56" selection-end-line="207" selection-end-column="56" />
+        <state relative-caret-position="422">
+          <caret line="317" column="70" selection-start-line="317" selection-start-column="70" selection-end-line="317" selection-end-column="70" />
         </state>
       </provider>
     </entry>
@@ -391,7 +386,7 @@
     </entry>
     <entry file="jar://$PROJECT_DIR$/../../hanabi-api/hanabi-api.jar!/hanabi/game/State.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5100">
+        <state relative-caret-position="5151">
           <caret line="346" column="3" selection-start-line="346" selection-start-column="3" selection-end-line="346" selection-end-column="3" />
         </state>
       </provider>

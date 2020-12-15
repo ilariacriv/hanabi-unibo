@@ -74,11 +74,11 @@ La strategia proposta dagli autori del paper è incentrata sulla comunicazione i
 \begin{flushleft}
 Le strategie di gioco presentate durante il corso di Fondamenti di Intelligenza Artificiale M consistono in varianti di ricerca nello spazio degli stati.\newline
 Abbiamo poi visto come l'algoritmo min-max sia molto efficace nei giochi competitivi e come sia possibile attraverso pruning diminuire considerevolmente il numero di stati che è necessario esplorare.\newline
-\newline
 Nostro malgrado Hanabi è un gioco cooperativo e questo ci preclude la possibilità di sfruttare sia min-max sia il pruning. \newline
-Lo spazio degli stati di una partita di Hanabi è molto vasto: si consideri la seguente tabella che mostra un'approssimazione del numero di stati da esplorare per conoscere completamente tutti i possibili stati che si possono raggiungere con una mossa a partire da uno stato dato.
+\newline
+Lo spazio degli stati di una partita di Hanabi è molto vasto, sebbene solo le giocate e le scartate generino complessità. Quando si dà un suggerimento esiste un solo  stato possibile, ma se si gioca o scarta una carta non si sa sempre con certezza quale carta si sta giocando o scartando. Inoltre si deve pescare dal mazzo, il che dà incertezza sulla carta pescata. \newline
+La tabella 1 mostra un'approssimazione del numero di stati da esplorare per conoscere completamente tutti i possibili stati che si possono raggiungere con giocate o scartate a partire da uno stato dato.
 \end{flushleft}
-
 \begin{table}[h]
     \centering
     \begin{tabular}{m|s}
@@ -90,15 +90,16 @@ Lo spazio degli stati di una partita di Hanabi è molto vasto: si consideri la s
         4 & [8(m)(c)+12]^d \\
         5 & [8(m)(c)+16]^d \\
     \end{tabular}
-    \caption{Tabella che mostra un'approsimazione del numero di stati da esplorare in funzione del numero di carte nel mazzo (m), il numero di carte che quella che si vuole giocare/scartare potrebbe essere (c) e del numero di turni di profondità di esplorazione (d)}
+    \caption{Cardinalità spazio degli stati in funzione del numero di giocatori}
 \end{table}
 
 \begin{flushleft}
-Possiamo vedere che la dimensione dello spazio degli stati varia in modo esponenziale in funzione della profondità di esplorazione richiesta (d), come i giochi tradizionali, stile scacchi.\newline
-Ma a differenza di questi giochi, il giocatore ha conoscenza parziale degli stati e inoltre è presente una componente randomica dovuta alla pesca delle carte. Di conseguenza il numero di stati cresce secondo una funzione polinomiale di due fattori: il numero di carte rimaste nel mazzo (m) e il numero di carte che quella che si vuole giocare/scartare potrebbe essere (c).\newline
+La dimensione dello spazio degli stati varia in modo esponenziale in funzione della profondità di esplorazione richiesta (d), come i giochi tradizionali, stile scacchi, ma in più l'incertezza sulle proprie carte e su quelle pescate fa crescere il numero di stati secondo una funzione polinomiale di due fattori: il numero di carte rimaste nel mazzo (m) e il numero di carte che quella che si vuole giocare/scartare potrebbe essere (c).\newline
 \newline
-Finchè ci sono carte da pescare, gli stati esplorati hanno una natura probabilistica, nel senso che scelta una mossa (giocata o scartata) non abbiamo mai un singolo stato futuro ma una distribuzione di probabilità su un set di stati futuri. Ciò rende difficile la definizione di una funzione euristica per l'algoritmo di ricerca degli stati. \newline
 
+Hanabi possiede uno spazio degli stati più vasto anche degli altri giochi di carte, per lo più competitivi, in cui si conosce la propria mano ma non quelle degli altri giocatori. In questi casi infatti non si ha la componente di incertezza dovuta al non conoscere le proprie carte.
+\newline
+\newline
 Le strategie seguite dai bot prodotti consistono nel valutare se fare un tipo di mossa in funzione di 3 parametri calcolati per le carte coinvolte dalla mossa:
 \begin{itemize}
     \item entropia: incertezza sul tipo di carta. Se la carta è completamente conosciuta la sua entropia è 0. Abbiamo notato empiricamente che una mano completamente sconosciuta ha un'entropia di circa 22 bit (dipende dal numero di carte in mano e dal numero di giocatori).
@@ -109,15 +110,26 @@ Le strategie seguite dai bot prodotti consistono nel valutare se fare un tipo di
 \end{itemize}
 Giocare una carta sarà una buona mossa se la giocabilità di quella carta è alta, situazione analoga per lo scartare una carta con alta inutilità. Un buon consiglio invece cercherà di alzare la giocabilità delle carte del compagno. Il parametro di entropia viene per lo più usato per selezionare il miglior consiglio nei casi in cui più consigli fanno raggiungere ad una carta lo stesso valore di giocabilità o inutilità.\newline
 \newline
-L'effetto di una mossa è modificare i parametri delle carte ma si verifica solo tra lo stato attuale e quello generato. Negli stati successivi la mossa non produrrà altre variazioni.\newline
+In generale, l'effetto di una mossa, inteso come variazione dei parametri che descrivono lo stato attuale, è visibile solo tra lo stato attuale e quello generato. Negli stati successivi al generato la mossa non produrrà altre variazioni.\newline
 Per questo motivo riteniamo che un'esplorazione profonda non aggiunga informazioni rilevanti che aiutino a prendere una decisione sulla mossa da effettuare rispetto alla sola esplorazione degli stati più prossimi a quello attuale. \newline
 \newline
+Ad esempio, si prenda una partita tra 3 giocatori: A,B e C.\newline
+C sa che ha in mano un tre giallo, ma la scala gialla è a uno, quindi vede una giocabilità sul tre giallo pari a 0.\newline B sa che una sua carta è gialla.\newline A vede che la carta che B sa essere gialla è un due, quindi decide di suggerirgli i due.\newline B gioca il due giallo.\newline Ora C vede una giocabilità pari a 1 e gioca il tre.\newline
+\newline
+
+Il suggerimento di A verso B rende possibile la giocata di due carte dando informazioni solo a B. Durante la transizione tra il turno in cui tocca a B e il turno in cui tocca a C, il suggerimento di A non gioca alcun ruolo. C ottiene l'informazione che modifica la giocabilità del tre giallo dalla giocata di B.\newline
+Ogni mossa propaga informazioni solo allo stato generato. \newline
+\newline
+
 Giocabilità e inutilità di una data carta sono calcolate sommando per ogni tipo di carta giocabile/inutile le probabilità che la carta data sia proprio di quel tipo. \newline
 Sebbene la definizione di carta giocabile sia semplice (una carta è giocabile se la scala del suo colore ha valore precedente a quello della carta data), altrettanto non vale per la definizione di carta inutile. Una carta è inutile se è vera almeno una delle seguenti condizioni:
 \begin{itemize}
-    \item La scala dello stesso colore ha valore maggiore o uguale della carta.
-    \item Tra gli scarti sono presenti tutti gli esemplari di carte di stesso colore e uno qualsiasi dei valori inferiori.
-    \item Almeno una copia della carta è ancora in gioco.
+    \item La scala dello stesso colore ha valore maggiore o uguale della carta.\newline
+    Se ad esempio la scala rossa termina con un 4, tutte le carte rosse tranne il 5 sono inutili.
+    \item Tra gli scarti sono presenti tutti gli esemplari di carte di stesso colore e uno qualsiasi dei valori inferiori.\newline
+    Ad esempio i 3, i 4 e il 5 rosso sono inutili se tutti i 2 rossi sono stati scartati.
+    \item Almeno una copia della carta è nel mazzo o in mano ad un compagno.\newline
+    Se ad esempio 2 copie di una carta inutile sono in mano ai giocatori vengono viste entrambe come inutili. Quando una delle due viene scartata l'altra non sarà più inutile.
 \end{itemize}
 \end{flushleft}
 L'entropia invece è calcolata secondo la formula classica.
@@ -128,9 +140,9 @@ Abbiamo sviluppato due bot, Bot1 e Bot2 che seguono due strategie differenti ma 
 \newline
 La strategia di Bot1 potrebbe essere definita "altruista": all'inizio del suo turno il bot osserva la situazione dei suoi compagni e li classifica in fasi:
 \begin{itemize}
-    \item Fase 1: il giocatore ha una carta con giocabilità 1 (quindi può giocare sicuro).
-    \item Fase 2: il giocatore ha una carta con inutilità 1 (quindi può scartare sicuro).
-    \item Fase 3: il numero di gettoni rimasti è maggiore del numero di turni che devono passare affinché tocchi al giocatore (quindi può sicuramente suggerire)
+    \item Fase 1: il compagno ha una carta con giocabilità 1 (quindi può giocare sicuro).
+    \item Fase 2: il compagno ha una carta con inutilità 1 (quindi può scartare sicuro).
+    \item Fase 3: il numero di gettoni rimasti è maggiore del numero di turni che devono passare affinché tocchi al giocatore (quindi il compagno potrà sicuramente suggerire)
     \item Fase 4 (o critica): nessuna delle condizioni precedenti è soddisfatta (il giocatore non può suggerire e qualsiasi mossa faccia rischia di sbagliare)
 \end{itemize}
 Se Bot1 ha compagni in fase critica cercherà il miglior suggerimento da dare al primo di loro (in ordine di gioco) in modo che raggiunga la fase di indice più basso possibile. In caso di parità darà il suggerimento che abbassa di più l'entropia della mano.\newline
@@ -152,7 +164,7 @@ Bot2 è stato pensato per implementare una strategia più aggressiva: si tende a
   \item se ha almeno un gettone suggerimento dà il suggerimento (a qualsiasi giocatore) che diminuisce del massimo l'entropia delle carte.
     \item scarta la carta con uselessness maggiore.
 \end{enumerate}
-Segue la tabella che mostra i risultati medi raggiunti dai bot calcolati su 100 partite per tipo.
+Segue la tabella che mostra i risultati raggiunti dai bot calcolati su 100 partite con numero di giocatori pari e 50 e 50, alternando il bot con più esemplari, per le partite con numero di giocatori dispari. In questi casi è mostrata la media dei punteggi medi e delle deviazioni, e i minimi e massimi assoluti (tra parentesi è indicato quale bot aveva più esemplari nel raggiungimento di quel punteggio).
 \end{flushleft}
 \begin{table}[h]
     \centering
@@ -160,12 +172,12 @@ Segue la tabella che mostra i risultati medi raggiunti dai bot calcolati su 100 
         \toprule
         \textbf{Numero di giocatori} & \textbf{Bot1} & \textbf{Bot2} & \textbf{Bot1/Bot2} \\
         \midrule
-        2 & 11.57 & 14.53 & 12.52 \\
-        3 & \textbf{11.97} & \textbf{17.42} & \textbf{15.11} \\
-        4 & 9.28 & 17.09 & 13.38\\
-        5 & 9.09 & 16.30 & 13.07 \\
+        2 & 11.77 2.88 17 6 & 14.37 3.07 20 8 & 12.71 2.90 19 8\\
+        3 & \textbf{11.81} 2.48 17 6 & \textbf{17.65} 1.53 21 13& \textbf{15.14} 2.24 18(2) 8(2) \\
+        4 & 8.86 2.15 14 2 & 17.25 1.31 20 14 & 13.35 2.17 19 7\\
+        5 & 9.44 2.11 15 4 & 16.33 1.11 19 14 & 13.12 1.75 17(2) 8(1)  \\
     \end{tabular}
-    \caption{Tabella che mostra i punteggi medi su 100 partite raggiunti dai bot}
+    \caption{Tabella che mostra i punteggi medi,  deviazione standard, massimo e minimo su 100 partite}
 \end{table}
 
 

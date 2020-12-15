@@ -152,6 +152,8 @@ public final class GameServer
 
 //		List<BufferedReader> bufflist = new ArrayList<>();
 
+		int[] scores = new int[games];
+
 		for (int g = 0; g<games; g++)
 		{
 			textArea.append("Gioco "+(g+1)+"/"+games+"\n");
@@ -282,8 +284,7 @@ public final class GameServer
 				score = currentState.getScore();
 				textArea.append("Punteggio: "+score+"\n");
 			}
-			medscore = (medscore*g+score)/(g+1);
-			textArea.append("Punteggio medio: "+medscore+"\n\n");
+			scores[g] = score;
 			textArea.setCaretPosition(textArea.getDocument().getLength());
 
 			for (Socket s:sockets)
@@ -292,9 +293,29 @@ public final class GameServer
 			names.clear();
 		}
 
+		double med = 0, dev = 0;
+		for (int i=0; i<games; i++)
+			med+=scores[i];
+		med = med/games;
 
+		for (int i=0; i<games; i++)
+			dev += Math.pow(scores[i]-med,2);
+		dev = Math.sqrt(dev/games);
 
+		int max = scores[0];
+		for (int i=1; i<games; i++)
+		{
+			if (max<scores[i]) max = scores[i];
+		}
 
+		int min = scores[0];
+		for (int i=1; i<games; i++)
+		{
+			if (min>scores[i]) min = scores[i];
+		}
+
+		textArea.append("Media: "+med+"\n"+"Deviazione standard: "+dev+"\nMassimo: "+max+"\nMinimo: "+min);
+		textArea.setCaretPosition(textArea.getDocument().getLength());
 
 	}
 
