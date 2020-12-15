@@ -50,18 +50,18 @@
 \begin{itemize}
     \item Il mazzo di Hanabi è formato da 50 carte suddivise in 5 colori (10 per ogni colore). Ogni colore è composto: 3 carte di valore 1, 2 di valore 2,3,4 e 1 di valore 5.
     \item In campo ci sono 8 gettoni informazione e 3 gettoni errore
-    \item Ogni giocatore tiene le proprie carte rivolte verso gli altri (4 carte in 3,4,5 giocatori e 5 carte in 2 giocatori), quindi vede tutto tranne le proprie carte.
-    \item Lo scopo del gioco e completare le scale di colore da 1 a 5. Ogni carta giocata vale 1 punto.
+    \item Ogni giocatore tiene le proprie carte rivolte verso gli altri (4 carte in 4 o 5 giocatori e 5 carte in 2 o 3 giocatori), quindi vede tutto tranne le proprie carte.
+    \item Lo scopo del gioco è completare le scale di colore da 1 a 5. Ogni carta giocata vale 1 punto.
     \item 
     {Ad ogni turno ogni giocatore può fare una delle seguenti mosse:
     \begin{itemize}
-        \item indicare a un giocatore tutte le carte di uno stesso colore o valore nella sua mano.
+        \item indicare ad un giocatore tutte le carte di uno stesso colore o valore nella sua mano.
         \item scartare una carta dalla propria mano.
         \item giocare una carta.
     \end{itemize}}
     \item Giocare o scartare una carta fa pescare una carta dal mazzo. Finite le carte da pescare, il gioco termina quando è nuovamente il turno di chi ha pescato l’ultima carta.
-    \item Scartare una carta aumenta i gettoni informazione di 1.
-    \item Giocare una carta sbagliata fa perdere un gettone errore. Finiti i gettoni errore la partita è conclusa.
+    \item Scartare una carta aumenta i gettoni informazione di 1 (fino ad un massimo di 8).
+    \item Giocare una carta sbagliata fa perdere un gettone errore. Finiti i gettoni errore la partita è conclusa con punteggio 0.
 \end{itemize}
 
 \subsection{Stato dell'arte}
@@ -90,11 +90,11 @@ Lo spazio degli stati di una partita di Hanabi è molto vasto: si consideri la s
         4 & [8(m)(c)+12]^d \\
         5 & [8(m)(c)+16]^d \\
     \end{tabular}
-    \caption{Tabella che mostra un'approsimazione del numero di stati da esplorare in funzione del numero di carte nel mazzo m, il numero di carte che quella che si vuole giocare/scartare potrebbe essere (c) e del numero di turni di profondità di esplorazione d}
+    \caption{Tabella che mostra un'approsimazione del numero di stati da esplorare in funzione del numero di carte nel mazzo (m), il numero di carte che quella che si vuole giocare/scartare potrebbe essere (c) e del numero di turni di profondità di esplorazione (d)}
 \end{table}
 
 \begin{flushleft}
-Possiamo vedere che la dimensione dello spazio degli stati varia in modo esponenziale in funzione della profondità di esplorazione richiesta, come i giochi tradizionali, stile scacchi.\newline
+Possiamo vedere che la dimensione dello spazio degli stati varia in modo esponenziale in funzione della profondità di esplorazione richiesta (d), come i giochi tradizionali, stile scacchi.\newline
 Ma a differenza di questi giochi, il giocatore ha conoscenza parziale degli stati e inoltre è presente una componente randomica dovuta alla pesca delle carte. Di conseguenza il numero di stati cresce secondo una funzione polinomiale di due fattori: il numero di carte rimaste nel mazzo (m) e il numero di carte che quella che si vuole giocare/scartare potrebbe essere (c).\newline
 \newline
 Finchè ci sono carte da pescare, gli stati esplorati hanno una natura probabilistica, nel senso che scelta una mossa (giocata o scartata) non abbiamo mai un singolo stato futuro ma una distribuzione di probabilità su un set di stati futuri. Ciò rende difficile la definizione di una funzione euristica per l'algoritmo di ricerca degli stati. \newline
@@ -113,9 +113,9 @@ L'effetto di una mossa è modificare i parametri delle carte ma si verifica solo
 Per questo motivo riteniamo che un'esplorazione profonda non aggiunga informazioni rilevanti che aiutino a prendere una decisione sulla mossa da effettuare rispetto alla sola esplorazione degli stati più prossimi a quello attuale. \newline
 \newline
 Giocabilità e inutilità di una data carta sono calcolate sommando per ogni tipo di carta giocabile/inutile le probabilità che la carta data sia proprio di quel tipo. \newline
-Sebbene la definizione di carta giocabile sia semplice (una carta è giocabile se il firework del suo colore ha valore precedente a quello della carta data), altrettanto non vale per la definizione di carta inutile. Una carta è inutile se è vera almeno una delle seguenti condizioni:
+Sebbene la definizione di carta giocabile sia semplice (una carta è giocabile se la scala del suo colore ha valore precedente a quello della carta data), altrettanto non vale per la definizione di carta inutile. Una carta è inutile se è vera almeno una delle seguenti condizioni:
 \begin{itemize}
-    \item Il firework dello stesso colore ha valore maggiore o uguale della carta.
+    \item La scala dello stesso colore ha valore maggiore o uguale della carta.
     \item Tra gli scarti sono presenti tutti gli esemplari di carte di stesso colore e uno qualsiasi dei valori inferiori.
     \item Almeno una copia della carta è ancora in gioco.
 \end{itemize}
@@ -124,7 +124,7 @@ L'entropia invece è calcolata secondo la formula classica.
 
 
 \section{Bot prodotti}
-Abbiamo sviluppato due bot, Bot1 e Bot2 che seguono due strategie differenti ma con alcuni punti in comune. Il più importante di questi è che durante la valutazione di una mossa il bot si immedesima negli altri giocatori e valuta calcolando i parametri dal loro punto di vista. Questo introduce un errore sistematico nelle valutazioni: un giocatore che si immedesima in un altro non conosce le proprie carte, mentre gli altri le vedono. Questo è un motivo in più per rinunciare ad un'esplorazione profonda dello spazio degli stati.\newline
+Abbiamo sviluppato due bot, Bot1 e Bot2 che seguono due strategie differenti ma con alcuni punti in comune. Il più importante di questi è che durante la valutazione di una mossa il bot si immedesima negli altri giocatori e valuta calcolando i parametri dal loro punto di vista, introducendo un errore sistematico nelle valutazioni: un giocatore che si immedesima in un altro non conosce le proprie carte, mentre gli altri le vedono. Questo è un motivo in più per rinunciare ad un'esplorazione profonda dello spazio degli stati.\newline
 \newline
 La strategia di Bot1 potrebbe essere definita "altruista": all'inizio del suo turno il bot osserva la situazione dei suoi compagni e li classifica in fasi:
 \begin{itemize}
@@ -148,8 +148,8 @@ Bot2 è stato pensato per implementare una strategia più aggressiva: si tende a
     \item se ha gettoni suggerimento, controlla gli altri giocatori: se uno ha una carta giocabile non sicura gli dà il suggerimento più significativo (in termini di diminuzione dell'entropia della mano) che coinvolge quella carta. Nel caso in cui il giocatore avesse più carte giocabili non sicure gli indica quella che, se giocata, rende giocabili il maggior numero di carte possedute dai giocatori.
     Questo consiglio viene dato solo se la carta è resa sicuramente giocabile.
     \item se non c'è un gettone suggerimento per giocatore e ha una carta sicura da scartare la scarta.
-	\item se ha almeno un gettone suggerimento prova a suggerire come nel punto 2 anche se la carta non è resa sicuramente giocabile.
-	\item se ha almeno un gettone suggerimento dà il suggerimento (a qualsiasi giocatore) che diminuisce del massimo l'entropia delle carte.
+  \item se ha almeno un gettone suggerimento prova a suggerire come nel punto 2 anche se la carta non è resa sicuramente giocabile.
+  \item se ha almeno un gettone suggerimento dà il suggerimento (a qualsiasi giocatore) che diminuisce del massimo l'entropia delle carte.
     \item scarta la carta con uselessness maggiore.
 \end{enumerate}
 Segue la tabella che mostra i risultati medi raggiunti dai bot calcolati su 100 partite per tipo.
@@ -200,10 +200,11 @@ Durante la partita i giocatori comunicano con l'host attraverso il seguente prot
 \includegraphics[width=0.9\textwidth]{Protocol.png}
 \end{figure}
 \begin{flushleft}
-I nomi sono inviati come stringhe seguite da un carattere terminatore di riga, gli stati e le mosse invece sono modellati come oggetti json, alla pari degli altri concetti chiave del gioco, come le carte, le mani e i firework.\newline
+I nomi sono inviati come stringhe seguite da un carattere terminatore di riga, gli stati e le mosse invece sono modellati come oggetti json, alla pari degli altri concetti chiave del gioco, come le carte, le mani e le scale di colore.\newline
 \newline
 Segue un esempio di stato inviato dall'host a G2(Human). Rappresenta il secondo stato di una partita a due giocatori, tra un umano e un Bot1. Bot1 ha eseguito la prima mossa che è stata un suggerimento delle carte di valore 3.
 \newline
+\small
 \begin{lstlisting}[language=json,firstnumber=1]
 {
    "discarded":[],
@@ -235,7 +236,10 @@ Segue un esempio di stato inviato dall'host a G2(Human). Rappresenta il secondo 
    "lastaction":{"hinted":"G2(Human)","type":"hintvalue","value":3,"player":"G1(Bot1)"}
 }
 \end{lstlisting}
-Il modulo hanabi-api implementa i concetti chiave sfruttando la libreria di supporto json-v2. Inoltre implementa i componenti grafici e offre classi utili allo sviluppo di nuovi bot. I bot prodotti sono stati costruiti usando queste classi e i loro sorgenti costituiscono degli ottimi esempi d'uso.\newline
+\normalsize
+Il campo final indica l'ultimo turno di gioco, o vale -1 se ancora ci sono carte nel mazzo. Il campo round indica il turno corrente. Quando il campo final ha valore uguale a quello di round si ha l'ultimo stato della partita. Man mano che i giocatori ricevono gli stati dall'host controllano questi due campi: se sono uguali smettono di seguire il protocollo di gioco e la partita finisce. \newline
+\newline
+Il modulo hanabi-api implementa i concetti chiave sfruttando la libreria di supporto json-v2. Inoltre implementa i componenti grafici e offre classi utili allo sviluppo di nuovi bot: GameClient, che implementa il protocollo di gioco, e Analitics, che offre metodi per l'analisi di uno stato della partita. I bot prodotti sono stati costruiti usando queste classi e i loro sorgenti costituiscono degli ottimi esempi d'uso.\newline
 \newline
 Ad ogni modo, l'host hanabi-game è compatibile con qualsiasi programma (scritto in qualsiasi linguaggio di programmazione) che implementi correttamente il protocollo di gioco. 
 \end{flushleft}
