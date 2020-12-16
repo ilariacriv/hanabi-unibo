@@ -18,3 +18,8 @@ Inserire attraverso la GUI del giocatore l'indirizzo ip e la porta della server 
 La partita inizierà automaticamente quando tutti i giocatori saranno connessi.
 
 Se si volesse vedere il log di esecuzione del server host o di un giocatore avviare quel componente da riga di comando.
+
+## Miglioramenti
+In esecuzione, il framework risulta pesante. Al termine di una partita il processo di un giocatore avrà allocato circa 200MB di ram; il serverhost ne chiede circa 150MB.
+Probabilmente la richiesta di spazio dipende dall'accumulo degli stati della partita, rappresentati tramite JSONObject e classi derivate dei moduli json-v2 e hanabi-api.
+Un'ottimizzazione di queste rappresentazioni dovrebbe permettere di guadagnare memoria. Il modulo json-v2 non è stato progettato per occupare la minor memoria possibile. Tuttavia è possibile anche che copie degli stati della partita create durante l'esplorazione delle mosse non siano eliminate dal garbage collector, quindi, forse, si può limitare la memoria usata senza compromettere l'esecuzione avviando gli eseguibili da riga di comando e inserendo i parametri di impostazione della memoria disponibile alla jvm. 
