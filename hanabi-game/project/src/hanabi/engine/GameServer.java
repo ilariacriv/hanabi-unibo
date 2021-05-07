@@ -248,6 +248,8 @@ public final class GameServer
 			//Creo una variabile per mantenere l'ultima mossa effettuata
 			Action currentAction;
 
+			DatasetGeneration data = new DatasetGeneration(currentState);;
+
 			//Inizia il ciclo di gioco
 			while(true)
 			{
@@ -257,6 +259,9 @@ public final class GameServer
 					while(br.readLine()!=null);
 				}
 */
+				data.setS(currentState);
+				data.generate();
+
 				System.out.println("Invio dello stato corrente. Round: "+currentState.getRound());
 				//Invio stato corrente mascherato a tutti i giocatori
 				sendMaskedStates(currentState,sockets,names);
