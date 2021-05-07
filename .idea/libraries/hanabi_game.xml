@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="hanabi-game">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/hanabi-game/hanabi-game.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

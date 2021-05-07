@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="hanabi-human-player">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/hanabi-human-player/hanabi-human-player.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

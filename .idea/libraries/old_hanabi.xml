@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="old-hanabi">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/old-hanabi.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

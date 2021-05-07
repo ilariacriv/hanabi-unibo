@@ -184,11 +184,11 @@ public final class GameServer
 
 				final Process p;
 				if (player.equals("HumanPlayer"))
-					p = Runtime.getRuntime().exec("java -jar hanabi-human-player.jar localhost " + serverSocket.getLocalPort(), null, new File(new File(System.getProperty("user.dir")).getParent() + "/hanabi-human-player"));
+					p = Runtime.getRuntime().exec("java -jar hanabi-human-player.jar localhost " + serverSocket.getLocalPort(), null, new File(new File(System.getProperty("user.dir")).getParent() + "/hanabi-unibo/hanabi-human-player"));
 				else if (player.equals("Bot1"))
-					p = Runtime.getRuntime().exec("java -jar hanabi-bot1.jar localhost "+serverSocket.getLocalPort()+" "+gui,null,new File(new File(System.getProperty("user.dir")).getParent()+"/hanabi-bot1"));
+					p = Runtime.getRuntime().exec("java -jar hanabi-bot1.jar localhost "+serverSocket.getLocalPort()+" "+gui,null,new File(new File(System.getProperty("user.dir")).getParent()+"/hanabi-unibo/hanabi-bot1"));
 				else if (player.equals("Bot2"))
-					p = Runtime.getRuntime().exec("java -jar hanabi-bot2.jar localhost "+serverSocket.getLocalPort()+" "+gui,null,new File(new File(System.getProperty("user.dir")).getParent()+"/hanabi-bot2"));
+					p = Runtime.getRuntime().exec("java -jar hanabi-bot2.jar localhost "+serverSocket.getLocalPort()+" "+gui,null,new File(new File(System.getProperty("user.dir")).getParent()+"/hanabi-unibo/hanabi-bot2"));
 				else
 					p = null;
 

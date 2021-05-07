@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="hanabi-bot2">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/hanabi-bot2/hanabi-bot2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

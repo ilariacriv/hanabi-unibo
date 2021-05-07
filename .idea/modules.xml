@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/hanabi-api/hanabi-api.iml" filepath="$PROJECT_DIR$/hanabi-api/hanabi-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hanabi-bot1/hanabi-bot1.iml" filepath="$PROJECT_DIR$/hanabi-bot1/hanabi-bot1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hanabi-bot2/hanabi-bot2.iml" filepath="$PROJECT_DIR$/hanabi-bot2/hanabi-bot2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hanabi-bot3/hanabi-bot3.iml" filepath="$PROJECT_DIR$/hanabi-bot3/hanabi-bot3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hanabi-bot4/hanabi-bot4.iml" filepath="$PROJECT_DIR$/hanabi-bot4/hanabi-bot4.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hanabi-game/hanabi-game.iml" filepath="$PROJECT_DIR$/hanabi-game/hanabi-game.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hanabi-human-player/hanabi-human-player.iml" filepath="$PROJECT_DIR$/hanabi-human-player/hanabi-human-player.iml" />
+      <module fileurl="file://$PROJECT_DIR$/json-v2/json-v2.iml" filepath="$PROJECT_DIR$/json-v2/json-v2.iml" />
+    </modules>
+  </component>
+</project>
