@@ -1,11 +1,11 @@
 package hanabi.engine;
 
+import dataset.DatasetGeneration;
 import hanabi.game.*;
 import hanabi.game.Action;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.io.*;
 import java.net.InetAddress;
 import java.net.ServerSocket;
@@ -235,15 +235,15 @@ public final class GameServer
 
 			//Mescolo (10 scambi casuali) i giocatori collegati e definisco così l'ordine dei turni. Poi mando il nome completo
 			shufflePlayers(sockets,names);
-			System.out.println("Nomi e turni comunicati");
+			//System.out.println("Nomi e turni comunicati");
 
 			//Creo e mescolo un mazzo di carte
 			Stack<Card> deck = Card.createDeck();
-			System.out.println("Mazzo mescolato");
+			//.out.println("Mazzo mescolato");
 
 			//Creo le mani di partenza e quindi lo stato iniziale
 			State currentState = State.createInitialState(names.toArray(new String[0]),deck);
-			System.out.println("Stato iniziale creato. Inizia la partita");
+			//System.out.println("Stato iniziale creato. Inizia la partita");
 
 			//Creo una variabile per mantenere l'ultima mossa effettuata
 			Action currentAction;
@@ -262,7 +262,7 @@ public final class GameServer
 				data.setState(currentState);
 				data.generate();
 
-				System.out.println("Invio dello stato corrente. Round: "+currentState.getRound());
+				//System.out.println("Invio dello stato corrente. Round: "+currentState.getRound());
 				//Invio stato corrente mascherato a tutti i giocatori
 				sendMaskedStates(currentState,sockets,names);
 
@@ -439,7 +439,7 @@ public final class GameServer
 		for (int i=0; i<sockets.size(); i++) {
 			bw = new BufferedWriter(new OutputStreamWriter(sockets.get(i).getOutputStream()));
 			State masked = currentState.mask(names.get(i));
-			System.out.println("Invio a "+names.get(i)+"\n"+masked);
+			//System.out.println("Invio a "+names.get(i)+"\n"+masked);
 			bw.write(masked.toString(0));
 			bw.flush();
 		}

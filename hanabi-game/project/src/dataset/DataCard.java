@@ -1,10 +1,10 @@
-package hanabi.game;
+package dataset;
 
+import hanabi.game.Card;
 import hanabi.player.Analitics;
 import json.*;
 
 import java.io.Reader;
-import java.io.StringReader;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;

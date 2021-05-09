@@ -1,10 +1,8 @@
-package hanabi.engine;
+package dataset;
 
-import hanabi.game.DataState;
 import hanabi.game.State;
 
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -15,8 +13,8 @@ public class DatasetGeneration {
 
     public DatasetGeneration(State s) {
         try {
-           // this.file = new FileWriter("hanabiDataset.txt", true);
-            this.file = new FileWriter("hanabiDataset.txt");
+           this.file = new FileWriter("hanabiDataset.txt", true);
+            //this.file = new FileWriter("hanabiDataset.txt");
             this.bw = new BufferedWriter(file);
         } catch (IOException e) {
             e.printStackTrace();

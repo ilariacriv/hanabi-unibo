@@ -1,5 +1,8 @@
-package hanabi.game;
+package dataset;
 
+import hanabi.game.Card;
+import hanabi.game.CardList;
+import hanabi.game.State;
 import hanabi.player.Analitics;
 import json.*;
 
@@ -10,7 +13,6 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-import java.util.Stack;
 
 public class DataState extends TypedJSONObject {
     /**
