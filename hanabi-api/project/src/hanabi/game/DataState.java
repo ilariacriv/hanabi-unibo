@@ -49,7 +49,7 @@ public class DataState extends TypedJSONObject {
         for (String c: Card.colors)
             datastate.put(c,state.getFirework(c));
 
-        datastate.put("discarded",state.getDiscarded());
+        datastate.put("discarded", discardedCards(state.getDiscarded()));
         datastate.put("round", state.getRound());
         datastate.put("fuse",state.getFuseTokens());
         datastate.put("hints",state.getHintTokens());
@@ -74,6 +74,22 @@ public class DataState extends TypedJSONObject {
 
         datastate.put("deck",state.getDeckSize());
         return new DataState(datastate);
+    }
+
+    private static JSONArray discardedCards(CardList discarded){
+       // List<SimpleCard> cards = new ArrayList<>();
+        JSONArray disc= new JSONArray();
+
+        for(int i=0; i< discarded.size();i++ ){
+            JSONObject c= new JSONObject();
+            c.put("value",discarded.get(i).getValue());
+            c.put("color", discarded.get(i).getColor());
+            disc.add(c);
+        }
+
+
+        //disc.addAll(cards);
+        return disc;
     }
 
 
