@@ -15,7 +15,8 @@ public class DatasetGeneration {
 
     public DatasetGeneration(State s) {
         try {
-            this.file = new FileWriter("hanabiDataset.txt", true);
+           // this.file = new FileWriter("hanabiDataset.txt", true);
+            this.file = new FileWriter("hanabiDataset.txt");
             this.bw = new BufferedWriter(file);
         } catch (IOException e) {
             e.printStackTrace();

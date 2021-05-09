@@ -47,8 +47,8 @@ public class DataCard extends TypedJSONObject {
     }
 
     public static DataCard createDatacardFromCard(Card card, Analitics analitics, int index){
-        Set<String> colors = new HashSet<>();
-        Set<String> values = new HashSet<>();
+        List<String> colors = new ArrayList<>();
+        List<String> values = new ArrayList<>();
 
         JSONObject datacard = new JSONObject();
         NumberFormat formatter = new DecimalFormat("#0.00", new DecimalFormatSymbols(Locale.ENGLISH));
