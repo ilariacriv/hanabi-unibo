@@ -10,7 +10,7 @@ import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
 import java.util.*;
 
-public class DataCard extends TypedJSONObject {
+public class DataCard extends TypedJSONObject{
 
     /**
      * Classe che rappresenta una carta Hanabi.<br>
@@ -107,4 +107,5 @@ public class DataCard extends TypedJSONObject {
             throw new JSONException("Missing \"value\"");
 
     }
+
 }

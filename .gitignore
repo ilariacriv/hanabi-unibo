@@ -1,4 +1,6 @@
 
 hanabiDataset.txt
-hanabiDataset.txt
+*.class
+/out/production/*
+*.txt
 *.class

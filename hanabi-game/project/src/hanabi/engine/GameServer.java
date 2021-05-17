@@ -248,7 +248,7 @@ public final class GameServer
 			//Creo una variabile per mantenere l'ultima mossa effettuata
 			Action currentAction;
 
-			DatasetGeneration data = new DatasetGeneration(currentState);
+			DatasetGeneration data = new DatasetGeneration(currentState, g);
 
 			//Inizia il ciclo di gioco
 			while(true)
