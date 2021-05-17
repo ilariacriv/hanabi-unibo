@@ -1,7 +1,7 @@
 package model;
 
 public class RawAction {
-    private String player, type,hinted,color;
+    private String player,type,hinted,color;
     private int card,value;
 
     public RawAction(){

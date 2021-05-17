@@ -23,17 +23,51 @@ public class RawState {
      *  * }
      */
 
-    private ArrayList<Card> discarded;
+    private ArrayList<Integer> discarded;
     private String current;
     private int round,fuse,hints,finalround,deck,red,blue,yellow,white,green,player;
+    private double handentropy_current, handentropy_other;
+    private ArrayList<RawCard> other_hand, current_hand;
 
     public RawState(){}
 
-    public ArrayList<Card> getDiscarded() {
+    public double getHandentropy_current() {
+        return handentropy_current;
+    }
+
+    public void setHandentropy_current(double handentropy_current) {
+        this.handentropy_current = handentropy_current;
+    }
+
+    public double getHandentropy_other() {
+        return handentropy_other;
+    }
+
+    public void setHandentropy_other(double handentropy_other) {
+        this.handentropy_other = handentropy_other;
+    }
+
+    public ArrayList<RawCard> getOther_hand() {
+        return other_hand;
+    }
+
+    public void setOther_hand(ArrayList<RawCard> other_hand) {
+        this.other_hand = other_hand;
+    }
+
+    public ArrayList<RawCard> getCurrent_hand() {
+        return current_hand;
+    }
+
+    public void setCurrent_hand(ArrayList<RawCard> current_hand) {
+        this.current_hand = current_hand;
+    }
+
+    public ArrayList<Integer> getDiscarded() {
         return discarded;
     }
 
-    public void setDiscarded(ArrayList<Card> discarded) {
+    public void setDiscarded(ArrayList<Integer> discarded) {
         this.discarded = discarded;
     }
 
