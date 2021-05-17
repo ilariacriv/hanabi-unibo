@@ -18,13 +18,13 @@ public class ReadFile {
     private FileReader gamereader,actionreader;
     private Gson gson;
 
-    public ReadFile(String gamefile) {
+    public ReadFile(String gamefile, String actionfile) {
         this.gson = new Gson();
         try {
             this.gamereader= new FileReader(gamefile);
             this.gamebr= new BufferedReader(gamereader);
 
-            this.actionreader= new FileReader(gamefile);
+            this.actionreader= new FileReader(actionfile);
             this.actionbr= new BufferedReader(actionreader);
 
         } catch (FileNotFoundException e) {
