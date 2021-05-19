@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 //TODO fare i cast è brutto ma non ho idee migliori
+//TODO forse ha più senso raggruppare le cose per colore in modo da agevolare il controllo simmetrie
 
 public class FinalState {
     private ArrayList<Double> state;

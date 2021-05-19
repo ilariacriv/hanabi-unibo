@@ -1,6 +1,7 @@
 package persistence;
 
 import com.google.gson.Gson;
+import model.finale.FinalState;
 import model.raw.RawAction;
 import model.raw.RawState;
 
@@ -32,7 +33,7 @@ public class GameReaderFile {
 
     }
 
-    public RawState readState(){
+    public RawState readRawState(){
         RawState state= new RawState();
         try {
             String line= gamebr.readLine();
@@ -42,6 +43,11 @@ public class GameReaderFile {
             e.printStackTrace();
         }
     return state;
+    }
+
+    public FinalState readFinalState(){
+        //TODO in base a come stampiamo FinalState
+        return null;
     }
 
 
