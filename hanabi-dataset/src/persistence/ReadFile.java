@@ -1,8 +1,8 @@
 package persistence;
 
 import com.google.gson.Gson;
-import model.RawAction;
-import model.RawState;
+import model.raw.RawAction;
+import model.raw.RawState;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;

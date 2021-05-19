@@ -1,4 +1,4 @@
-package model;
+package model.raw;
 
 public class RawAction {
     private String player,type,hinted,color;

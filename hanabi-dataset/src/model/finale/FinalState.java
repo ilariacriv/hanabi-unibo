@@ -1,4 +1,9 @@
-package model;
+package model.finale;
+
+import model.utils.Colors;
+import model.raw.RawCard;
+import model.raw.RawState;
+import model.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.List;

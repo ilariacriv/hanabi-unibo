@@ -1,5 +1,5 @@
-import model.RawAction;
-import model.RawState;
+import model.raw.RawAction;
+import model.raw.RawState;
 import persistence.ReadFile;
 
 public class Main {
