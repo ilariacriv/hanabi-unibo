@@ -8,7 +8,7 @@ import model.utils.Utils;
 import java.util.ArrayList;
 import java.util.List;
 
-//TODO meglio tutti double con i cast o lasciamo alcuni interi??
+//TODO fare i cast è brutto ma non ho idee migliori
 
 public class FinalState {
     private ArrayList<Double> state;
@@ -71,6 +71,13 @@ public class FinalState {
             case "yellow" : col[Colors.YELLOW.ordinal()]=1.0; break;
         }
         this.state.addAll(List.of(col));
+    }
+
+
+    @Override
+    public String toString() {
+        //TODO in base al formato che decidiamo
+        return "";
     }
 
 }
