@@ -32,7 +32,7 @@ public class ColorState {
                 this.firework=rawState.getRed();
                 break;
             }
-            case BlUE -> {
+            case BLUE -> {
                 this.firework=rawState.getBlue();
                 break;
             }
@@ -51,20 +51,28 @@ public class ColorState {
         }
         this.sum+=firework;
 
-        for(int i=0; i<5; i++){
+        for(int i=0; i<rawState.getCurrent_hand().size(); i++){
             if(rawState.getCurrent_hand().get(i).getColor().equalsIgnoreCase(color.toString())){
                 cards_curr[i][0]= Double.valueOf(rawState.getCurrent_hand().get(i).getValue());
             }else{
                 cards_curr[i][0]=0.0;
             }
+            cards_curr[i][1]=rawState.getCurrent_hand().get(i).getPoss_colors().get(color.ordinal());
+            this.sum+=cards_curr[i][1];
+        }
+
+        for(int i=0; i<rawState.getOther_hand().size(); i++){
             if(rawState.getOther_hand().get(i).getColor().equalsIgnoreCase(color.toString())){
                 cards_oth[i][0]= Double.valueOf(rawState.getOther_hand().get(i).getValue());
             }else{
                 cards_oth[i][0]=0.0;
             }
             cards_oth[i][1]=rawState.getOther_hand().get(i).getPoss_colors().get(color.ordinal());
-            cards_curr[i][1]=rawState.getCurrent_hand().get(i).getPoss_colors().get(color.ordinal());
-            this.sum+=discarded[i]+cards_curr[i][1]+cards_oth[i][1];
+            this.sum+=cards_oth[i][1];
+        }
+
+        for(int i=0; i<5; i++){
+            this.sum += discarded[i];
         }
     }
 

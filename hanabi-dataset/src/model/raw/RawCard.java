@@ -90,6 +90,6 @@ public class RawCard
 	}
 
 	public void setColorEnum() {
-		this.colorEnum = Colors.valueOf(this.color.toLowerCase(Locale.ROOT));
+		this.colorEnum = Colors.valueOf(this.color.toUpperCase(Locale.ROOT));
 	}
 }
