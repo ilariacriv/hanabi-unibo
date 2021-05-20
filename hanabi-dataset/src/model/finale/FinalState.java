@@ -21,7 +21,9 @@ public class FinalState {
     private Double[] state;
     private ArrayList<ColorState> colorOrder;
 
-    public FinalState( RawState raw) {
+
+
+    public FinalState(RawState raw) {
         /*state= new ArrayList<>();
 
         state.add(Features.hints.ordinal(),(double) raw.getHints());
@@ -94,10 +96,16 @@ public class FinalState {
         }
     }
 
+    public ArrayList<ColorState> getColorOrder() {
+        return colorOrder;
+    }
 
+    public void setColorOrder(ArrayList<ColorState> colorOrder) {
+        this.colorOrder = colorOrder;
+    }
 
     public FinalState( ) {
-     state= new Double[DIM];
+        state= new Double[DIM];
     }
 
     public List<Double> getStateList() {
