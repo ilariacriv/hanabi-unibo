@@ -2,7 +2,7 @@ package model.utils;
 
 public enum Colors {
     WHITE,
-    BlUE,
+    BLUE,
     RED,
     YELLOW,
     GREEN;

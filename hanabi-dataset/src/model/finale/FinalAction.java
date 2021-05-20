@@ -16,9 +16,9 @@ public class FinalAction {
     public FinalAction(RawAction rawAction, FinalState finalState, RawState rawState){
         actions = new int[20];
         for(int i=0; i<20; i++) actions[i] = 0;
-        this.mapAction(rawAction);
         this.finalState = finalState;
         this.rawState = rawState;
+        this.mapAction(rawAction);
     }
 
     private void mapAction(RawAction raw){

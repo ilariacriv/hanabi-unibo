@@ -47,6 +47,8 @@ public class FinalState {
             state.addAll(Utils.getDiscardedFromInt(col));
         }
         */
+        colorStateOrder = new ArrayList<>();
+        colorOrder = new ArrayList<>();
 
         for(Colors color : Colors.values()){
             colorStateOrder.add(new ColorState(color,raw));
@@ -121,7 +123,7 @@ public class FinalState {
             case RED -> {
                 return Double.valueOf(rawState.getRed());
             }
-            case BlUE -> {
+            case BLUE -> {
                 return Double.valueOf(rawState.getBlue());
             }
             case GREEN -> {
