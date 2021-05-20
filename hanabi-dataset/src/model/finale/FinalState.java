@@ -128,7 +128,7 @@ public class FinalState {
 
         for(int j=0; j<5;j++){
             int colorindex = this.getColorOrder().get(j).ordinal();
-            state[Features.poss_card1_oth_white.ordinal()+j] = rawCard.getPoss_colors().get(colorindex);
+            state[Features.poss_card1_oth_white.ordinal()+i*5+j] = rawCard.getPoss_colors().get(colorindex);
         }
         int j=0;
 
@@ -163,7 +163,7 @@ public class FinalState {
 
         for(int j=0; j<5;j++){
             int colorindex = this.getColorOrder().get(j).ordinal();
-            state[Features.poss_card1_curr_white.ordinal()+j] = rawCard.getPoss_colors().get(colorindex);
+            state[Features.poss_card1_curr_white.ordinal()+i*5+j] = rawCard.getPoss_colors().get(colorindex);
         }
         int j=0;
 
@@ -259,8 +259,8 @@ public class FinalState {
 
 
     private void addDiscarded(double[] discardedFromInt, int i) {
-        for(int j=0; j<25;j+=5){
-            state[Features.disc_1_color1.ordinal()+j] = discardedFromInt[j%5];
+        for(int j=0; j<5;j++){
+            state[Features.disc_1_color1.ordinal()+i*5+j] = discardedFromInt[j];
         }
     }
 
