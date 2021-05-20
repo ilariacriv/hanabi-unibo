@@ -10,7 +10,6 @@ import symmetries.ColorState;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Comparator;
-import java.util.List;
 
 //TODO fare i cast è brutto ma non ho idee migliori
 //TODO forse ha più senso raggruppare le cose per colore in modo da agevolare il controllo simmetrie
@@ -18,10 +17,10 @@ import java.util.List;
 public class FinalState {
     //private ArrayList<Double> state;
     final static int DIM=176;
-    private Double[] state;
-    private ArrayList<ColorState> colorOrder;
-
-
+    private double[] state;
+    private ArrayList<ColorState> colorStateOrder;
+    private ArrayList<Colors> colorOrder;
+    private ArrayList<RawCard> orderedHandCurrent, orderedHandOther;
 
     public FinalState(RawState raw) {
         /*state= new ArrayList<>();
@@ -50,7 +49,7 @@ public class FinalState {
         */
 
         for(Colors color : Colors.values()){
-            colorOrder.add(new ColorState(color,raw));
+            colorStateOrder.add(new ColorState(color,raw));
         }
         Comparator<ColorState> csComparator = (Comparator.comparing( ( ColorState cs) -> cs.getSum()))
                 .thenComparing(cs2 -> cs2.getFirework())
@@ -62,11 +61,16 @@ public class FinalState {
 
         //TODO va bene questo comparator???? Probabilmente funziona nella maggior Parte dei casi ma sicuramente ci sono alcuni che non vengono ordinati correttamente
 
-        colorOrder.sort(csComparator);
+        colorStateOrder.sort(csComparator);
+
+        for(ColorState cs:colorStateOrder){
+            colorOrder.add(cs.getColor());
+        }
+
 
         //TODO ordinare in base ai colori di colororder
 
-        state= new Double[DIM];
+        state= new double[DIM];
 
         for(int i=0; i<DIM; i++){
             state[i]=0.0;
@@ -79,11 +83,9 @@ public class FinalState {
         state[Features.handentropy_current.ordinal()]= raw.getHandentropy_current();
         state[Features.handentropy_other.ordinal()]= raw.getHandentropy_other();
 
-        state[Features.firework_red.ordinal()] = (double) raw.getRed();
-        state[Features.firework_blue.ordinal()] = (double) raw.getBlue();
-        state[Features.firework_yellow.ordinal()] = (double) raw.getYellow();
-        state[Features.firework_white.ordinal()] = (double) raw.getWhite();
-        state[Features.firework_green.ordinal()] = (double) raw.getGreen();
+        for(int i=0; i<5; i++){
+            state[Features.firework_color1.ordinal()+i]= getFirework(colorStateOrder.get(i).getColor(), raw);
+        }
 
         for(RawCard c: raw.getOther_hand()){
             addCard(c);
@@ -96,31 +98,71 @@ public class FinalState {
         }
     }
 
-    public ArrayList<ColorState> getColorOrder() {
+    private Double getFirework(Colors color, RawState rawState) {
+        switch (color) {
+            case RED -> {
+                return Double.valueOf(rawState.getRed());
+            }
+            case BlUE -> {
+                return Double.valueOf(rawState.getBlue());
+            }
+            case GREEN -> {
+                return Double.valueOf(rawState.getGreen());
+            }
+            case WHITE -> {
+                return Double.valueOf(rawState.getWhite());
+            }
+            case YELLOW -> {
+                return Double.valueOf(rawState.getYellow());
+            }
+        }
+        return -1.0;
+    }
+
+    public ArrayList<Colors> getColorOrder() {
         return colorOrder;
     }
 
-    public void setColorOrder(ArrayList<ColorState> colorOrder) {
+    public void setColorOrder(ArrayList<Colors> colorOrder) {
         this.colorOrder = colorOrder;
     }
 
+    public ArrayList<RawCard> getOrderedHandCurrent() {
+        return orderedHandCurrent;
+    }
+
+    public void setOrderedHandCurrent(ArrayList<RawCard> orderedHandCurrent) {
+        this.orderedHandCurrent = orderedHandCurrent;
+    }
+
+    public ArrayList<RawCard> getOrderedHandOther() {
+        return orderedHandOther;
+    }
+
+    public void setOrderedHandOther(ArrayList<RawCard> orderedHandOther) {
+        this.orderedHandOther = orderedHandOther;
+    }
+
+
+
+    public ArrayList<ColorState> getColorStateOrder() {
+        return colorStateOrder;
+    }
+
+    public void setColorStateOrder(ArrayList<ColorState> colorStateOrder) {
+        this.colorStateOrder = colorStateOrder;
+    }
+
     public FinalState( ) {
-        state= new Double[DIM];
+        state= new double[DIM];
     }
 
-    public List<Double> getStateList() {
-        return List.of(state);
-    }
 
-    public void setStateList(ArrayList<Double> state) {
-        this.state = (Double[]) state.toArray();
-    }
-
-    public Double[] getState() {
+    public double[] getState() {
         return state;
     }
 
-    public void setState(Double[] state) {
+    public void setState(double[] state) {
         this.state = state;
     }
 

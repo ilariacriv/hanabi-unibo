@@ -10,11 +10,11 @@ public enum Features {
     handentropy_current,
     handentropy_other,
 
-    firework_red,
-    firework_blue,
-    firework_yellow,
-    firework_white,
-    firework_green,
+    firework_color1,
+    firework_color2,
+    firework_color3,
+    firework_color4,
+    firework_color5,
 
     playability_card1_other,
     playability_card2_other,

@@ -71,7 +71,7 @@ public class ColorState {
     public ColorState(int colorindex, FinalState finalState){
         this.colorindex=colorindex;
 
-        //TODO in base a come stampiamo le cose 
+        //TODO in base a come stampiamo le cose
     }
 
 
