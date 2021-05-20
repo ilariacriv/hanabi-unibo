@@ -38,6 +38,10 @@ public class GameReaderFile {
         try {
             String line= gamebr.readLine();
             state= gson.fromJson(line, RawState.class);
+            for (int i=0; i<5;i++){
+                state.getOther_hand().get(i).setColorEnum();
+                state.getCurrent_hand().get(i).setColorEnum();
+            }
 
         } catch (IOException e) {
             e.printStackTrace();
