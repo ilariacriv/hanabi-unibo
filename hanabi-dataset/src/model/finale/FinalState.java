@@ -74,6 +74,9 @@ public class FinalState {
         state[Features.finalround.ordinal()]= (double) raw.getFinalround();
         state[Features.fuse.ordinal()]=(double) raw.getFuse();
         state[Features.deck.ordinal()]=(double) raw.getDeck();
+        state[Features.handentropy_current.ordinal()]= raw.getHandentropy_current();
+        state[Features.handentropy_other.ordinal()]= raw.getHandentropy_other();
+
         state[Features.firework_red.ordinal()] = (double) raw.getRed();
         state[Features.firework_blue.ordinal()] = (double) raw.getBlue();
         state[Features.firework_yellow.ordinal()] = (double) raw.getYellow();
