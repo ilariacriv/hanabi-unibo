@@ -114,8 +114,9 @@ public class FinalState {
             addCurrCard(orderedHandCurrent.get(i), i);
         }
 
-        for(Integer col: raw.getDiscarded()) {
-            addDiscarded(Utils.getDiscardedListFromInt(col));
+        for(int i=0; i<5;i++) {
+            Colors color = colorOrder.get(i);
+            addDiscarded(Utils.getDiscardedArrayFromInt(raw.getDiscarded().get(color.ordinal())),i);
         }
     }
 
@@ -257,38 +258,10 @@ public class FinalState {
     }
 
 
-    public void addCard(RawCard card) {
-       /*
-        this.state.add(card.getPlayability());
-        addColor(card.getColor());
-        this.state.add((double) card.getValue());
-        this.state.add(card.getCardentropy());
-        this.state.add(card.getUselessness());
-        this.state.addAll(card.getPoss_values());
-        this.state.addAll(card.getPoss_colors());
-        */
-
-        //TODO
-    }
-
-    public void addColor(String color){
-        /*
-        Double[] col = {0.0,0.0,0.0,0.0,0.0};
-        switch (color){
-            case "white" : col[Colors.WHITE.ordinal()]=1.0; break;
-            case "blue" : col[Colors.BlUE.ordinal()]=1.0; break;
-            case "red" : col[Colors.RED.ordinal()]=1.0; break;
-            case "green" : col[Colors.GREEN.ordinal()]=1.0; break;
-            case "yellow" : col[Colors.YELLOW.ordinal()]=1.0; break;
+    private void addDiscarded(double[] discardedFromInt, int i) {
+        for(int j=0; j<25;j+=5){
+            state[Features.disc_1_color1.ordinal()+j] = discardedFromInt[j%5];
         }
-        this.state.addAll(List.of(col));
-        */
-        //TODO
-    }
-
-    private void addDiscarded(Collection<Double> discardedFromInt) {
-    //TODO
-
     }
 
 
