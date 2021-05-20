@@ -3,21 +3,27 @@ package model.finale;
 import model.utils.Colors;
 import model.raw.RawCard;
 import model.raw.RawState;
+import model.utils.Features;
 import model.utils.Utils;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 //TODO fare i cast è brutto ma non ho idee migliori
 //TODO forse ha più senso raggruppare le cose per colore in modo da agevolare il controllo simmetrie
 
 public class FinalState {
-    private ArrayList<Double> state;
+    //private ArrayList<Double> state;
+    final static int DIM=176;
+
+
+    private Double[] state;
 
     public FinalState( RawState raw) {
-        state= new ArrayList<>();
+        /*state= new ArrayList<>();
 
-        state.add((double) raw.getHints());
+        state.add(Features.hints.ordinal(),(double) raw.getHints());
         state.add((double) raw.getFinalround());
         state.add((double) raw.getWhite());
         state.add((double) raw.getBlue());
@@ -28,7 +34,7 @@ public class FinalState {
         state.add(raw.getHandentropy_other());
         state.add(raw.getHandentropy_current());
         state.add((double) raw.getFuse());
-        state.add((double) raw.getRound());
+       // state.add((double) raw.getRound());
         for(RawCard c: raw.getOther_hand()){
             addCard(c);
         }
@@ -38,21 +44,60 @@ public class FinalState {
         for(Integer col: raw.getDiscarded()) {
             state.addAll(Utils.getDiscardedFromInt(col));
         }
+        */
+
+        state= new Double[DIM];
+
+        for(int i=0; i<DIM; i++){
+            state[i]=0.0;
+        }
+
+        state[Features.hints.ordinal()]=(double) raw.getHints();
+        state[Features.finalround.ordinal()]= (double) raw.getFinalround();
+        state[Features.fuse.ordinal()]=(double) raw.getFuse();
+        state[Features.deck.ordinal()]=(double) raw.getDeck();
+        state[Features.firework_red.ordinal()] = (double) raw.getRed();
+        state[Features.firework_blue.ordinal()] = (double) raw.getBlue();
+        state[Features.firework_yellow.ordinal()] = (double) raw.getYellow();
+        state[Features.firework_white.ordinal()] = (double) raw.getWhite();
+        state[Features.firework_green.ordinal()] = (double) raw.getGreen();
+
+        for(RawCard c: raw.getOther_hand()){
+            addCard(c);
+        }
+        for(RawCard c: raw.getCurrent_hand()){
+            addCard(c);
+        }
+        for(Integer col: raw.getDiscarded()) {
+            addDiscarded(Utils.getDiscardedFromInt(col));
+        }
     }
 
-    public ArrayList<Double> getState() {
+
+
+    public FinalState( ) {
+     state= new Double[DIM];
+    }
+
+    public List<Double> getStateList() {
+        return List.of(state);
+    }
+
+    public void setStateList(ArrayList<Double> state) {
+        this.state = (Double[]) state.toArray();
+    }
+
+    public Double[] getState() {
         return state;
     }
 
-    public void setState(ArrayList<Double> state) {
+    public void setState(Double[] state) {
         this.state = state;
     }
 
-    public void add(Double val) {
-        this.state.add(val);
-    }
 
     public void addCard(RawCard card) {
+       /*
         this.state.add(card.getPlayability());
         addColor(card.getColor());
         this.state.add((double) card.getValue());
@@ -60,9 +105,13 @@ public class FinalState {
         this.state.add(card.getUselessness());
         this.state.addAll(card.getPoss_values());
         this.state.addAll(card.getPoss_colors());
+        */
+
+        //TODO
     }
 
     public void addColor(String color){
+        /*
         Double[] col = {0.0,0.0,0.0,0.0,0.0};
         switch (color){
             case "white" : col[Colors.WHITE.ordinal()]=1.0; break;
@@ -72,7 +121,15 @@ public class FinalState {
             case "yellow" : col[Colors.YELLOW.ordinal()]=1.0; break;
         }
         this.state.addAll(List.of(col));
+        */
+        //TODO
     }
+
+    private void addDiscarded(Collection<Double> discardedFromInt) {
+    //TODO
+
+    }
+
 
 
     @Override
