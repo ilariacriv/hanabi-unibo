@@ -104,34 +104,104 @@ public class FinalState {
         this.orderedHandOther=raw.getOther_hand();
         this.orderedHandOther.sort(cardComparator);
 
+        for(int i=0; i<orderedHandOther.size(); i++){
+            addOthCard(orderedHandOther.get(i), i);
+        }
 
-        for(RawCard c: orderedHandOther){
-            addCard(c);
+        for(int i=0; i<orderedHandCurrent.size(); i++){
+            addCurrCard(orderedHandCurrent.get(i), i);
         }
-        for(RawCard c: orderedHandCurrent){
-            addCard(c);
-        }
+
         for(Integer col: raw.getDiscarded()) {
             addDiscarded(Utils.getDiscardedListFromInt(col));
         }
     }
 
-    private Double getFirework(Colors color, RawState rawState) {
+    private void addOthCard(RawCard rawCard, int i) {
+        state[Features.value_oth_card1.ordinal()+i]= rawCard.getValue();
+        state[Features.playability_card1_other.ordinal()+i] = rawCard.getPlayability();
+        state[Features.cardentropy_card1_other.ordinal()+i] = rawCard.getCardentropy();
+        state[Features.uselessness_card1_other.ordinal()+i] = rawCard.getUselessness();
+
+        for(int j=0; j<5;j++){
+            int colorindex = this.getColorOrder().get(j).ordinal();
+            state[Features.poss_card1_oth_white.ordinal()+j] = rawCard.getPoss_colors().get(colorindex);
+        }
+        int j=0;
+
+        Features feat=null;
+
+        switch (i){
+            case 0 : feat=Features.color_oth_card1_white; break;
+            case 1 : feat=Features.color_oth_card2_white; break;
+            case 2 : feat=Features.color_oth_card3_white; break;
+            case 3 : feat=Features.color_oth_card4_white; break;
+            case 4 : feat=Features.color_oth_card5_white; break;
+        }
+
+
+        for (Colors colors: Colors.values()){
+            if(rawCard.getColorEnum().equals(colors)){
+                state[feat.ordinal()+j] =1;
+            }else{
+                state[feat.ordinal()+j] =0;
+            }
+            j++;
+        }
+
+
+    }
+
+    private void addCurrCard(RawCard rawCard, int i) {
+        state[Features.value_curr_card1.ordinal()+i]= rawCard.getValue();
+        state[Features.playability_card1_curr.ordinal()+i] = rawCard.getPlayability();
+        state[Features.cardentropy_card1_curr.ordinal()+i] = rawCard.getCardentropy();
+        state[Features.uselessness_card1_curr.ordinal()+i] = rawCard.getUselessness();
+
+        for(int j=0; j<5;j++){
+            int colorindex = this.getColorOrder().get(j).ordinal();
+            state[Features.poss_card1_curr_white.ordinal()+j] = rawCard.getPoss_colors().get(colorindex);
+        }
+        int j=0;
+
+        Features feat=null;
+
+        switch (i){
+            case 0 : feat=Features.color_curr_card1_white; break;
+            case 1 : feat=Features.color_curr_card2_white; break;
+            case 2 : feat=Features.color_curr_card3_white; break;
+            case 3 : feat=Features.color_curr_card4_white; break;
+            case 4 : feat=Features.color_curr_card5_white; break;
+        }
+
+
+        for (Colors colors: Colors.values()){
+            if(rawCard.getColorEnum().equals(colors)){
+                state[feat.ordinal()+j] =1;
+            }else{
+                state[feat.ordinal()+j] =0;
+            }
+            j++;
+        }
+
+    }
+
+    private double getFirework(Colors color, RawState rawState) {
         switch (color) {
             case RED -> {
-                return Double.valueOf(rawState.getRed());
+                return rawState.getRed();
             }
             case BlUE -> {
-                return Double.valueOf(rawState.getBlue());
+                return rawState.getBlue();
             }
             case GREEN -> {
-                return Double.valueOf(rawState.getGreen());
+                return  rawState.getGreen();
             }
             case WHITE -> {
-                return Double.valueOf(rawState.getWhite());
+                return  rawState.getWhite();
             }
             case YELLOW -> {
-                return Double.valueOf(rawState.getYellow());
+                return  rawState.getYellow();
             }
         }
         return -1.0;
