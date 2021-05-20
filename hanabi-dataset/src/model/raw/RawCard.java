@@ -1,5 +1,7 @@
 package model.raw;
 
+import model.utils.Colors;
+
 import java.util.List;
 import java.util.*;
 
@@ -18,6 +20,7 @@ public class RawCard
 	private List<Double> poss_colors = new ArrayList<>();
 	private List<Double> poss_values = new ArrayList<>();
 	private String color;
+	private Colors colorEnum;
 	private int value;
 	private double playability,cardentropy,uselessness;
 
@@ -80,5 +83,13 @@ public class RawCard
 
 	public void setUselessness(double uselessness) {
 		this.uselessness = uselessness;
+	}
+
+	public Colors getColorEnum() {
+		return colorEnum;
+	}
+
+	public void setColorEnum() {
+		this.colorEnum = Colors.valueOf(this.color.toLowerCase(Locale.ROOT));
 	}
 }

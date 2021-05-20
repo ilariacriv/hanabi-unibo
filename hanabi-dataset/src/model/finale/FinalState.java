@@ -67,7 +67,6 @@ public class FinalState {
             colorOrder.add(cs.getColor());
         }
 
-
         //TODO ordinare in base ai colori di colororder
 
         state= new double[DIM];
@@ -87,10 +86,29 @@ public class FinalState {
             state[Features.firework_color1.ordinal()+i]= getFirework(colorStateOrder.get(i).getColor(), raw);
         }
 
-        for(RawCard c: raw.getOther_hand()){
+        Comparator<RawCard> cardComparator = new Comparator<RawCard>() {
+            @Override
+            public int compare(RawCard o1, RawCard o2) {
+               int index1=-1,index2=-1;
+               for (int i=0; i<5;i++){
+                   if(colorOrder.get(i).equals(o1.getColorEnum())) index1=i;
+                   if(colorOrder.get(i).equals(o2.getColorEnum())) index2=i;
+               }
+               return Integer.compare(index1,index2);
+            }
+        }.thenComparing(RawCard::getValue);
+
+        this.orderedHandCurrent =raw.getCurrent_hand();
+        this.orderedHandCurrent.sort(cardComparator);
+
+        this.orderedHandOther=raw.getOther_hand();
+        this.orderedHandOther.sort(cardComparator);
+
+
+        for(RawCard c: orderedHandOther){
             addCard(c);
         }
-        for(RawCard c: raw.getCurrent_hand()){
+        for(RawCard c: orderedHandCurrent){
             addCard(c);
         }
         for(Integer col: raw.getDiscarded()) {
