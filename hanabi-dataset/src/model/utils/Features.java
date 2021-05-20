@@ -1,5 +1,7 @@
 package model.utils;
 
+//TODO cambiare le cose colorate con un generico colore1/2/3/4/5 perchè l'ordine può cambiare
+
 public enum Features {
     fuse,
     hints,

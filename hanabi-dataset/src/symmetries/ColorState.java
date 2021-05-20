@@ -111,6 +111,10 @@ public class ColorState {
         return discarded;
     }
 
+    public Double getDiscarded(int i) {
+        return discarded[i];
+    }
+
     public void setDiscarded(Double[] discarded) {
         this.discarded = discarded;
     }
@@ -129,5 +133,23 @@ public class ColorState {
 
     public void setCards_oth(Double[][] cards_oth) {
         this.cards_oth = cards_oth;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ColorState that = (ColorState) o;
+        return firework == that.firework && sum.equals(that.sum) && Arrays.equals(discarded, that.discarded)
+                && Arrays.equals(cards_curr, that.cards_curr) && Arrays.equals(cards_oth, that.cards_oth);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(sum, firework);
+        result = 31 * result + Arrays.hashCode(discarded);
+        result = 31 * result + Arrays.hashCode(cards_curr);
+        result = 31 * result + Arrays.hashCode(cards_oth);
+        return result;
     }
 }

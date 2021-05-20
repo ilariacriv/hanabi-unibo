@@ -2,11 +2,14 @@ package model.finale;
 
 import model.raw.RawCard;
 import model.raw.RawState;
+import model.utils.Colors;
 import model.utils.Features;
 import model.utils.Utils;
+import symmetries.ColorState;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.List;
 
 //TODO fare i cast è brutto ma non ho idee migliori
@@ -15,9 +18,8 @@ import java.util.List;
 public class FinalState {
     //private ArrayList<Double> state;
     final static int DIM=176;
-
-
     private Double[] state;
+    private ArrayList<ColorState> colorOrder;
 
     public FinalState( RawState raw) {
         /*state= new ArrayList<>();
@@ -44,6 +46,23 @@ public class FinalState {
             state.addAll(Utils.getDiscardedFromInt(col));
         }
         */
+
+        for(Colors color : Colors.values()){
+            colorOrder.add(new ColorState(color,raw));
+        }
+        Comparator<ColorState> csComparator = (Comparator.comparing( ( ColorState cs) -> cs.getSum()))
+                .thenComparing(cs2 -> cs2.getFirework())
+                .thenComparing(cs3 -> cs3.getDiscarded(0))
+                .thenComparing(cs4 -> cs4.getDiscarded(1))
+                .thenComparing(cs5 -> cs5.getDiscarded(2))
+                .thenComparing(cs6 -> cs6.getDiscarded(3))
+                .thenComparing(cs7 -> cs7.getDiscarded(4));
+
+        //TODO va bene questo comparator???? Probabilmente funziona nella maggior Parte dei casi ma sicuramente ci sono alcuni che non vengono ordinati correttamente
+
+        colorOrder.sort(csComparator);
+
+        //TODO ordinare in base ai colori di colororder
 
         state= new Double[DIM];
 
