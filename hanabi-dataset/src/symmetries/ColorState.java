@@ -15,11 +15,11 @@ import java.util.*;
 public class ColorState {
     private Colors color=null;
     private int colorindex=-1;
-    private Double sum;
+    private double sum;
     private int firework;
-    private Double[] discarded = new Double[5];
-    private Double[][] cards_curr = new Double[5][2];
-    private Double[][] cards_oth = new Double[5][2];
+    private double[] discarded = new double[5];
+    private double[][] cards_curr = new double[5][2];
+    private double[][] cards_oth = new double[5][2];
 
 
     public ColorState(Colors color, RawState rawState){
@@ -107,31 +107,31 @@ public class ColorState {
         this.firework = firework;
     }
 
-    public Double[] getDiscarded() {
+    public double[] getDiscarded() {
         return discarded;
     }
 
-    public Double getDiscarded(int i) {
+    public double getDiscarded(int i) {
         return discarded[i];
     }
 
-    public void setDiscarded(Double[] discarded) {
+    public void setDiscarded(double[] discarded) {
         this.discarded = discarded;
     }
 
-    public Double[][] getCards_curr() {
+    public double[][] getCards_curr() {
         return cards_curr;
     }
 
-    public void setCards_curr(Double[][] cards_curr) {
+    public void setCards_curr(double[][] cards_curr) {
         this.cards_curr = cards_curr;
     }
 
-    public Double[][] getCards_oth() {
+    public double[][] getCards_oth() {
         return cards_oth;
     }
 
-    public void setCards_oth(Double[][] cards_oth) {
+    public void setCards_oth(double[][] cards_oth) {
         this.cards_oth = cards_oth;
     }
 
@@ -140,7 +140,7 @@ public class ColorState {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ColorState that = (ColorState) o;
-        return firework == that.firework && sum.equals(that.sum) && Arrays.equals(discarded, that.discarded)
+        return firework == that.firework && sum == that.sum && Arrays.equals(discarded, that.discarded)
                 && Arrays.equals(cards_curr, that.cards_curr) && Arrays.equals(cards_oth, that.cards_oth);
     }
 
