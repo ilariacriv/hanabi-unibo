@@ -1,6 +1,5 @@
 package model.finale;
 
-import model.utils.Colors;
 import model.raw.RawCard;
 import model.raw.RawState;
 import model.utils.Features;
@@ -69,7 +68,7 @@ public class FinalState {
             addCard(c);
         }
         for(Integer col: raw.getDiscarded()) {
-            addDiscarded(Utils.getDiscardedFromInt(col));
+            addDiscarded(Utils.getDiscardedListFromInt(col));
         }
     }
 
