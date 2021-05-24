@@ -13,6 +13,9 @@ import java.util.Comparator;
 //TODO fare i cast è brutto ma non ho idee migliori
 //TODO forse ha più senso raggruppare le cose per colore in modo da agevolare il controllo simmetrie
 
+/**
+ * This class contains the parameters of the state that will be given as input to the NN
+ */
 public class FinalState {
     //private ArrayList<Double> state;
     final static int DIM=176;

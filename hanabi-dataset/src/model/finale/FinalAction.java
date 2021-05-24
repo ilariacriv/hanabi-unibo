@@ -8,6 +8,9 @@ import model.utils.ActionCode;
 import java.util.ArrayList;
 import java.util.Locale;
 
+/**
+ * This class contains the parameters of the action that will be given as input to the NN
+ */
 public class FinalAction {
     private int[] actions;
     private FinalState finalState;

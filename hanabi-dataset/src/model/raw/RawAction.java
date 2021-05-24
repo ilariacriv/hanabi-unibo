@@ -1,5 +1,8 @@
 package model.raw;
 
+/**
+ * This class contains all the parameters that has an action in the text file
+ */
 public class RawAction {
     private String player,type,hinted,color;
     private int card,value;
