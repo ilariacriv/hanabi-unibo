@@ -21,24 +21,24 @@ public class FinalAction {
         this.mapAction(rawAction);
     }
 
-    private void mapAction(RawAction raw){
+    private void mapAction(RawAction rawAction){
 
         ArrayList<RawCard> currentHand = finalState.getOrderedHandCurrent();
         ArrayList<RawCard> oldCurrentHand = rawState.getCurrent_hand();
-        RawCard card = oldCurrentHand.get(raw.getCard());
+        RawCard card = oldCurrentHand.get(rawAction.getCard());
         int index = currentHand.indexOf(card);
 
-        if(raw.getType().equalsIgnoreCase("discard")){
+        if(rawAction.getType().equalsIgnoreCase("discard")){
             actions[ActionCode.valueOf("DISCARD_1st").ordinal()+index]=1;
         }
-        if(raw.getType().equalsIgnoreCase("play")){
+        if(rawAction.getType().equalsIgnoreCase("play")){
             actions[ActionCode.valueOf("PLAY_1st").ordinal()+index]=1;
         }
-        if(raw.getType().equalsIgnoreCase("hintvalue")){
-            actions[ActionCode.valueOf("HINT_VALUE_"+raw.getValue()).ordinal()]=1;
+        if(rawAction.getType().equalsIgnoreCase("hintvalue")){
+            actions[ActionCode.valueOf("HINT_VALUE_"+rawAction.getValue()).ordinal()]=1;
         }
-        if(raw.getType().equalsIgnoreCase("hintcolor")){
-            actions[ActionCode.valueOf("HINT_"+raw.getColor().toUpperCase()).ordinal()]=1;
+        if(rawAction.getType().equalsIgnoreCase("hintcolor")){
+            actions[ActionCode.valueOf("HINT_"+rawAction.getColor().toUpperCase()).ordinal()]=1;
         }
     }
 

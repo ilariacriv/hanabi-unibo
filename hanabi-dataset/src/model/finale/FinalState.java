@@ -8,7 +8,6 @@ import model.utils.Utils;
 import symmetries.ColorState;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Comparator;
 
 //TODO fare i cast è brutto ma non ho idee migliori
@@ -22,7 +21,7 @@ public class FinalState {
     private ArrayList<Colors> colorOrder;
     private ArrayList<RawCard> orderedHandCurrent, orderedHandOther;
 
-    public FinalState(RawState raw) {
+    public FinalState(RawState rawState) {
         /*state= new ArrayList<>();
 
         state.add(Features.hints.ordinal(),(double) raw.getHints());
@@ -51,7 +50,7 @@ public class FinalState {
         colorOrder = new ArrayList<>();
 
         for(Colors color : Colors.values()){
-            colorStateOrder.add(new ColorState(color,raw));
+            colorStateOrder.add(new ColorState(color,rawState));
         }
         Comparator<ColorState> csComparator = (Comparator.comparing( ( ColorState cs) -> cs.getSum()))
                 .thenComparing(cs2 -> cs2.getFirework())
@@ -77,15 +76,15 @@ public class FinalState {
             state[i]=0.0;
         }
 
-        state[Features.hints.ordinal()]=(double) raw.getHints();
-        state[Features.finalround.ordinal()]= (double) raw.getFinalround();
-        state[Features.fuse.ordinal()]=(double) raw.getFuse();
-        state[Features.deck.ordinal()]=(double) raw.getDeck();
-        state[Features.handentropy_current.ordinal()]= raw.getHandentropy_current();
-        state[Features.handentropy_other.ordinal()]= raw.getHandentropy_other();
+        state[Features.hints.ordinal()]=(double) rawState.getHints();
+        state[Features.finalround.ordinal()]= (double) rawState.getFinalround();
+        state[Features.fuse.ordinal()]=(double) rawState.getFuse();
+        state[Features.deck.ordinal()]=(double) rawState.getDeck();
+        state[Features.handentropy_current.ordinal()]= rawState.getHandentropy_current();
+        state[Features.handentropy_other.ordinal()]= rawState.getHandentropy_other();
 
         for(int i=0; i<5; i++){
-            state[Features.firework_color1.ordinal()+i]= getFirework(colorStateOrder.get(i).getColor(), raw);
+            state[Features.firework_color1.ordinal()+i]= getFirework(colorStateOrder.get(i).getColor(), rawState);
         }
 
         Comparator<RawCard> cardComparator = new Comparator<RawCard>() {
@@ -100,54 +99,54 @@ public class FinalState {
             }
         }.thenComparing(RawCard::getValue);
 
-        this.orderedHandCurrent =raw.getCurrent_hand();
+        this.orderedHandCurrent =rawState.getCurrent_hand();
         this.orderedHandCurrent.sort(cardComparator);
 
-        this.orderedHandOther=raw.getOther_hand();
+        this.orderedHandOther=rawState.getOther_hand();
         this.orderedHandOther.sort(cardComparator);
 
         for(int i=0; i<orderedHandOther.size(); i++){
-            addOthCard(orderedHandOther.get(i), i);
+            addOtherCard(orderedHandOther.get(i), i);
         }
 
         for(int i=0; i<orderedHandCurrent.size(); i++){
-            addCurrCard(orderedHandCurrent.get(i), i);
+            addCurrentCard(orderedHandCurrent.get(i), i);
         }
 
         for(int i=0; i<5;i++) {
             Colors color = colorOrder.get(i);
-            addDiscarded(Utils.getDiscardedArrayFromInt(raw.getDiscarded().get(color.ordinal())),i);
+            addDiscarded(Utils.getDiscardedArrayFromInt(rawState.getDiscarded().get(color.ordinal())),i);
         }
     }
 
-    private void addOthCard(RawCard rawCard, int i) {
-        state[Features.value_oth_card1.ordinal()+i]= rawCard.getValue();
+    private void addOtherCard(RawCard rawCard, int i) {
+        state[Features.value_other_card1.ordinal()+i]= rawCard.getValue();
         state[Features.playability_card1_other.ordinal()+i] = rawCard.getPlayability();
         state[Features.cardentropy_card1_other.ordinal()+i] = rawCard.getCardentropy();
         state[Features.uselessness_card1_other.ordinal()+i] = rawCard.getUselessness();
 
         for(int j=0; j<5;j++){
             int colorindex = this.getColorOrder().get(j).ordinal();
-            state[Features.poss_card1_oth_white.ordinal()+i*5+j] = rawCard.getPoss_colors().get(colorindex);
+            state[Features.poss_card1_oth_white.ordinal()+i*5+j] = rawCard.getPossible_colors().get(colorindex);
         }
         int j=0;
 
-        Features feat=null;
+        Features features=null;
 
         switch (i){
-            case 0 : feat=Features.color_oth_card1_white; break;
-            case 1 : feat=Features.color_oth_card2_white; break;
-            case 2 : feat=Features.color_oth_card3_white; break;
-            case 3 : feat=Features.color_oth_card4_white; break;
-            case 4 : feat=Features.color_oth_card5_white; break;
+            case 0 : features=Features.color_other_card1_white; break;
+            case 1 : features=Features.color_other_card2_white; break;
+            case 2 : features=Features.color_other_card3_white; break;
+            case 3 : features=Features.color_other_card4_white; break;
+            case 4 : features=Features.color_other_card5_white; break;
         }
 
 
         for (Colors colors: Colors.values()){
             if(rawCard.getColorEnum().equals(colors)){
-                state[feat.ordinal()+j] =1;
+                state[features.ordinal()+j] =1;
             }else{
-                state[feat.ordinal()+j] =0;
+                state[features.ordinal()+j] =0;
             }
             j++;
         }
@@ -155,34 +154,34 @@ public class FinalState {
 
     }
 
-    private void addCurrCard(RawCard rawCard, int i) {
-        state[Features.value_curr_card1.ordinal()+i]= rawCard.getValue();
-        state[Features.playability_card1_curr.ordinal()+i] = rawCard.getPlayability();
-        state[Features.cardentropy_card1_curr.ordinal()+i] = rawCard.getCardentropy();
-        state[Features.uselessness_card1_curr.ordinal()+i] = rawCard.getUselessness();
+    private void addCurrentCard(RawCard rawCard, int i) {
+        state[Features.value_current_card1.ordinal()+i]= rawCard.getValue();
+        state[Features.playability_card1_current.ordinal()+i] = rawCard.getPlayability();
+        state[Features.cardentropy_card1_current.ordinal()+i] = rawCard.getCardentropy();
+        state[Features.uselessness_card1_current.ordinal()+i] = rawCard.getUselessness();
 
         for(int j=0; j<5;j++){
             int colorindex = this.getColorOrder().get(j).ordinal();
-            state[Features.poss_card1_curr_white.ordinal()+i*5+j] = rawCard.getPoss_colors().get(colorindex);
+            state[Features.poss_card1_curr_white.ordinal()+i*5+j] = rawCard.getPossible_colors().get(colorindex);
         }
         int j=0;
 
-        Features feat=null;
+        Features features=null;
 
         switch (i){
-            case 0 : feat=Features.color_curr_card1_white; break;
-            case 1 : feat=Features.color_curr_card2_white; break;
-            case 2 : feat=Features.color_curr_card3_white; break;
-            case 3 : feat=Features.color_curr_card4_white; break;
-            case 4 : feat=Features.color_curr_card5_white; break;
+            case 0 : features=Features.color_current_card1_white; break;
+            case 1 : features=Features.color_current_card2_white; break;
+            case 2 : features=Features.color_current_card3_white; break;
+            case 3 : features=Features.color_current_card4_white; break;
+            case 4 : features=Features.color_current_card5_white; break;
         }
 
 
         for (Colors colors: Colors.values()){
             if(rawCard.getColorEnum().equals(colors)){
-                state[feat.ordinal()+j] =1;
+                state[features.ordinal()+j] =1;
             }else{
-                state[feat.ordinal()+j] =0;
+                state[features.ordinal()+j] =0;
             }
             j++;
         }
@@ -195,7 +194,7 @@ public class FinalState {
                 return rawState.getRed();
             }
             case BLUE -> {
-                return Double.valueOf(rawState.getBlue());
+                return  rawState.getBlue();
             }
             case GREEN -> {
                 return  rawState.getGreen();
@@ -260,7 +259,7 @@ public class FinalState {
 
     private void addDiscarded(double[] discardedFromInt, int i) {
         for(int j=0; j<5;j++){
-            state[Features.disc_1_color1.ordinal()+i*5+j] = discardedFromInt[j];
+            state[Features.discarded_1_color1.ordinal()+i*5+j] = discardedFromInt[j];
         }
     }
 

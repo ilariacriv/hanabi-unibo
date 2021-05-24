@@ -3,7 +3,6 @@ package symmetries;
 import model.finale.FinalState;
 import model.raw.RawState;
 import model.utils.Colors;
-import model.utils.Features;
 import model.utils.Utils;
 
 import java.util.*;
@@ -18,8 +17,8 @@ public class ColorState {
     private double sum;
     private int firework;
     private double[] discarded = new double[5];
-    private double[][] cards_curr = new double[5][2];
-    private double[][] cards_oth = new double[5][2];
+    private double[][] cards_current = new double[5][2];
+    private double[][] cards_other = new double[5][2];
 
 
     public ColorState(Colors color, RawState rawState){
@@ -53,22 +52,22 @@ public class ColorState {
 
         for(int i=0; i<rawState.getCurrent_hand().size(); i++){
             if(rawState.getCurrent_hand().get(i).getColor().equalsIgnoreCase(color.toString())){
-                cards_curr[i][0]= Double.valueOf(rawState.getCurrent_hand().get(i).getValue());
+                cards_current[i][0]= Double.valueOf(rawState.getCurrent_hand().get(i).getValue());
             }else{
-                cards_curr[i][0]=0.0;
+                cards_current[i][0]=0.0;
             }
-            cards_curr[i][1]=rawState.getCurrent_hand().get(i).getPoss_colors().get(color.ordinal());
-            this.sum+=cards_curr[i][1];
+            cards_current[i][1]=rawState.getCurrent_hand().get(i).getPossible_colors().get(color.ordinal());
+            this.sum+= cards_current[i][1];
         }
 
         for(int i=0; i<rawState.getOther_hand().size(); i++){
             if(rawState.getOther_hand().get(i).getColor().equalsIgnoreCase(color.toString())){
-                cards_oth[i][0]= Double.valueOf(rawState.getOther_hand().get(i).getValue());
+                cards_other[i][0]= Double.valueOf(rawState.getOther_hand().get(i).getValue());
             }else{
-                cards_oth[i][0]=0.0;
+                cards_other[i][0]=0.0;
             }
-            cards_oth[i][1]=rawState.getOther_hand().get(i).getPoss_colors().get(color.ordinal());
-            this.sum+=cards_oth[i][1];
+            cards_other[i][1]=rawState.getOther_hand().get(i).getPossible_colors().get(color.ordinal());
+            this.sum+= cards_other[i][1];
         }
 
         for(int i=0; i<5; i++){
@@ -127,20 +126,20 @@ public class ColorState {
         this.discarded = discarded;
     }
 
-    public double[][] getCards_curr() {
-        return cards_curr;
+    public double[][] getCards_current() {
+        return cards_current;
     }
 
-    public void setCards_curr(double[][] cards_curr) {
-        this.cards_curr = cards_curr;
+    public void setCards_current(double[][] cards_current) {
+        this.cards_current = cards_current;
     }
 
-    public double[][] getCards_oth() {
-        return cards_oth;
+    public double[][] getCards_other() {
+        return cards_other;
     }
 
-    public void setCards_oth(double[][] cards_oth) {
-        this.cards_oth = cards_oth;
+    public void setCards_other(double[][] cards_other) {
+        this.cards_other = cards_other;
     }
 
     @Override
@@ -149,15 +148,15 @@ public class ColorState {
         if (o == null || getClass() != o.getClass()) return false;
         ColorState that = (ColorState) o;
         return firework == that.firework && sum == that.sum && Arrays.equals(discarded, that.discarded)
-                && Arrays.equals(cards_curr, that.cards_curr) && Arrays.equals(cards_oth, that.cards_oth);
+                && Arrays.equals(cards_current, that.cards_current) && Arrays.equals(cards_other, that.cards_other);
     }
 
     @Override
     public int hashCode() {
         int result = Objects.hash(sum, firework);
         result = 31 * result + Arrays.hashCode(discarded);
-        result = 31 * result + Arrays.hashCode(cards_curr);
-        result = 31 * result + Arrays.hashCode(cards_oth);
+        result = 31 * result + Arrays.hashCode(cards_current);
+        result = 31 * result + Arrays.hashCode(cards_other);
         return result;
     }
 }
