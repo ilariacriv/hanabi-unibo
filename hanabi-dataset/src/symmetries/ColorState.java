@@ -62,7 +62,7 @@ public class ColorState {
             }else{
                 cards_current[i][0]=0.0;
             }
-            cards_current[i][1]=rawState.getCurrent_hand().get(i).getPossible_colors().get(color.ordinal());
+            cards_current[i][1]=rawState.getCurrent_hand().get(i).getPoss_colors().get(color.ordinal());
             this.sum+= cards_current[i][1];
         }
 
@@ -72,7 +72,7 @@ public class ColorState {
             }else{
                 cards_other[i][0]=0.0;
             }
-            cards_other[i][1]=rawState.getOther_hand().get(i).getPossible_colors().get(color.ordinal());
+            cards_other[i][1]=rawState.getOther_hand().get(i).getPoss_colors().get(color.ordinal());
             this.sum+= cards_other[i][1];
         }
 

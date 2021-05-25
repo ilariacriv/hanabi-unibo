@@ -143,7 +143,7 @@ public enum Features {
     poss_card3_oth_color2,
     poss_card3_oth_color3,
     poss_card3_oth_color4,
-    poss_card3_oth_color5,,
+    poss_card3_oth_color5,
 
     poss_card4_oth_color1,
     poss_card4_oth_color2,

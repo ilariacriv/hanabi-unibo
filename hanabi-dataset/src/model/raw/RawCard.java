@@ -17,8 +17,8 @@ import java.util.*;
 public class RawCard
 {
 
-	private List<Double> possible_colors = new ArrayList<>();
-	private List<Double> possible_values = new ArrayList<>();
+	private List<Double> poss_colors = new ArrayList<>();
+	private List<Double> poss_values = new ArrayList<>();
 	private String color;
 	private Colors colorEnum;
 	private int value;
@@ -29,20 +29,20 @@ public class RawCard
 
 	}
 
-	public List<Double> getPossible_colors() {
-		return possible_colors;
+	public List<Double> getPoss_colors() {
+		return poss_colors;
 	}
 
-	public void setPossible_colors(List<Double> possible_colors) {
-		this.possible_colors = possible_colors;
+	public void setPoss_colors(List<Double> poss_colors) {
+		this.poss_colors = poss_colors;
 	}
 
-	public List<Double> getPossible_values() {
-		return possible_values;
+	public List<Double> getPoss_values() {
+		return poss_values;
 	}
 
-	public void setPossible_values(List<Double> possible_values) {
-		this.possible_values = possible_values;
+	public void setPoss_values(List<Double> poss_values) {
+		this.poss_values = poss_values;
 	}
 
 	public String getColor() {
