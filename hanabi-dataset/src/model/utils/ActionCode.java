@@ -1,5 +1,8 @@
 package model.utils;
 
+/**
+ * Tutte le possibili azioni; sarà a 1 l'azione corrispondente, a 0 le altre
+ */
 public enum ActionCode {
     PLAY_1st,
     PLAY_2nd,

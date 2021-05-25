@@ -6,6 +6,9 @@ import model.finale.FinalState;
 
 import java.io.*;
 
+/**
+ * Classe che scrive in un file di testo il FinalStae da dare poi in input alla NN
+ */
 public class GameWriterFile {
     private BufferedWriter gamewr;
     private FileWriter gamewriter;

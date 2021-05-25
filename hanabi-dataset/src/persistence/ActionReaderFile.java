@@ -11,7 +11,7 @@ import java.io.IOException;
 
 public class ActionReaderFile {
     /**
-     * Classe per leggere il file Json
+     * Classe per leggere il file Json che contiente le azioni di una partita
      */
 
     private BufferedReader actionbr;

@@ -8,8 +8,14 @@ import model.utils.Utils;
 import java.util.*;
 
 /**
- * cards contiene il valore della carta in posizione i se è di colore "color"
- * e il valore poss_col della carta
+ * Classe che rappresenta lo stato di un colore indipendentemente dal colore stesso (che è parametrico)
+ * è un sottoinsieme di FinalState, sono tutte le info di FinalState di un particolare colore
+ *
+ * cards contiene il valore della carta in posizione i se è di colore "color" [i][0]
+ * e il valore poss_col della carta [i][1]
+ * es:
+ * [0,4,0,5,0]
+ * [20,100,0,20,0]
  */
 public class ColorState {
     private Colors color=null;

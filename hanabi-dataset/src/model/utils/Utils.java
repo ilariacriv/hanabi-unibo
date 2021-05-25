@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+/**
+ * classe di utility
+ */
 public class Utils {
 
     public static Collection<Double> getDiscardedListFromInt(int discarded){

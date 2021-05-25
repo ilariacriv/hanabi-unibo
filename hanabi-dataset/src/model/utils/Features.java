@@ -2,6 +2,9 @@ package model.utils;
 
 //TODO cambiare le cose colorate con un generico colore1/2/3/4/5 perchè l'ordine può cambiare
 
+/**
+ * Elenco di tutto ciò che sarà nell'array del FinalState chiamato "state"
+ */
 public enum Features {
     fuse,
     hints,

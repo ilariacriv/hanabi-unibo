@@ -1,5 +1,8 @@
 package symmetries;
 
+/**
+ * Caratteristiche associate ad ogni colore
+ */
 public enum ColorFeatures {
     FIREWORK,
     DISCARDED_5,

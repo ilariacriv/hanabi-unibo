@@ -12,7 +12,7 @@ import java.io.IOException;
 
 public class GameReaderFile {
     /**
-     * Classe per leggere il file Json
+     * Classe per leggere il file Json che contiene gli stati di una partita
      */
 
     private BufferedReader gamebr;

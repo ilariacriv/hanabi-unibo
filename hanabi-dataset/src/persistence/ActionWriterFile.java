@@ -8,6 +8,9 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 
+/**
+ * classe che scrive in un file di testo la FinalAction da dare poi in input alla NN
+ */
 public class ActionWriterFile {
     private BufferedWriter actionwr;
     private FileWriter actionwriter;
