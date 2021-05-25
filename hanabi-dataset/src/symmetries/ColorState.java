@@ -81,6 +81,11 @@ public class ColorState {
         }
     }
 
+    /**
+     * Probabilmente non serve..
+     * @param colorindex
+     * @param finalState
+     */
     public ColorState(int colorindex, FinalState finalState){
         this.colorindex=colorindex;
 

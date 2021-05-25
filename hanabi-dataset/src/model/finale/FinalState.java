@@ -180,7 +180,7 @@ public class FinalState {
         }
 
 
-        for (Colors colors: Colors.values()){
+        for (Colors colors: this.colorOrder){
             if(rawCard.getColorEnum().equals(colors)){
                 state[features.ordinal()+j] =1;
             }else{
