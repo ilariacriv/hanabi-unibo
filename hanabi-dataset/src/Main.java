@@ -24,7 +24,7 @@ public class Main {
             ArrayList<RawCard> rawCards = finalState.getOrderedHandCurrent();
 
             FinalAction finalAction = new FinalAction(rawAction, finalState, rawState);
-            System.out.println("letto "+ (++i));
+            //System.out.println(finalState.toString());
         }
 
         actionReaderFile.close();
