@@ -47,8 +47,11 @@ public class FinalAction {
 
     @Override
     public String toString() {
-        //TODO in base al formato che decidiamo
-        return "";
+        String result="";
+        for(int i=0; i<actions.length; i++){
+            result += actions[i]+",";
+        }
+        return result.substring(0,actions.length)+"\n";
     }
 
 
