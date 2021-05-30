@@ -43,28 +43,20 @@ public class Main {
         actionReaderFile.close();
         gameReaderFile.close();
 
-        ArrayList<FinalState> resultStates = new ArrayList<>();
-        ArrayList<FinalAction> resultActions = new ArrayList<>();
+        GameWriterFile gameWriterFile;
+        ActionWriterFile actionWriterFile;
+
         for(int index=0; index<finalStateList.size(); index++){
             if(!symmetriesChecker.hasASymmetricState(finalStateList.get(index))){
-                resultStates.add(finalStateList.get(index));
-                resultActions.add(finalActionList.get(index));
+                gameWriterFile = new GameWriterFile(finalStateFile);
+                actionWriterFile = new ActionWriterFile(finalActionFile);
+                gameWriterFile.printFinalState(finalStateList.get(index));
+                actionWriterFile.printFinalAction(finalActionList.get(index));
+                actionWriterFile.close();
+                gameWriterFile.close();
             }
             else System.out.println(index+": "+finalStateList.get(index).toString());
         }
-
-        GameWriterFile gameWriterFile = new GameWriterFile(finalStateFile);
-        ActionWriterFile actionWriterFile = new ActionWriterFile(finalActionFile);
-
-        for(FinalState fs : finalStateList){
-            gameWriterFile.printFinalState(fs);
-        }
-        for(FinalAction fa : finalActionList){
-            actionWriterFile.printFinalAction(fa);
-        }
-
-        actionWriterFile.close();
-        gameWriterFile.close();
 
     }
 

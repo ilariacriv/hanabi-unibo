@@ -15,7 +15,7 @@ public class GameWriterFile {
 
     public GameWriterFile(String gamefile) {
         try {
-            this.gamewriter= new FileWriter(gamefile);
+            this.gamewriter= new FileWriter(gamefile, true);
             this.gamewr= new BufferedWriter(gamewriter);
 
         } catch (FileNotFoundException e) {

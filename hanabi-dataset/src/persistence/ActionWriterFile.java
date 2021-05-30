@@ -18,7 +18,7 @@ public class ActionWriterFile {
     public ActionWriterFile( String actionfile) {
         try {
 
-            this.actionwriter= new FileWriter(actionfile);
+            this.actionwriter= new FileWriter(actionfile,true);
             this.actionwr= new BufferedWriter(actionwriter);
 
         } catch (FileNotFoundException e) {
