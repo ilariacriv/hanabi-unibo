@@ -30,7 +30,11 @@ public class ActionWriterFile {
 
 
     public void printFinalAction( FinalAction action){
-        //TODO
+        try {
+            this.actionwr.write(action.toString());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 
