@@ -51,12 +51,6 @@ public class GameReaderFile {
     return state;
     }
 
-    public FinalState readFinalState(){
-        //TODO in base a come stampiamo FinalState
-        return null;
-    }
-
-
 
     public void close(){
 

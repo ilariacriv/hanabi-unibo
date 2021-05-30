@@ -10,8 +10,6 @@ import symmetries.ColorState;
 import java.util.ArrayList;
 import java.util.Comparator;
 
-//TODO fare i cast è brutto ma non ho idee migliori
-//TODO forse ha più senso raggruppare le cose per colore in modo da agevolare il controllo simmetrie
 
 /**
  * This class contains the parameters of the state that will be given as input to the NN
@@ -70,8 +68,6 @@ public class FinalState {
         for(ColorState cs:colorStateOrder){
             colorOrder.add(cs.getColor());
         }
-
-        //TODO ordinare in base ai colori di colororder
 
         state= new double[DIM];
 
