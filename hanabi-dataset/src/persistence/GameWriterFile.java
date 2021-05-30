@@ -27,7 +27,7 @@ public class GameWriterFile {
 
     public void printFinalState(FinalState state){
         try {
-            this.gamewr.write(state.toString());
+            this.gamewr.write(state.toString()+"\n");
         } catch (IOException e) {
             e.printStackTrace();
         }

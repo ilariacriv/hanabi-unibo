@@ -31,7 +31,7 @@ public class ActionWriterFile {
 
     public void printFinalAction( FinalAction action){
         try {
-            this.actionwr.write(action.toString());
+            this.actionwr.write(action.toString()+"\n");
         } catch (IOException e) {
             e.printStackTrace();
         }

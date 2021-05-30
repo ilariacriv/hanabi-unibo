@@ -49,9 +49,12 @@ public class FinalAction {
     public String toString() {
         String result="";
         for(int i=0; i<actions.length; i++){
-            result += actions[i]+",";
+            if(i== actions.length-1)
+                result += actions[i];
+            else
+                result += actions[i]+",";
         }
-        return result.substring(0,actions.length)+"\n";
+        return result;
     }
 
 

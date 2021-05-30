@@ -268,9 +268,12 @@ public class FinalState {
     public String toString() {
         String result="";
         for(int i=0; i<state.length; i++){
-            result += state[i]+",";
+            if(i==state.length-1)
+                result += state[i];
+            else
+                result += state[i]+",";
         }
-        return result.substring(0,state.length)+"\n";
+        return result;
     }
 
 }

@@ -21,13 +21,13 @@ public class Main {
         String finalActionFile = "./final_actions/final_actions_01.txt";
         GameReaderFile gameReaderFile = new GameReaderFile(gameFile);
         ActionReaderFile actionReaderFile = new ActionReaderFile(actionFile);
-        GameWriterFile gameWriterFile = new GameWriterFile(finalStateFile);
-        ActionWriterFile actionWriterFile = new ActionWriterFile(finalActionFile);
+
         RawState rawState;
         RawAction rawAction = null;
+        ArrayList<FinalAction> finalActionList = new ArrayList<>();
+        ArrayList<FinalState> finalStateList = new ArrayList<>();
 
         SymmetriesChecker symmetriesChecker = new SymmetriesChecker(finalStateFile);
-        int i = 0;
         while((rawState = gameReaderFile.readRawState()) != null &&
                 (rawAction = actionReaderFile.readAction()) != null){
             FinalState finalState = new FinalState(rawState);
@@ -36,16 +36,37 @@ public class Main {
             FinalAction finalAction = new FinalAction(rawAction, finalState, rawState);
             //System.out.println(finalState.toString());
 
-            if(symmetriesChecker.hasASymmetricState(finalState)){
-                continue;
-            }
-            gameWriterFile.printFinalState(finalState);
-            actionWriterFile.printFinalAction(finalAction);
-        }
+            finalStateList.add(finalState);
+            finalActionList.add(finalAction);
 
+        }
         actionReaderFile.close();
         gameReaderFile.close();
 
+        ArrayList<FinalState> resultStates = new ArrayList<>();
+        ArrayList<FinalAction> resultActions = new ArrayList<>();
+        for(int index=0; index<finalStateList.size(); index++){
+            if(!symmetriesChecker.hasASymmetricState(finalStateList.get(index))){
+                resultStates.add(finalStateList.get(index));
+                resultActions.add(finalActionList.get(index));
+            }
+            else System.out.println(index+": "+finalStateList.get(index).toString());
+        }
+
+        GameWriterFile gameWriterFile = new GameWriterFile(finalStateFile);
+        ActionWriterFile actionWriterFile = new ActionWriterFile(finalActionFile);
+
+        for(FinalState fs : finalStateList){
+            gameWriterFile.printFinalState(fs);
+        }
+        for(FinalAction fa : finalActionList){
+            actionWriterFile.printFinalAction(fa);
+        }
+
+        actionWriterFile.close();
+        gameWriterFile.close();
+
     }
+
 
 }
