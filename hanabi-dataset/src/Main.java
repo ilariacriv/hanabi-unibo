@@ -26,6 +26,7 @@ public class Main {
             FileWriter filew ;
             try {
                 filew = new FileWriter(finalStateFile);
+                filew.write("ciao");
                 filew.close();
             } catch (IOException e) {
                 e.printStackTrace();
@@ -55,7 +56,10 @@ public class Main {
             ArrayList<FinalAction> finalActionList = new ArrayList<>();
             ArrayList<FinalState> finalStateList = new ArrayList<>();
 
-            SymmetriesChecker symmetriesChecker = new SymmetriesChecker(finalStateFile);
+            ArrayList<FinalState> statesToRemove = new ArrayList<>();
+            ArrayList<FinalAction> actionsToRemove = new ArrayList<>();
+
+            //SymmetriesChecker symmetriesChecker = new SymmetriesChecker(finalStateFile);
             while ((rawState = gameReaderFile.readRawState()) != null &&
                     (rawAction = actionReaderFile.readAction()) != null) {
                 FinalState finalState = new FinalState(rawState);
@@ -75,23 +79,31 @@ public class Main {
             ActionWriterFile actionWriterFile;
 
             FileReader reader;
-            BufferedReader br = null;
+            BufferedReader br;
             try {
                 reader = new FileReader(finalStateFile);
                 br = new BufferedReader(reader);
-                gameWriterFile = new GameWriterFile(finalStateFile);
-                actionWriterFile = new ActionWriterFile(finalActionFile);
                 String finalState;
                 while((finalState=br.readLine())!=null){
                     for (int index = 0; index < finalStateList.size(); index++) {
-                        if (!finalState.equals(finalStateList.get(index).toString())) {
-                            gameWriterFile.printFinalState(finalStateList.get(index));
-                            actionWriterFile.printFinalAction(finalActionList.get(index));
-                        } else {
+                        if (finalState.equals(finalStateList.get(index).toString())) {
+                            statesToRemove.add(finalStateList.get(index));
+                            actionsToRemove.add(finalActionList.get(index));
                             symmetricCount++;
                             System.out.println("["+symmetricCount+"] "+index + ": " + finalStateList.get(index).toString());
                         }
                     }
+                }
+                br.close();
+                gameWriterFile = new GameWriterFile(finalStateFile);
+                actionWriterFile = new ActionWriterFile(finalActionFile);
+                finalStateList.removeAll(statesToRemove);
+                finalActionList.removeAll(actionsToRemove);
+                for(FinalState fs : finalStateList){
+                    gameWriterFile.printFinalState(fs);
+                }
+                for(FinalAction fa : finalActionList){
+                    actionWriterFile.printFinalAction(fa);
                 }
                 actionWriterFile.close();
                 gameWriterFile.close();
