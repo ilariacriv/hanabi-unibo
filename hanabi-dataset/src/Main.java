@@ -9,9 +9,7 @@ import persistence.GameReaderFile;
 import persistence.GameWriterFile;
 import symmetries.SymmetriesChecker;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 
 public class Main {
@@ -76,22 +74,33 @@ public class Main {
             GameWriterFile gameWriterFile;
             ActionWriterFile actionWriterFile;
 
-            for (int index = 0; index < finalStateList.size(); index++) {
-                if (!symmetriesChecker.hasASymmetricState(finalStateList.get(index))) {
-                    gameWriterFile = new GameWriterFile(finalStateFile);
-                    actionWriterFile = new ActionWriterFile(finalActionFile);
-                    gameWriterFile.printFinalState(finalStateList.get(index));
-                    actionWriterFile.printFinalAction(finalActionList.get(index));
-                    actionWriterFile.close();
-                    gameWriterFile.close();
-                } else {
-                    symmetricCount++;
-                    System.out.println("["+symmetricCount+"] "+index + ": " + finalStateList.get(index).toString());
+            FileReader reader;
+            BufferedReader br = null;
+            try {
+                reader = new FileReader(finalStateFile);
+                br = new BufferedReader(reader);
+                gameWriterFile = new GameWriterFile(finalStateFile);
+                actionWriterFile = new ActionWriterFile(finalActionFile);
+                String finalState;
+                while((finalState=br.readLine())!=null){
+                    for (int index = 0; index < finalStateList.size(); index++) {
+                        if (!finalState.equals(finalStateList.get(index).toString())) {
+                            gameWriterFile.printFinalState(finalStateList.get(index));
+                            actionWriterFile.printFinalAction(finalActionList.get(index));
+                        } else {
+                            symmetricCount++;
+                            System.out.println("["+symmetricCount+"] "+index + ": " + finalStateList.get(index).toString());
+                        }
+                    }
                 }
+                actionWriterFile.close();
+                gameWriterFile.close();
+            } catch (IOException e ) {
+                e.printStackTrace();
             }
             System.out.println("game_"+g+".txt: completed");
         }
-
+        System.out.println("Symmetrical states found: "+symmetricCount);
     }
 
 

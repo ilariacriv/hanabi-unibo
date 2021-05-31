@@ -6,7 +6,7 @@ package model.utils;
 public enum Features {
     fuse,
     hints,
-    finalround,
+    //finalround,
     deck,
     handentropy_current,
     handentropy_other,

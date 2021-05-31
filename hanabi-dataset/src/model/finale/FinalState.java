@@ -76,7 +76,7 @@ public class FinalState {
         }
 
         state[Features.hints.ordinal()]=(double) rawState.getHints();
-        state[Features.finalround.ordinal()]= (double) rawState.getFinalround();
+        //state[Features.finalround.ordinal()]= (double) rawState.getFinalround();
         state[Features.fuse.ordinal()]=(double) rawState.getFuse();
         state[Features.deck.ordinal()]=(double) rawState.getDeck();
         state[Features.handentropy_current.ordinal()]= rawState.getHandentropy_current();
