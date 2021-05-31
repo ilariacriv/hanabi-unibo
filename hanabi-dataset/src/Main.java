@@ -45,6 +45,7 @@ public class Main {
 
         for(int i=0; i<3; i++) {
             String g = String.format("%07d",i);
+            System.out.println("["+i+"] reading game_"+g+".txt...");
 
             String gameFile = "./partite_hanabi/game_"+g+".txt";
             String actionFile = "./azioni_hanabi/actions_"+g+".txt";
@@ -88,6 +89,7 @@ public class Main {
                     System.out.println("["+symmetricCount+"] "+index + ": " + finalStateList.get(index).toString());
                 }
             }
+            System.out.println("game_"+g+".txt: completed");
         }
 
     }
