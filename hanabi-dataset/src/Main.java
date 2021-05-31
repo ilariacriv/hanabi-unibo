@@ -56,8 +56,7 @@ public class Main {
             ArrayList<FinalAction> finalActionList = new ArrayList<>();
             ArrayList<FinalState> finalStateList = new ArrayList<>();
 
-            ArrayList<FinalState> statesToRemove = new ArrayList<>();
-            ArrayList<FinalAction> actionsToRemove = new ArrayList<>();
+            ArrayList<Boolean> found = new ArrayList<>();
 
             //SymmetriesChecker symmetriesChecker = new SymmetriesChecker(finalStateFile);
             while ((rawState = gameReaderFile.readRawState()) != null &&
@@ -70,6 +69,7 @@ public class Main {
 
                 finalStateList.add(finalState);
                 finalActionList.add(finalAction);
+                found.add(false);
 
             }
             actionReaderFile.close();
@@ -87,8 +87,7 @@ public class Main {
                 while((finalState=br.readLine())!=null){
                     for (int index = 0; index < finalStateList.size(); index++) {
                         if (finalState.equals(finalStateList.get(index).toString())) {
-                            statesToRemove.add(finalStateList.get(index));
-                            actionsToRemove.add(finalActionList.get(index));
+                            found.set(index, true);
                             symmetricCount++;
                             System.out.println("["+symmetricCount+"] "+index + ": " + finalStateList.get(index).toString());
                         }
@@ -97,13 +96,12 @@ public class Main {
                 br.close();
                 gameWriterFile = new GameWriterFile(finalStateFile);
                 actionWriterFile = new ActionWriterFile(finalActionFile);
-                finalStateList.removeAll(statesToRemove);
-                finalActionList.removeAll(actionsToRemove);
-                for(FinalState fs : finalStateList){
-                    gameWriterFile.printFinalState(fs);
-                }
-                for(FinalAction fa : finalActionList){
-                    actionWriterFile.printFinalAction(fa);
+
+                for(int j=0; j<finalStateList.size(); j++){
+                    if(!found.get(j)) {
+                        gameWriterFile.printFinalState(finalStateList.get(j));
+                        actionWriterFile.printFinalAction(finalActionList.get(j));
+                    }
                 }
                 actionWriterFile.close();
                 gameWriterFile.close();
