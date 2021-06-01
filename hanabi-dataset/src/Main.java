@@ -17,6 +17,7 @@ public class Main {
     public static void main(String args[]){
 
         int symmetricCount = 0;
+        int numStatesRead = 0;
 
         String finalStateFile = "./final_states/final_states.txt";
         String finalActionFile = "./final_actions/final_actions.txt";
@@ -26,7 +27,7 @@ public class Main {
             FileWriter filew ;
             try {
                 filew = new FileWriter(finalStateFile);
-                filew.write("ciao");
+                filew.write("0");
                 filew.close();
             } catch (IOException e) {
                 e.printStackTrace();
@@ -70,7 +71,7 @@ public class Main {
                 finalStateList.add(finalState);
                 finalActionList.add(finalAction);
                 found.add(false);
-
+                numStatesRead++;
             }
             actionReaderFile.close();
             gameReaderFile.close();
@@ -89,7 +90,7 @@ public class Main {
                         if (finalState.equals(finalStateList.get(index).toString())) {
                             found.set(index, true);
                             symmetricCount++;
-                            System.out.println("["+symmetricCount+"] "+index + ": " + finalStateList.get(index).toString());
+                            System.out.println(symmetricCount+": " + finalStateList.get(index).toString());
                         }
                     }
                 }
@@ -110,7 +111,9 @@ public class Main {
             }
             System.out.println("game_"+g+".txt: completed");
         }
+        System.out.println();
         System.out.println("Symmetrical states found: "+symmetricCount);
+        System.out.println("Number of states read: "+ numStatesRead);
     }
 
 
