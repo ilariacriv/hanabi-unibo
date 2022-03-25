@@ -89,6 +89,7 @@ public enum Features {
     uselessness_card4_current,
     uselessness_card5_current,
 
+    //TODO DA QUI
     color_current_card1_white,
     color_current_card1_blue,
     color_current_card1_red,
@@ -124,6 +125,7 @@ public enum Features {
     value_current_card3,
     value_current_card4,
     value_current_card5,
+    //TODO FINO A QUI
 
     poss_card1_oth_color1,
     poss_card1_oth_color2,
@@ -184,6 +186,9 @@ public enum Features {
     poss_card5_curr_color3,
     poss_card5_curr_color4,
     poss_card5_curr_color5,
+
+    //TODO poss_card1_curr_value1 ...
+    //TODO poss_card1_oth_value1 ...
 
     discarded_1_color1,
     discarded_2_color1,

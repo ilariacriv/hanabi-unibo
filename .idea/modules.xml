@@ -10,6 +10,8 @@
       <module fileurl="file://$PROJECT_DIR$/hanabi-dataset/hanabi-dataset.iml" filepath="$PROJECT_DIR$/hanabi-dataset/hanabi-dataset.iml" />
       <module fileurl="file://$PROJECT_DIR$/hanabi-game/hanabi-game.iml" filepath="$PROJECT_DIR$/hanabi-game/hanabi-game.iml" />
       <module fileurl="file://$PROJECT_DIR$/hanabi-human-player/hanabi-human-player.iml" filepath="$PROJECT_DIR$/hanabi-human-player/hanabi-human-player.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hanabi-neural-network/hanabi-neural-network.iml" filepath="$PROJECT_DIR$/hanabi-neural-network/hanabi-neural-network.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hanabi-unibo.iml" filepath="$PROJECT_DIR$/hanabi-unibo.iml" />
       <module fileurl="file://$PROJECT_DIR$/json-v2/json-v2.iml" filepath="$PROJECT_DIR$/json-v2/json-v2.iml" />
     </modules>
   </component>
