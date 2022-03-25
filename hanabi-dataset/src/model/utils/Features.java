@@ -89,44 +89,6 @@ public enum Features {
     uselessness_card4_current,
     uselessness_card5_current,
 
-    //TODO DA QUI
-    color_current_card1_white,
-    color_current_card1_blue,
-    color_current_card1_red,
-    color_current_card1_yellow,
-    color_current_card1_green,
-
-    color_current_card2_white,
-    color_current_card2_blue,
-    color_current_card2_red,
-    color_current_card2_yellow,
-    color_current_card2_green,
-
-    color_current_card3_white,
-    color_current_card3_blue,
-    color_current_card3_red,
-    color_current_card3_yellow,
-    color_current_card3_green,
-
-    color_current_card4_white,
-    color_current_card4_blue,
-    color_current_card4_red,
-    color_current_card4_yellow,
-    color_current_card4_green,
-
-    color_current_card5_white,
-    color_current_card5_blue,
-    color_current_card5_red,
-    color_current_card5_yellow,
-    color_current_card5_green,
-
-    value_current_card1,
-    value_current_card2,
-    value_current_card3,
-    value_current_card4,
-    value_current_card5,
-    //TODO FINO A QUI
-
     poss_card1_oth_color1,
     poss_card1_oth_color2,
     poss_card1_oth_color3,
@@ -189,6 +151,65 @@ public enum Features {
 
     //TODO poss_card1_curr_value1 ...
     //TODO poss_card1_oth_value1 ...
+    poss_card1_curr_value1,
+    poss_card1_curr_value2,
+    poss_card1_curr_value3,
+    poss_card1_curr_value4,
+    poss_card1_curr_value5,
+
+    poss_card2_curr_value1,
+    poss_card2_curr_value2,
+    poss_card2_curr_value3,
+    poss_card2_curr_value4,
+    poss_card2_curr_value5,
+
+    poss_card3_curr_value1,
+    poss_card3_curr_value2,
+    poss_card3_curr_value3,
+    poss_card3_curr_value4,
+    poss_card3_curr_value5,
+
+    poss_card4_curr_value1,
+    poss_card4_curr_value2,
+    poss_card4_curr_value3,
+    poss_card4_curr_value4,
+    poss_card4_curr_value5,
+
+    poss_card5_curr_value1,
+    poss_card5_curr_value2,
+    poss_card5_curr_value3,
+    poss_card5_curr_value4,
+    poss_card5_curr_value5,
+
+    poss_card1_oth_value1,
+    poss_card1_oth_value2,
+    poss_card1_oth_value3,
+    poss_card1_oth_value4,
+    poss_card1_oth_value5,
+
+    poss_card2_oth_value1,
+    poss_card2_oth_value2,
+    poss_card2_oth_value3,
+    poss_card2_oth_value4,
+    poss_card2_oth_value5,
+
+    poss_card3_oth_value1,
+    poss_card3_oth_value2,
+    poss_card3_oth_value3,
+    poss_card3_oth_value4,
+    poss_card3_oth_value5,
+
+    poss_card4_oth_value1,
+    poss_card4_oth_value2,
+    poss_card4_oth_value3,
+    poss_card4_oth_value4,
+    poss_card4_oth_value5,
+
+    poss_card5_oth_value1,
+    poss_card5_oth_value2,
+    poss_card5_oth_value3,
+    poss_card5_oth_value4,
+    poss_card5_oth_value5,
 
     discarded_1_color1,
     discarded_2_color1,
