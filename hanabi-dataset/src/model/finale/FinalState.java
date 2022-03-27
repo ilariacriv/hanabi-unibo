@@ -16,7 +16,7 @@ import java.util.Comparator;
  */
 public class FinalState {
     //private ArrayList<Double> state;
-    final static int DIM=176;
+    final static int DIM=195;
     private double[] state;
     private ArrayList<ColorState> colorStateOrder;
     private ArrayList<Colors> colorOrder;
@@ -53,15 +53,29 @@ public class FinalState {
         for(Colors color : Colors.values()){
             colorStateOrder.add(new ColorState(color,rawState));
         }
-        Comparator<ColorState> csComparator = (Comparator.comparing( ( ColorState cs) -> cs.getSum()))
-                .thenComparing(cs2 -> cs2.getFirework())
+        Comparator<ColorState> csComparator = (Comparator.comparing( ( ColorState cs) -> cs.getFirework()))
                 .thenComparing(cs3 -> cs3.getDiscarded(0))
                 .thenComparing(cs4 -> cs4.getDiscarded(1))
                 .thenComparing(cs5 -> cs5.getDiscarded(2))
                 .thenComparing(cs6 -> cs6.getDiscarded(3))
-                .thenComparing(cs7 -> cs7.getDiscarded(4));
+                .thenComparing(cs7 -> cs7.getDiscarded(4))
+                .thenComparing(cs8 -> cs8.getOtherHandCountNumber(5))
+                .thenComparing(cs9 -> cs9.getOtherHandCountNumber(4))
+                .thenComparing(cs10 -> cs10.getOtherHandCountNumber(3))
+                .thenComparing(cs11 -> cs11.getOtherHandCountNumber(2))
+                .thenComparing(cs12 -> cs12.getOtherHandCountNumber(1))
+                .thenComparing(cs13 -> cs13.getPossibilityColorOrderedOther(0))
+                .thenComparing(cs14 -> cs14.getPossibilityColorOrderedOther(1))
+                .thenComparing(cs15 -> cs15.getPossibilityColorOrderedOther(2))
+                .thenComparing(cs16 -> cs16.getPossibilityColorOrderedOther(3))
+                .thenComparing(cs17 -> cs17.getPossibilityColorOrderedOther(4))
+                .thenComparing(cs18 -> cs18.getPossibilityColorOrderedCurrent(0))
+                .thenComparing(cs19 -> cs19.getPossibilityColorOrderedCurrent(1))
+                .thenComparing(cs20 -> cs20.getPossibilityColorOrderedCurrent(2))
+                .thenComparing(cs21 -> cs21.getPossibilityColorOrderedCurrent(3))
+                .thenComparing(cs22 -> cs22.getPossibilityColorOrderedCurrent(4));
 
-        //TODO va bene questo comparator???? Probabilmente funziona nella maggior Parte dei casi ma sicuramente ci sono alcuni che non vengono ordinati correttamente
+        //TODO per completezza ci potrebbe essere casi non compresi, se tutti questi valori sono uguali
 
         colorStateOrder.sort(csComparator);
 
@@ -127,17 +141,18 @@ public class FinalState {
         for(int j=0; j<5;j++){
             int colorindex = this.getColorOrder().get(j).ordinal();
             state[Features.poss_card1_oth_color1.ordinal()+i*5+j] = rawCard.getPoss_colors().get(colorindex);
+            state[Features.poss_card1_oth_value1.ordinal()+i*5+j] = rawCard.getPoss_values().get(j);
         }
         int j=0;
 
         Features features=null;
 
         switch (i){
-            case 0 : features=Features.color_other_card1_white; break;
-            case 1 : features=Features.color_other_card2_white; break;
-            case 2 : features=Features.color_other_card3_white; break;
-            case 3 : features=Features.color_other_card4_white; break;
-            case 4 : features=Features.color_other_card5_white; break;
+            case 0 : features=Features.color_other_card1_col1; break;
+            case 1 : features=Features.color_other_card2_col1; break;
+            case 2 : features=Features.color_other_card3_col1; break;
+            case 3 : features=Features.color_other_card4_col1; break;
+            case 4 : features=Features.color_other_card5_col1; break;
         }
 
 
@@ -154,7 +169,7 @@ public class FinalState {
     }
 
     private void addCurrentCard(RawCard rawCard, int i) {
-        state[Features.value_current_card1.ordinal()+i]= rawCard.getValue();
+        //state[Features.value_current_card1.ordinal()+i]= rawCard.getValue();
         state[Features.playability_card1_current.ordinal()+i] = rawCard.getPlayability();
         state[Features.cardentropy_card1_current.ordinal()+i] = rawCard.getCardentropy();
         state[Features.uselessness_card1_current.ordinal()+i] = rawCard.getUselessness();
@@ -162,7 +177,9 @@ public class FinalState {
         for(int j=0; j<5;j++){
             int colorindex = this.getColorOrder().get(j).ordinal();
             state[Features.poss_card1_curr_color1.ordinal()+i*5+j] = rawCard.getPoss_colors().get(colorindex);
+            state[Features.poss_card1_curr_value1.ordinal()+i*5+j] = rawCard.getPoss_values().get(j);
         }
+        /* // non serve più perchè non dobbiamo sapere i nostri colori
         int j=0;
 
         Features features=null;
@@ -184,7 +201,7 @@ public class FinalState {
             }
             j++;
         }
-
+        */
     }
 
     private double getFirework(Colors color, RawState rawState) {

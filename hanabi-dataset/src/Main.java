@@ -19,8 +19,8 @@ public class Main {
         int symmetricCount = 0;
         int numStatesRead = 0;
 
-        String finalStateFile = "./final_states/final_states.txt";
-        String finalActionFile = "./final_actions/final_actions.txt";
+        String finalStateFile = "./final_states/final_states_prova.txt";
+        String finalActionFile = "./final_actions/final_actions_prova.txt";
         File stateFile = new File(finalStateFile);
         File actionsFile = new File(finalActionFile);
         if(!stateFile.exists()){
@@ -43,7 +43,7 @@ public class Main {
             }
         }
 
-        for(int i=0; i<3; i++) {
+        for(int i=1; i<3; i++) {
             String g = String.format("%07d",i);
             System.out.println("["+i+"] reading game_"+g+".txt...");
 
