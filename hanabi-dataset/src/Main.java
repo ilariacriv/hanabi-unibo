@@ -82,7 +82,7 @@ public class Main {
             FileReader reader;
             BufferedReader br;
             try {
-                reader = new FileReader(finalStateFile);
+                /*reader = new FileReader(finalStateFile);
                 br = new BufferedReader(reader);
                 String finalState;
                 while((finalState=br.readLine())!=null){
@@ -95,6 +95,7 @@ public class Main {
                     }
                 }
                 br.close();
+                */
                 gameWriterFile = new GameWriterFile(finalStateFile);
                 actionWriterFile = new ActionWriterFile(finalActionFile);
 
@@ -106,7 +107,7 @@ public class Main {
                 }
                 actionWriterFile.close();
                 gameWriterFile.close();
-            } catch (IOException e ) {
+            } catch (Exception e ) {
                 e.printStackTrace();
             }
             System.out.println("game_"+g+".txt: completed");
