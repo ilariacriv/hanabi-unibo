@@ -1,18 +1,24 @@
 package hanabi.nn;
 
+import com.google.gson.Gson;
+import dataset.DataState;
 import hanabi.game.Action;
 import hanabi.gui.PlayerConnectionDialog;
 import hanabi.player.Analitics;
 import hanabi.player.GameClient;
+import model.finale.FinalState;
+import model.raw.RawState;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Bot extends GameClient {
 
     private Analitics analitics;
+    private Gson gson = new Gson();
 
     public Bot(String serverip, int serverport, boolean gui) {
         super(serverip, serverport, "NeuralNetwork", gui);
@@ -29,12 +35,18 @@ public class Bot extends GameClient {
     @Override
     public Action chooseAction() {
         analitics.setState(getCurrentState());
+        DataState dataState=  DataState.getDatastateFromState(getCurrentState());
+        String lineState = dataState.toString().replaceAll("\n","").replaceAll(" ", "");
+        RawState rawState= gson.fromJson(lineState, RawState.class);
+        FinalState finalState = new FinalState(rawState);
+       // AtomicInteger action= new AtomicInteger(-1); //TODO mi ha suggerito lui questo atomic integer, controllare cosaa è
+
         try {
             //TODO deve essere sotto forma di FinalState
             // getCurrentState è di tipo State, per avere un FinalState ci serve un RawState
             // dobbiamo capire come passare da State a RawState
             //PROBLEMA: RawState lo otteniamo solo da lettura file
-            String currentState = "";
+            String currentState = finalState.toString();
             final Process p = Runtime.getRuntime().exec("python neural_network.py "+currentState,null,new File(new File(System.getProperty("user.dir")).getParent()+"/hanabi-unibo/hanabi-neural-network"));
 
             //Se creo un processo devo svuotarne il buffer di scrittura (System.out) altrimenti si riempe e il programma si blocca
@@ -51,8 +63,9 @@ public class Bot extends GameClient {
                         {
                             //	if (br1.ready())
                             box = br1.readLine();
-
-                            //	System.out.println(box);
+                            System.out.println(box);
+                          //  action.set(Integer.parseInt(box));
+                            break;
                             //	if (br2.ready())
                             //		box = br2.readLine();
                             //	System.out.println(box);
@@ -67,7 +80,8 @@ public class Bot extends GameClient {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println("hello");
+      //  System.out.println("Azione num: " + action);
+
         return Action.createDiscardAction(players.get(0), 0);
     }
 

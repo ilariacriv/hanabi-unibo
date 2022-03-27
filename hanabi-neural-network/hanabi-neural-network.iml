@@ -9,5 +9,8 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="hanabi-api" />
     <orderEntry type="module" module-name="json-v2" />
+    <orderEntry type="module" module-name="hanabi-game" />
+    <orderEntry type="module" module-name="hanabi-dataset" />
+    <orderEntry type="library" name="gson-2.2.2" level="project" />
   </component>
 </module>

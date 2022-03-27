@@ -1,5 +1,8 @@
 package model.raw;
 
+import dataset.DataState;
+import hanabi.game.State;
+
 import java.util.ArrayList;
 
 public class RawState {
