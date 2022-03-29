@@ -47,7 +47,7 @@ public class Bot extends GameClient {
             // dobbiamo capire come passare da State a RawState
             //PROBLEMA: RawState lo otteniamo solo da lettura file
             String currentState = finalState.toString();
-            final Process p = Runtime.getRuntime().exec("python neural_network.py "+currentState,null,new File(new File(System.getProperty("user.dir")).getParent()+"/hanabi-unibo/hanabi-neural-network"));
+            final Process p = Runtime.getRuntime().exec("python neural_network.py "+currentState,null,new File(new File(System.getProperty("user.dir")).getParent()+"/hanabi-unibo/python"));
 
             //Se creo un processo devo svuotarne il buffer di scrittura (System.out) altrimenti si riempe e il programma si blocca
             if (p!=null)

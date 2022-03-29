@@ -22,9 +22,9 @@ public enum ActionCode {
     HINT_VALUE_4,
     HINT_VALUE_5,
 
-    HINT_WHITE,
-    HINT_BLUE,
-    HINT_RED,
-    HINT_YELLOW,
-    HINT_GREEN;
+    HINT_COLOR_1,
+    HINT_COLOR_2,
+    HINT_COLOR_3,
+    HINT_COLOR_4,
+    HINT_COLOR_5;
 }

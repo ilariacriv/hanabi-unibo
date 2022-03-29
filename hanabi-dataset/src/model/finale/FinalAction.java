@@ -29,6 +29,7 @@ public class FinalAction {
         ArrayList<RawCard> currentHand = finalState.getOrderedHandCurrent();
         ArrayList<RawCard> oldCurrentHand = rawState.getCurrent_hand();
         RawCard card = oldCurrentHand.get(rawAction.getCard());
+
         int index = currentHand.indexOf(card);
 
         if(rawAction.getType().equalsIgnoreCase("discard")){
@@ -41,8 +42,10 @@ public class FinalAction {
             actions[ActionCode.valueOf("HINT_VALUE_"+rawAction.getValue()).ordinal()]=1;
         }
         if(rawAction.getType().equalsIgnoreCase("hintcolor")){
-            actions[ActionCode.valueOf("HINT_"+rawAction.getColor().toUpperCase()).ordinal()]=1;
+            int colorIndex = this.finalState.getIndexFromColor(rawAction.getColor());
+            actions[ActionCode.valueOf("HINT_COLOR_1").ordinal()+colorIndex]=1;
         }
+
     }
 
     @Override

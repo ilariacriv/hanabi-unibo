@@ -249,7 +249,15 @@ public class FinalState {
         this.orderedHandOther = orderedHandOther;
     }
 
-
+    public int getIndexFromColor(String color){
+        int result = -1;
+        for (Colors c: this.colorOrder){
+            if (c.toString().equalsIgnoreCase(color)){
+                result = this.colorOrder.indexOf(c);
+            }
+        }
+        return result;
+    }
 
     public ArrayList<ColorState> getColorStateOrder() {
         return colorStateOrder;
