@@ -11,5 +11,6 @@
     <orderEntry type="library" name="json" level="project" />
     <orderEntry type="module" module-name="json-v2" />
     <orderEntry type="module" module-name="json-v2" />
+    <orderEntry type="library" name="gson-2.2.2" level="project" />
   </component>
 </module>

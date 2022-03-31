@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.concurrent.atomic.AtomicInteger;
 
+
 public class Bot extends GameClient {
 
     private Analitics analitics;
@@ -39,7 +40,7 @@ public class Bot extends GameClient {
         String lineState = dataState.toString().replaceAll("\n","").replaceAll(" ", "");
         RawState rawState= gson.fromJson(lineState, RawState.class);
         FinalState finalState = new FinalState(rawState);
-       // AtomicInteger action= new AtomicInteger(-1); //TODO mi ha suggerito lui questo atomic integer, controllare cosaa è
+        AtomicInteger action= new AtomicInteger(-1); //TODO mi ha suggerito lui questo atomic integer, controllare cosaa è
 
         try {
             //TODO deve essere sotto forma di FinalState
@@ -61,11 +62,17 @@ public class Bot extends GameClient {
                         String box="";
                         while(box!=null)
                         {
-                            //	if (br1.ready())
-                            box = br1.readLine();
-                            System.out.println(box);
-                          //  action.set(Integer.parseInt(box));
-                            break;
+                            //if (br1.ready()) {
+                                box = br1.readLine();
+                              //  System.out.println(box);
+                                //action.set(Integer.parseInt(box));
+                            //}
+
+                            /*System.out.println("Here is the standard output of the command:\n");
+                            while ((s = stdInput.readLine()) != null) {
+                                System.out.println(s);
+                            }*/
+                            //break;
                             //	if (br2.ready())
                             //		box = br2.readLine();
                             //	System.out.println(box);
@@ -80,9 +87,19 @@ public class Bot extends GameClient {
         } catch (IOException e) {
             e.printStackTrace();
         }
-      //  System.out.println("Azione num: " + action);
+        System.out.println("Azione num: " + action);
+        Action result = null;
+        //TODO riodrinare le carte perchè la abbiamo ordinate a seconda del final state
+        if (action.intValue() < 5)
+            result = Action.createPlayAction(players.get(0), action.intValue());
+        else if (action.intValue() < 10)
+            result = Action.createDiscardAction(players.get(0), action.intValue()-5);
+        else if (action.intValue() < 15)
+            result = Action.createHintValueAction(players.get(0), "hint value" ,action.intValue()-10);
+        else if (action.intValue() < 20)
+            result = Action.createHintColorAction(players.get(0), "hint color" , finalState.getColorOrder().get(action.intValue()-15).toString());
 
-        return Action.createDiscardAction(players.get(0), 0);
+        return result;
     }
 
     public static void main(String args[])

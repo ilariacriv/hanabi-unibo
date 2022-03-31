@@ -193,7 +193,7 @@ public final class GameServer
 					p = Runtime.getRuntime().exec("java -jar hanabi-neural-network.jar localhost "+serverSocket.getLocalPort()+" "+gui,null,new File(new File(System.getProperty("user.dir")).getParent()+"/hanabi-unibo/hanabi-neural-network"));
 				else
 					p = null;
-
+				System.out.println("Lanciato "+player);
 				//Se creo un processo devo svuotarne il buffer di scrittura (System.out) altrimenti si riempe e il programma si blocca
 				if (p!=null)
 				{
@@ -207,12 +207,12 @@ public final class GameServer
 							while(box!=null)
 							{
 							//	if (br1.ready())
-									box = br1.readLine();
+								box = br1.readLine();
 
-							//	System.out.println(box);
+								System.out.println("input: " + box);
 							//	if (br2.ready())
-							//		box = br2.readLine();
-							//	System.out.println(box);
+									box = br2.readLine();
+								System.out.println("errors: "+box);
 							}
 							//Se devi svuotare anche System.err usa un altro thread
 						}

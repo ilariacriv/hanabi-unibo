@@ -6,6 +6,10 @@
       <element id="module-output" name="hanabi-api" />
       <element id="module-output" name="json-v2" />
       <element id="extracted-dir" path="$PROJECT_DIR$/json-v2/json.jar" path-in-jar="/" />
+      <element id="library" level="project" name="gson-2.2.2" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/hanabi-dataset/lib/gson-2.2.2.jar" path-in-jar="/" />
+      <element id="module-output" name="hanabi-dataset" />
+      <element id="module-output" name="hanabi-game" />
     </root>
   </artifact>
 </component>
