@@ -20,9 +20,9 @@ public class RawCard
 	private List<Double> poss_colors = new ArrayList<>();
 	private List<Double> poss_values = new ArrayList<>();
 	private String color;
-	private Colors colorEnum;
 	private int value;
 	private double playability,cardentropy,uselessness;
+	private Colors colorEnum;
 
 	private RawCard(RawCard card)
 	{
@@ -86,10 +86,32 @@ public class RawCard
 	}
 
 	public Colors getColorEnum() {
-		return colorEnum;
+		return this.colorEnum;
 	}
 
 	public void setColorEnum() {
-		this.colorEnum = Colors.valueOf(this.color.toUpperCase(Locale.ROOT));
+		switch (this.color) {
+			case "white" : this.colorEnum = Colors.WHITE; break;
+			case "green" : this.colorEnum = Colors.GREEN; break;
+			case "red" : this.colorEnum = Colors.RED; break;
+			case "blue" : this.colorEnum = Colors.BLUE; break;
+			case "yellow" : this.colorEnum = Colors.YELLOW; break;
+			default : this.colorEnum = null;
+		}
+
+	}
+
+	@Override
+	public String toString() {
+		return "RawCard{" +
+				"poss_colors=" + poss_colors +
+				", poss_values=" + poss_values +
+				", color='" + color + '\'' +
+				", colorEnum=" + colorEnum +
+				", value=" + value +
+				", playability=" + playability +
+				", cardentropy=" + cardentropy +
+				", uselessness=" + uselessness +
+				'}';
 	}
 }

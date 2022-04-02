@@ -169,4 +169,27 @@ public class RawState {
     public void setPlayer(int player) {
         this.player = player;
     }
+
+    @Override
+    public String toString() {
+        return "RawState{" +
+                "discarded=" + discarded +
+                ", current='" + current + '\'' +
+                ", round=" + round +
+                ", fuse=" + fuse +
+                ", hints=" + hints +
+                ", finalround=" + finalround +
+                ", deck=" + deck +
+                ", red=" + red +
+                ", blue=" + blue +
+                ", yellow=" + yellow +
+                ", white=" + white +
+                ", green=" + green +
+                ", player=" + player +
+                ", handentropy_current=" + handentropy_current +
+                ", handentropy_other=" + handentropy_other +
+                ", other_hand=" + other_hand +
+                ", current_hand=" + current_hand +
+                '}';
+    }
 }

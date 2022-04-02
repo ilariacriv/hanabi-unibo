@@ -55,11 +55,11 @@ public class ColorState {
         }
 
         for (int i = 0; i < rawState.getCurrent_hand().size(); i++) {
-            if (rawState.getCurrent_hand().get(i).getColor().equalsIgnoreCase(color.toString())) {
-                cards_current[i][0] = Double.valueOf(rawState.getCurrent_hand().get(i).getValue());
-            } else {
-                cards_current[i][0] = 0.0;
-            }
+//            if (rawState.getCurrent_hand().get(i).getColor().equalsIgnoreCase(color.toString())) {
+//                cards_current[i][0] = Double.valueOf(rawState.getCurrent_hand().get(i).getValue());
+//            } else {
+//                cards_current[i][0] = 0.0;
+//            }
             cards_current[i][1] = rawState.getCurrent_hand().get(i).getPoss_colors().get(color.ordinal());
             orderedPossColors_current[i] = cards_current[i][1];
         }

@@ -157,7 +157,7 @@ public class FinalState {
 
 
         for (Colors colors: this.colorOrder){
-            if(rawCard.getColorEnum().equals(colors)){
+            if(rawCard.getColor().equalsIgnoreCase(colors.name())){
                 state[features.ordinal()+j] =1;
             }else{
                 state[features.ordinal()+j] =0;

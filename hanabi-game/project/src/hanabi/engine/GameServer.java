@@ -250,7 +250,7 @@ public final class GameServer
 			//Creo una variabile per mantenere l'ultima mossa effettuata
 			Action currentAction;
 
-			DatasetGeneration data = new DatasetGeneration(currentState, g);
+		//	DatasetGeneration data = new DatasetGeneration(currentState, g);
 
 			//Inizia il ciclo di gioco
 			while(true)
@@ -261,8 +261,8 @@ public final class GameServer
 					while(br.readLine()!=null);
 				}
 */
-				data.setState(currentState);
-				data.generate();
+			//	data.setState(currentState);
+			//	data.generate();
 
 				//System.out.println("Invio dello stato corrente. Round: "+currentState.getRound());
 				//Invio stato corrente mascherato a tutti i giocatori
@@ -281,7 +281,7 @@ public final class GameServer
 				currentState = currentState.applyAction(currentAction,deck,names);
 
 			}
-			data.close();
+		//	data.close();
 			textArea.append("Gioco finito. ");
 			int score = 0;
 			if (currentState.getFuseTokens()==0)

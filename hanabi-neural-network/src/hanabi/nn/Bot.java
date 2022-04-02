@@ -41,7 +41,7 @@ public class Bot extends GameClient {
         RawState rawState= gson.fromJson(lineState, RawState.class);
         FinalState finalState = new FinalState(rawState);
         AtomicInteger action= new AtomicInteger(-1); //TODO mi ha suggerito lui questo atomic integer, controllare cosaa è
-
+    //    System.out.println(finalState);
         try {
             //TODO deve essere sotto forma di FinalState
             // getCurrentState è di tipo State, per avere un FinalState ci serve un RawState
