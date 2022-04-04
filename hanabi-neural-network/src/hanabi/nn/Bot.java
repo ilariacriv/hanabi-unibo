@@ -9,10 +9,9 @@ import hanabi.player.GameClient;
 import model.finale.FinalState;
 import model.raw.RawState;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
+import java.net.Socket;
+import java.net.UnknownHostException;
 import java.util.concurrent.atomic.AtomicInteger;
 
 
@@ -20,6 +19,12 @@ public class Bot extends GameClient {
 
     private Analitics analitics;
     private Gson gson = new Gson();
+    private Thread sent;
+    private Thread receive;
+    private Socket socket;
+
+    private BufferedReader bf;
+    private PrintWriter out;
 
     public Bot(String serverip, int serverport, boolean gui) {
         super(serverip, serverport, "NeuralNetwork", gui);
@@ -30,6 +35,49 @@ public class Bot extends GameClient {
         super.init();
         System.out.println("Giocatori: "+players);
         analitics = new Analitics(players.get(0));
+
+        //********** trial code here ***********
+        try {
+            socket = new Socket("localhost",9999);
+            bf = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            out = new PrintWriter(socket.getOutputStream(), true);
+        } catch (UnknownHostException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+        } catch (IOException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+        }
+        /*
+        sent = new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+                try {
+                    BufferedReader stdIn =new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                    PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+                    while(true){
+                        System.out.println("Trying to read...");
+                        String in = stdIn.readLine();
+                        System.out.println(in);
+                        out.print("Try"+"\r\n");
+                        out.flush();
+                        System.out.println("Message sent");
+                    }
+
+                } catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+        });
+        sent.start();
+        try {
+            sent.join();
+        } catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }*/
     }
 
     //TODO capire se ha senso aprire qua ogni volta un processo: tutte le volte che c'è da scegliere un'azione, lanciamo lo script python su un processo
@@ -40,7 +88,9 @@ public class Bot extends GameClient {
         String lineState = dataState.toString().replaceAll("\n","").replaceAll(" ", "");
         RawState rawState= gson.fromJson(lineState, RawState.class);
         FinalState finalState = new FinalState(rawState);
-        AtomicInteger action= new AtomicInteger(-1); //TODO mi ha suggerito lui questo atomic integer, controllare cosaa è
+        //AtomicInteger action= new AtomicInteger(-1); //TODO mi ha suggerito lui questo atomic integer, controllare cosaa è
+        int action = -1;
+
     //    System.out.println(finalState);
         try {
             //TODO deve essere sotto forma di FinalState
@@ -48,7 +98,21 @@ public class Bot extends GameClient {
             // dobbiamo capire come passare da State a RawState
             //PROBLEMA: RawState lo otteniamo solo da lettura file
             String currentState = finalState.toString();
-            //final Process p = Runtime.getRuntime().exec("C:\\Python39\\python.exe neural_network.py "+currentState,null,new File(new File(System.getProperty("user.dir")).getParent()+"/python"));
+
+            try {
+                out.print(currentState);
+                out.flush();
+                System.out.println("Message sent. Trying to read...");
+                action = Integer.parseInt(bf.readLine());
+                System.out.println(action);
+                out.print("int ricevuto: "+action);
+                out.flush();
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+
+            /*
             final Process p = Runtime.getRuntime().exec("neural_network.exe "+currentState,null,new File(new File(System.getProperty("user.dir")).getParent()+"/hanabi-neural-network"));
 
             //Se creo un processo devo svuotarne il buffer di scrittura (System.out) altrimenti si riempe e il programma si blocca
@@ -66,10 +130,10 @@ public class Bot extends GameClient {
                             action.set(Integer.parseInt(box));
                             //}
 
-                            /*System.out.println("Here is the standard output of the command:\n");
-                            while ((s = stdInput.readLine()) != null) {
-                                System.out.println(s);
-                            }*/
+                            //System.out.println("Here is the standard output of the command:\n");
+                            //while ((s = stdInput.readLine()) != null) {
+                             //   System.out.println(s);
+                            //}
                             //break;
                             //	if (br2.ready())
                             //		box = br2.readLine();
@@ -88,22 +152,24 @@ public class Bot extends GameClient {
                 } catch (InterruptedException e) {
 
                 }
-            }
+            }*/
 
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
+
+
         System.out.println("Azione num: " + action);
         Action result = null;
         //TODO riodrinare le carte perchè la abbiamo ordinate a seconda del final state
-        if (action.intValue() < 5)
-            result = Action.createPlayAction(players.get(0), action.intValue());
-        else if (action.intValue() < 10)
-            result = Action.createDiscardAction(players.get(0), action.intValue()-5);
-        else if (action.intValue() < 15)
-            result = Action.createHintValueAction(players.get(0), "hint value" ,action.intValue()-10);
-        else if (action.intValue() < 20)
-            result = Action.createHintColorAction(players.get(0), "hint color" , finalState.getColorOrder().get(action.intValue()-15).toString());
+        if (action < 5)
+            result = Action.createPlayAction(players.get(0), action);
+        else if (action < 10)
+            result = Action.createDiscardAction(players.get(0), action-5);
+        else if (action < 15)
+            result = Action.createHintValueAction(players.get(0), "hint value" ,action-10);
+        else if (action < 20)
+            result = Action.createHintColorAction(players.get(0), "hint color" , finalState.getColorOrder().get(action-15).toString());
 
         return result;
     }
@@ -126,6 +192,7 @@ public class Bot extends GameClient {
         }
         bot.run();
         System.out.println("Partita finita.");
+
 //		System.out.println(bot.frame);
         if (bot.frame == null)
             System.exit(0);
