@@ -48,24 +48,22 @@ public class Bot extends GameClient {
             // dobbiamo capire come passare da State a RawState
             //PROBLEMA: RawState lo otteniamo solo da lettura file
             String currentState = finalState.toString();
-            final Process p = Runtime.getRuntime().exec("C:\\Python39\\python.exe neural_network.py "+currentState,null,new File(new File(System.getProperty("user.dir")).getParent()+"/python"));
+            //final Process p = Runtime.getRuntime().exec("C:\\Python39\\python.exe neural_network.py "+currentState,null,new File(new File(System.getProperty("user.dir")).getParent()+"/python"));
+            final Process p = Runtime.getRuntime().exec("neural_network.exe "+currentState,null,new File(new File(System.getProperty("user.dir")).getParent()+"/hanabi-neural-network"));
 
             //Se creo un processo devo svuotarne il buffer di scrittura (System.out) altrimenti si riempe e il programma si blocca
-            if (p!=null)
-            {
+            if (p!=null) {
                 //	bufflist.add(new BufferedReader(new InputStreamReader(p.getInputStream())));
-                new Thread(() -> {
+                Thread l = new Thread(() -> {
                     BufferedReader br1 = new BufferedReader(new InputStreamReader(p.getInputStream()));
                     BufferedReader br2 = new BufferedReader(new InputStreamReader(p.getErrorStream()));
-                    try
-                    {
-                        String box="";
-                        while(box!=null)
-                        {
+                    try {
+                        String box = "";
+                        while (box != null) {
                             //if (br1.ready()) {
-                                box = br1.readLine();
-                              //  System.out.println(box);
-                                //action.set(Integer.parseInt(box));
+                            box = br1.readLine();
+                            System.out.println("Box = " + box);
+                            action.set(Integer.parseInt(box));
                             //}
 
                             /*System.out.println("Here is the standard output of the command:\n");
@@ -78,11 +76,19 @@ public class Bot extends GameClient {
                             //	System.out.println(box);
                         }
                         //Se devi svuotare anche System.err usa un altro thread
+                    } catch (IOException e) {
                     }
-                    catch (IOException e){}
-                }).start();
+                });
+                l.start();
+
+                //TODO forse bisogna fare il join per aspettare che il processo finisca
+                try //Attendo che il thread finisca
+                {
+                    l.join();
+                } catch (InterruptedException e) {
+
+                }
             }
-            //TODO forse bisogna fare il join per aspettare che il processo finisca
 
         } catch (IOException e) {
             e.printStackTrace();
