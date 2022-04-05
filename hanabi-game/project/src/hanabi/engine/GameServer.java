@@ -191,6 +191,8 @@ public final class GameServer
 					p = Runtime.getRuntime().exec("java -jar hanabi-bot2.jar localhost "+serverSocket.getLocalPort()+" "+gui,null,new File(new File(System.getProperty("user.dir")).getParent()+"/hanabi-unibo/hanabi-bot2"));
 				else if (player.equals("NeuralNetwork"))
 					p = Runtime.getRuntime().exec("java -jar hanabi-neural-network.jar localhost "+serverSocket.getLocalPort()+" "+gui,null,new File(new File(System.getProperty("user.dir")).getParent()+"/hanabi-unibo/hanabi-neural-network"));
+				else if (player.equals("NeuralNetworkCopia"))
+					p = Runtime.getRuntime().exec("java -jar hanabi-neural-network-10001.jar localhost "+serverSocket.getLocalPort()+" "+gui,null,new File(new File(System.getProperty("user.dir")).getParent()+"/hanabi-unibo/hanabi-neural-network"));
 				else
 					p = null;
 				System.out.println("Lanciato "+player);
@@ -349,6 +351,7 @@ public final class GameServer
 		combo.addItem("Bot2");
 //		combo.addItem("SimpleBot senza GUI");
 		combo.addItem("NeuralNetwork");
+		combo.addItem("NeuralNetworkCopia");
 
 		combo.addActionListener(e -> {
 			JComboBox cb = (JComboBox)e.getSource();

@@ -112,10 +112,12 @@ public class FinalState {
             }
         }.thenComparing(RawCard::getValue);
 
-        this.orderedHandCurrent =rawState.getCurrent_hand();
-        this.orderedHandCurrent.sort(cardComparator);
+        //this.orderedHandCurrent = rawState.getCurrent_hand();
+        this.orderedHandCurrent = new ArrayList<>(rawState.getCurrent_hand());
+        //this.orderedHandCurrent.sort(cardComparator);
 
-        this.orderedHandOther=rawState.getOther_hand();
+        //this.orderedHandOther=rawState.getOther_hand();
+        this.orderedHandOther=new ArrayList<>(rawState.getOther_hand());
         this.orderedHandOther.sort(cardComparator);
 
         for(int i=0; i<orderedHandOther.size(); i++){

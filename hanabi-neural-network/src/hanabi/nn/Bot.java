@@ -7,12 +7,14 @@ import hanabi.gui.PlayerConnectionDialog;
 import hanabi.player.Analitics;
 import hanabi.player.GameClient;
 import model.finale.FinalState;
+import model.raw.RawCard;
 import model.raw.RawState;
 
 import java.io.*;
 import java.net.Socket;
 import java.net.UnknownHostException;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.ArrayList;
+import java.util.Locale;
 
 
 public class Bot extends GameClient {
@@ -21,7 +23,7 @@ public class Bot extends GameClient {
     private Gson gson = new Gson();
     private Thread sent;
     private Thread receive;
-    private Socket socket;
+    private Socket socketPython;
 
     private BufferedReader bf;
     private PrintWriter out;
@@ -38,9 +40,9 @@ public class Bot extends GameClient {
 
         //********** trial code here ***********
         try {
-            socket = new Socket("localhost",9999);
-            bf = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            out = new PrintWriter(socket.getOutputStream(), true);
+            socketPython = new Socket("localhost",9999);
+            bf = new BufferedReader(new InputStreamReader(socketPython.getInputStream()));
+            out = new PrintWriter(socketPython.getOutputStream(), true);
         } catch (UnknownHostException e1) {
             // TODO Auto-generated catch block
             e1.printStackTrace();
@@ -87,6 +89,7 @@ public class Bot extends GameClient {
         DataState dataState=  DataState.getDatastateFromState(getCurrentState());
         String lineState = dataState.toString().replaceAll("\n","").replaceAll(" ", "");
         RawState rawState= gson.fromJson(lineState, RawState.class);
+        ArrayList<RawCard> oldCurrentHand = rawState.getCurrent_hand();
         FinalState finalState = new FinalState(rawState);
         //AtomicInteger action= new AtomicInteger(-1); //TODO mi ha suggerito lui questo atomic integer, controllare cosaa è
         int action = -1;
@@ -105,8 +108,6 @@ public class Bot extends GameClient {
                 System.out.println("Message sent. Trying to read...");
                 action = Integer.parseInt(bf.readLine());
                 System.out.println(action);
-                out.print("int ricevuto: "+action);
-                out.flush();
             } catch (IOException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
@@ -162,14 +163,51 @@ public class Bot extends GameClient {
         System.out.println("Azione num: " + action);
         Action result = null;
         //TODO riodrinare le carte perchè la abbiamo ordinate a seconda del final state
+
+        ArrayList<RawCard> currentHand = finalState.getOrderedHandCurrent();
+        RawCard card = currentHand.get(action%5);
+
         if (action < 5)
-            result = Action.createPlayAction(players.get(0), action);
-        else if (action < 10)
-            result = Action.createDiscardAction(players.get(0), action-5);
-        else if (action < 15)
-            result = Action.createHintValueAction(players.get(0), "hint value" ,action-10);
-        else if (action < 20)
-            result = Action.createHintColorAction(players.get(0), "hint color" , finalState.getColorOrder().get(action-15).toString());
+            result = Action.createPlayAction(players.get(0), oldCurrentHand.indexOf(card));
+        else if (action < 10) {
+            // la rete ci dice di scartare, ma abbiamo 8 indizi quindi non è possibile: creiamo una azione arbitrariamente
+            if (getCurrentState().getHintTokens() == 8){
+                result = Action.createHintValueAction(players.get(0), players.get(1), getCurrentState().getHand(players.get(1)).get(0).getValue());
+            }
+            else result = Action.createDiscardAction(players.get(0), oldCurrentHand.indexOf(card));
+        }
+        // da ora in poi la rete ci dice che dobbiamo fare delle "hint actions". Se non abbiamo tokens, creiamo una azione discard arbitrariamente
+        else if (getCurrentState().getHintTokens() == 0){
+            result = Action.createDiscardAction(players.get(0), 0);
+        }
+        else if (action < 15) {
+            boolean found = false;
+            for (RawCard c: rawState.getOther_hand()){
+                if (c.getValue() == action%5+1){
+                    result = Action.createHintValueAction(players.get(0), players.get(1), action%5+1);
+                    found = true;
+                    break;
+                }
+            }
+            // il valore suggerito dalla rete non c'è nella mano del giocatore
+            if (!found)
+                result = Action.createHintValueAction(players.get(0), players.get(1), getCurrentState().getHand(players.get(1)).get(0).getValue());
+        }
+        else if (action < 20) {
+            boolean found = false;
+            String color = finalState.getColorOrder().get(action % 5).name().toLowerCase(Locale.ROOT);
+            for (RawCard c: rawState.getOther_hand()){
+                if (c.getColor().equalsIgnoreCase(color)){
+                    result = Action.createHintColorAction(players.get(0), players.get(1), color);
+                    found = true;
+                    break;
+                }
+            }
+            // il valore suggerito dalla rete non c'è nella mano del giocatore
+            if (!found)
+                result = Action.createHintColorAction(players.get(0), players.get(1), getCurrentState().getHand(players.get(1)).get(0).getColor());
+        }
+
 
         return result;
     }
