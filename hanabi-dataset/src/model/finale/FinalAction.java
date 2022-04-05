@@ -42,7 +42,7 @@ public class FinalAction {
             actions[ActionCode.valueOf("HINT_VALUE_"+rawAction.getValue()).ordinal()]=1;
         }
         if(rawAction.getType().equalsIgnoreCase("hintcolor")){
-            int colorIndex = Colors.valueOf(rawAction.getColor()).ordinal();
+            int colorIndex = Colors.valueOf(rawAction.getColor().toUpperCase(Locale.ROOT)).ordinal();
             actions[ActionCode.valueOf("HINT_COLOR_1").ordinal()+colorIndex]=1;
         }
 
