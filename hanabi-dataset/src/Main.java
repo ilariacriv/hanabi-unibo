@@ -63,7 +63,6 @@ public class Main {
             while ((rawState = gameReaderFile.readRawState()) != null &&
                     (rawAction = actionReaderFile.readAction()) != null) {
                 FinalState finalState = new FinalState(rawState);
-                ArrayList<RawCard> rawCards = finalState.getOrderedHandCurrent();
 
                 FinalAction finalAction = new FinalAction(rawAction, finalState, rawState);
                 //System.out.println(finalState.toString());
