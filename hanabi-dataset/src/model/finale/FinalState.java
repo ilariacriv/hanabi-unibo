@@ -7,6 +7,7 @@ import model.utils.Features;
 import model.utils.Utils;
 import symmetries.ColorState;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Comparator;
 
@@ -18,9 +19,9 @@ public class FinalState {
     //private ArrayList<Double> state;
     final static int DIM=195;
     private double[] state;
-    private ArrayList<ColorState> colorStateOrder;
-    private ArrayList<Colors> colorOrder;
-    private ArrayList<RawCard> orderedHandCurrent, orderedHandOther;
+    //private ArrayList<ColorState> colorStateOrder;
+    //private ArrayList<Colors> colorOrder;
+    //private ArrayList<RawCard> orderedHandCurrent, orderedHandOther;
 
     public FinalState(RawState rawState) {
         /*state= new ArrayList<>();
@@ -47,41 +48,7 @@ public class FinalState {
             state.addAll(Utils.getDiscardedFromInt(col));
         }
         */
-        colorStateOrder = new ArrayList<>();
-        colorOrder = new ArrayList<>();
 
-        for(Colors color : Colors.values()){
-            colorStateOrder.add(new ColorState(color,rawState));
-        }
-        Comparator<ColorState> csComparator = (Comparator.comparing( ( ColorState cs) -> cs.getFirework()))
-                .thenComparing(cs3 -> cs3.getDiscarded(0))
-                .thenComparing(cs4 -> cs4.getDiscarded(1))
-                .thenComparing(cs5 -> cs5.getDiscarded(2))
-                .thenComparing(cs6 -> cs6.getDiscarded(3))
-                .thenComparing(cs7 -> cs7.getDiscarded(4))
-                .thenComparing(cs8 -> cs8.getOtherHandCountNumber(5))
-                .thenComparing(cs9 -> cs9.getOtherHandCountNumber(4))
-                .thenComparing(cs10 -> cs10.getOtherHandCountNumber(3))
-                .thenComparing(cs11 -> cs11.getOtherHandCountNumber(2))
-                .thenComparing(cs12 -> cs12.getOtherHandCountNumber(1))
-                .thenComparing(cs13 -> cs13.getPossibilityColorOrderedOther(0))
-                .thenComparing(cs14 -> cs14.getPossibilityColorOrderedOther(1))
-                .thenComparing(cs15 -> cs15.getPossibilityColorOrderedOther(2))
-                .thenComparing(cs16 -> cs16.getPossibilityColorOrderedOther(3))
-                .thenComparing(cs17 -> cs17.getPossibilityColorOrderedOther(4))
-                .thenComparing(cs18 -> cs18.getPossibilityColorOrderedCurrent(0))
-                .thenComparing(cs19 -> cs19.getPossibilityColorOrderedCurrent(1))
-                .thenComparing(cs20 -> cs20.getPossibilityColorOrderedCurrent(2))
-                .thenComparing(cs21 -> cs21.getPossibilityColorOrderedCurrent(3))
-                .thenComparing(cs22 -> cs22.getPossibilityColorOrderedCurrent(4));
-
-        //TODO per completezza ci potrebbe essere casi non compresi, se tutti questi valori sono uguali
-
-        //colorStateOrder.sort(csComparator);
-
-        for(ColorState cs:colorStateOrder){
-            colorOrder.add(cs.getColor());
-        }
 
         state= new double[DIM];
 
@@ -96,41 +63,20 @@ public class FinalState {
         state[Features.handentropy_current.ordinal()]= rawState.getHandentropy_current();
         state[Features.handentropy_other.ordinal()]= rawState.getHandentropy_other();
 
-        for(int i=0; i<5; i++){
-            state[Features.firework_color1.ordinal()+i]= getFirework(colorStateOrder.get(i).getColor(), rawState);
+        for(Colors c: Colors.values()){
+            state[Features.firework_color1.ordinal()+c.ordinal()]= getFirework(c, rawState);
         }
 
-        Comparator<RawCard> cardComparator = new Comparator<RawCard>() {
-            @Override
-            public int compare(RawCard o1, RawCard o2) {
-               int index1=-1,index2=-1;
-               for (int i=0; i<5;i++){
-                   if(colorOrder.get(i).equals(o1.getColorEnum())) index1=i;
-                   if(colorOrder.get(i).equals(o2.getColorEnum())) index2=i;
-               }
-               return Integer.compare(index1,index2);
-            }
-        }.thenComparing(RawCard::getValue);
-
-        //this.orderedHandCurrent = rawState.getCurrent_hand();
-        this.orderedHandCurrent = new ArrayList<>(rawState.getCurrent_hand());
-        //this.orderedHandCurrent.sort(cardComparator);
-
-        //this.orderedHandOther=rawState.getOther_hand();
-        this.orderedHandOther=new ArrayList<>(rawState.getOther_hand());
-        //this.orderedHandOther.sort(cardComparator);
-
-        for(int i=0; i<orderedHandOther.size(); i++){
-            addOtherCard(orderedHandOther.get(i), i);
+        for(int i=0; i<rawState.getOther_hand().size(); i++){
+            addOtherCard(rawState.getOther_hand().get(i), i);
         }
 
-        for(int i=0; i<orderedHandCurrent.size(); i++){
-            addCurrentCard(orderedHandCurrent.get(i), i);
+        for(int i=0; i<rawState.getCurrent_hand().size(); i++){
+            addCurrentCard(rawState.getCurrent_hand().get(i), i);
         }
 
         for(int i=0; i<5;i++) {
-            Colors color = colorOrder.get(i);
-            addDiscarded(Utils.getDiscardedArrayFromInt(rawState.getDiscarded().get(color.ordinal())),i);
+            addDiscarded(Utils.getDiscardedArrayFromInt(rawState.getDiscarded().get(i)),i);
         }
     }
 
@@ -141,8 +87,7 @@ public class FinalState {
         state[Features.uselessness_card1_other.ordinal()+i] = rawCard.getUselessness();
 
         for(int j=0; j<5;j++){
-            int colorindex = this.getColorOrder().get(j).ordinal();
-            state[Features.poss_card1_oth_color1.ordinal()+i*5+j] = rawCard.getPoss_colors().get(colorindex);
+            state[Features.poss_card1_oth_color1.ordinal()+i*5+j] = rawCard.getPoss_colors().get(j);
             state[Features.poss_card1_oth_value1.ordinal()+i*5+j] = rawCard.getPoss_values().get(j);
         }
         int j=0;
@@ -158,8 +103,8 @@ public class FinalState {
         }
 
 
-        for (Colors colors: this.colorOrder){
-            if(rawCard.getColor().equalsIgnoreCase(colors.name())){
+        for (Colors c: Colors.values()){
+            if(rawCard.getColor().equalsIgnoreCase(c.name())){
                 state[features.ordinal()+j] =1;
             }else{
                 state[features.ordinal()+j] =0;
@@ -177,8 +122,7 @@ public class FinalState {
         state[Features.uselessness_card1_current.ordinal()+i] = rawCard.getUselessness();
 
         for(int j=0; j<5;j++){
-            int colorindex = this.getColorOrder().get(j).ordinal();
-            state[Features.poss_card1_curr_color1.ordinal()+i*5+j] = rawCard.getPoss_colors().get(colorindex);
+            state[Features.poss_card1_curr_color1.ordinal()+i*5+j] = rawCard.getPoss_colors().get(j);
             state[Features.poss_card1_curr_value1.ordinal()+i*5+j] = rawCard.getPoss_values().get(j);
         }
         /* // non serve più perchè non dobbiamo sapere i nostri colori
@@ -227,47 +171,6 @@ public class FinalState {
         return -1.0;
     }
 
-    public ArrayList<Colors> getColorOrder() {
-        return colorOrder;
-    }
-
-    public void setColorOrder(ArrayList<Colors> colorOrder) {
-        this.colorOrder = colorOrder;
-    }
-
-    public ArrayList<RawCard> getOrderedHandCurrent() {
-        return orderedHandCurrent;
-    }
-
-    public void setOrderedHandCurrent(ArrayList<RawCard> orderedHandCurrent) {
-        this.orderedHandCurrent = orderedHandCurrent;
-    }
-
-    public ArrayList<RawCard> getOrderedHandOther() {
-        return orderedHandOther;
-    }
-
-    public void setOrderedHandOther(ArrayList<RawCard> orderedHandOther) {
-        this.orderedHandOther = orderedHandOther;
-    }
-
-    public int getIndexFromColor(String color){
-        int result = -1;
-        for (Colors c: this.colorOrder){
-            if (c.toString().equalsIgnoreCase(color)){
-                result = this.colorOrder.indexOf(c);
-            }
-        }
-        return result;
-    }
-
-    public ArrayList<ColorState> getColorStateOrder() {
-        return colorStateOrder;
-    }
-
-    public void setColorStateOrder(ArrayList<ColorState> colorStateOrder) {
-        this.colorStateOrder = colorStateOrder;
-    }
 
     public FinalState( ) {
         state= new double[DIM];

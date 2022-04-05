@@ -4,6 +4,7 @@ import model.raw.RawAction;
 import model.raw.RawCard;
 import model.raw.RawState;
 import model.utils.ActionCode;
+import model.utils.Colors;
 
 import java.util.ArrayList;
 import java.util.Locale;
@@ -26,11 +27,10 @@ public class FinalAction {
 
     private void mapAction(RawAction rawAction){
 
-        ArrayList<RawCard> currentHand = finalState.getOrderedHandCurrent();
         ArrayList<RawCard> oldCurrentHand = rawState.getCurrent_hand();
         RawCard card = oldCurrentHand.get(rawAction.getCard());
 
-        int index = currentHand.indexOf(card);
+        int index = oldCurrentHand.indexOf(card);
 
         if(rawAction.getType().equalsIgnoreCase("discard")){
             actions[ActionCode.valueOf("DISCARD_1st").ordinal()+index]=1;
@@ -42,7 +42,7 @@ public class FinalAction {
             actions[ActionCode.valueOf("HINT_VALUE_"+rawAction.getValue()).ordinal()]=1;
         }
         if(rawAction.getType().equalsIgnoreCase("hintcolor")){
-            int colorIndex = this.finalState.getIndexFromColor(rawAction.getColor());
+            int colorIndex = Colors.valueOf(rawAction.getColor()).ordinal();
             actions[ActionCode.valueOf("HINT_COLOR_1").ordinal()+colorIndex]=1;
         }
 
