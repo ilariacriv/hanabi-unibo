@@ -77,7 +77,7 @@ public class FinalState {
 
         //TODO per completezza ci potrebbe essere casi non compresi, se tutti questi valori sono uguali
 
-        colorStateOrder.sort(csComparator);
+        //colorStateOrder.sort(csComparator);
 
         for(ColorState cs:colorStateOrder){
             colorOrder.add(cs.getColor());
@@ -118,7 +118,7 @@ public class FinalState {
 
         //this.orderedHandOther=rawState.getOther_hand();
         this.orderedHandOther=new ArrayList<>(rawState.getOther_hand());
-        this.orderedHandOther.sort(cardComparator);
+        //this.orderedHandOther.sort(cardComparator);
 
         for(int i=0; i<orderedHandOther.size(); i++){
             addOtherCard(orderedHandOther.get(i), i);
