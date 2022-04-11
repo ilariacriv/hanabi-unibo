@@ -90,7 +90,8 @@ public class Bot extends GameClient {
         String lineState = dataState.toString().replaceAll("\n","").replaceAll(" ", "");
         RawState rawState= gson.fromJson(lineState, RawState.class);
         ArrayList<RawCard> oldCurrentHand = rawState.getCurrent_hand();
-        FinalState finalState = new FinalState(rawState);
+        FinalState finalState = new FinalState(rawState, false);
+        FinalState orderdFinalState = new FinalState(rawState, true);
         //AtomicInteger action= new AtomicInteger(-1); //TODO mi ha suggerito lui questo atomic integer, controllare cosaa è
         int action = -1;
 
@@ -101,9 +102,12 @@ public class Bot extends GameClient {
             // dobbiamo capire come passare da State a RawState
             //PROBLEMA: RawState lo otteniamo solo da lettura file
             String currentState = finalState.toString();
+            String orderedCurrentState = orderdFinalState.toString();
 
             try {
                 out.print(currentState);
+                out.flush();
+                out.print(orderedCurrentState);
                 out.flush();
                 System.out.println("Message sent. Trying to read...");
                 action = Integer.parseInt(bf.readLine());

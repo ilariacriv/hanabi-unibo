@@ -62,7 +62,7 @@ public class Main {
             //SymmetriesChecker symmetriesChecker = new SymmetriesChecker(finalStateFile);
             while ((rawState = gameReaderFile.readRawState()) != null &&
                     (rawAction = actionReaderFile.readAction()) != null) {
-                FinalState finalState = new FinalState(rawState);
+                FinalState finalState = new FinalState(rawState, false);
                 ArrayList<RawCard> rawCards = finalState.getOrderedHandCurrent();
 
                 FinalAction finalAction = new FinalAction(rawAction, finalState, rawState);
