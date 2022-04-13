@@ -211,10 +211,10 @@ public final class GameServer
 							//	if (br1.ready())
 								box = br1.readLine();
 
-								System.out.println("input: " + box);
+								//System.out.println("input: " + box);
 							//	if (br2.ready())
-									box = br2.readLine();
-								System.out.println("errors: "+box);
+								//	box = br2.readLine();
+								//System.out.println("errors: "+box);
 							}
 							//Se devi svuotare anche System.err usa un altro thread
 						}

@@ -212,6 +212,14 @@ public class Bot extends GameClient {
         return result;
     }
 
+    public void closeSocket(){
+        try {
+            socketPython.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void main(String args[])
     {
         //TODO capire cosa mettere qua
@@ -230,6 +238,7 @@ public class Bot extends GameClient {
         }
         bot.run();
         System.out.println("Partita finita.");
+        bot.closeSocket();
 
 //		System.out.println(bot.frame);
         if (bot.frame == null)
