@@ -8,85 +8,122 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report
 from sklearn.metrics import confusion_matrix
 
-#data=json.load(open("prova.txt"))
+def loadDataset(data_type):
 
-# This opens a handle to your file, in 'r' read mode
-file_handle = open('final_states/final_states_2.txt', 'r')
+    for i in range(1,5):
+        print(f"Reading {data_type}_{i}...", end=" ")
+        file_handle = open(f'final_{data_type}/final_{data_type}_unordered_{i}.txt', 'r')
+        lines_list = file_handle.readlines()
+        my_data = [[float(val) for val in line.split(',')] for line in lines_list]
+        temp = np.array([np.array(xi) for xi in my_data])
+        if i==1:
+            data = temp
+        else:
+            data = np.concatenate([data, temp])
+        print("ok", end = " ")
+        print(data.shape)
+    return data
 
-# Read in all the lines of your file into a list of lines
-lines_list = file_handle.readlines()
-# Do a double-nested list comprehension to get the rest of the data into your matrix
-my_data = [[float(val) for val in line.split(',')] for line in lines_list]
+def neural_network():
+    input = layers.Input((195), dtype=tf.float32)
 
-data = np.array([np.array(xi) for xi in my_data])
+    # def resnet_block(x):
 
-file_handle = open('final_actions/final_actions_2.txt', 'r')
-lines_list = file_handle.readlines()
-my_data = [[float(val) for val in line.split(',')] for line in lines_list]
+    # First component of main path
+    x1 = layers.Dense(195, activation="relu", name="x1")(input)
+    x = layers.Dropout(0.1)(x1)
 
-actions = np.array([np.array(xi) for xi in my_data])
+    # Second component of main path
+    x = layers.Dense(512, activation="relu", name="x2")(x)
+    x = layers.Dropout(0.1)(x)
+    x = layers.Dense(128, activation="relu", name="x3")(x)
+    x = layers.Dropout(0.1)(x)
+    x = layers.Dense(32, activation="relu", name="x4")(x)
+    #x = layers.BatchNormalization()(x)
+    #x = layers.Dropout(0.1)(x)
 
-# Split data into: 70% training, 20% validation, 10% testing
-X_2, test_data = train_test_split(data, test_size=0.1, random_state=10)
-train_data, val_data = train_test_split(X_2, test_size=len(data) * 0.2 / len(X_2), random_state=10)
+    # Second component of main path
+    #x4 = layers.Dense(195, activation="relu", name="x5")(x)
 
-X_2, test_actions = train_test_split(actions, test_size=0.1, random_state=10)
-train_actions, val_actions = train_test_split(X_2, test_size=len(actions) * 0.2 / len(X_2), random_state=10)
+    # Final step: Add shortcut value to main path, and pass it through a softmax activation
+    #x = layers.Add(name="Add")([x1, x4])
 
+    #x = layers.Dense(128, activation="relu", name="x6")(x)
+    #x = layers.Dropout(0.1)(x)
+    #x = layers.Dense(64, activation="relu", name="x7")(x)
+    #x = layers.Dropout(0.1)(x)
+    #x = layers.Dense(32, activation="relu", name="x8")(x)
 
-data_tensor=tf.convert_to_tensor(train_data)
-action_tensor=tf.convert_to_tensor(train_actions)
+    x = layers.BatchNormalization()(x)
+    output = layers.Dense(20, activation='softmax', name="output")(x)
+    model = tf.keras.Model(input, output)
+    return model
 
-#actions= np.genfromtxt(StringIO(actions), delimiter=',')
-#data= np.genfromtxt(StringIO(data), delimiter=',')
+def makeplot(fit):
+    # Plot stats.
+    hist = fit.history
+    print(hist.keys())
+    loss_values = hist["loss"]
+    val_loss_values = hist["val_loss"]
+    acc = hist["accuracy"]
+    val_acc = hist["val_accuracy"]
 
-input = layers.Input((176), dtype=tf.float32)
+    epochs = range(1, len(loss_values) + 1)
 
-#def resnet_block(x):
+    plt.plot(epochs, loss_values, "b", label="Training loss")
+    plt.plot(epochs, val_loss_values, "g", label="Validation loss")
+    plt.plot(epochs, acc, "r", label="Accuracy")
+    plt.plot(epochs, val_acc, "purple", label="Validation accuracy")
+    plt.grid(linewidth=0.25)
+    plt.yticks(np.arange(0, 1.1, 0.1))
+    plt.title("Training and validation loss/accuracy")
+    plt.xlabel("Epochs")
+    plt.ylabel("Loss/accuracy")
+    plt.legend()
 
-# First component of main path
-x1 = layers.Dense(176, activation="relu", name="x1")(input)
-x = layers.Dropout(0.1)(x1)
+    filename = f'images/graph_large.png'
+    plt.savefig(filename)
 
-# Second component of main path
-x = layers.Dense(64, activation="relu", name="x2")(x)
-x = layers.BatchNormalization()(x)
+    plt.show()
 
-# Second component of main path
-x4 = layers.Dense(176, activation="relu", name="x3")(x)
+if __name__ == "__main__":
+    # load the dataset from the states and the corresponding actions
+    states = loadDataset("states")
+    actions = loadDataset("actions")
 
-# Final step: Add shortcut value to main path, and pass it through a softmax activation
-x = layers.Add(name="Add")([x1, x4])
+    # Split data into: 70% training, 20% validation, 10% testing
+    X_2, test_states = train_test_split(states, test_size=0.1, random_state=10)
+    train_states, val_states = train_test_split(X_2, test_size=len(states) * 0.2 / len(X_2), random_state=10)
 
-#X = tf.keras.layers.Attention()(X)
-#x = layers.BatchNormalization()(x)
-output = layers.Dense(20, activation='softmax', name="output")(x)
-model = tf.keras.Model(input, output)
+    X_2, test_actions = train_test_split(actions, test_size=0.1, random_state=10)
+    train_actions, val_actions = train_test_split(X_2, test_size=len(actions) * 0.2 / len(X_2), random_state=10)
 
-#    return x6
+    # convert to tensors
+    train_states_tensor = tf.convert_to_tensor(train_states)
+    train_actions_tensor = tf.convert_to_tensor(train_actions)
+    val_states_tensor = tf.convert_to_tensor(val_states)
+    val_actions_tensor = tf.convert_to_tensor(val_actions)
+    test_states_tensor = tf.convert_to_tensor(test_states)
+    test_actions_tensor = tf.convert_to_tensor(test_actions)
 
-#model=resnet_block(inputs)
-model.summary()
+    # build the network architecture
+    model = neural_network()
+    model.summary()
 
-print(tf.shape(data_tensor))
-print(tf.shape(action_tensor))
+    model.compile(loss=tf.keras.losses.categorical_crossentropy, optimizer=tf.keras.optimizers.Adam(),
+                  metrics="accuracy")
+    fit = model.fit(x=train_states_tensor, y=train_actions_tensor, epochs=20, validation_data=(val_states_tensor, val_actions_tensor))
 
-model.compile(loss=tf.keras.losses.categorical_crossentropy,optimizer=tf.keras.optimizers.Adam(), metrics="accuracy")
-hystory= model.fit(x=data_tensor,y=action_tensor,epochs=10, validation_data=(val_data, val_actions))
+    score = model.evaluate(test_states_tensor, test_actions_tensor)
+    format_acc = "{:.0f}".format(score[1] * 100)
 
+    y_pred = model.predict(test_states_tensor)
+    # np.c_[action_tensor,y_pred]
+    y_true = np.argmax(test_actions_tensor, axis=1)
+    y_pred = np.argmax(y_pred, axis=1)
 
-score = model.evaluate(test_data, test_actions)
-print(score)
-format_acc = "{:.0f}".format(score[1]*100)
+    print(classification_report(y_true, y_pred))
 
-y_pred=model.predict(test_data)
-#np.c_[action_tensor,y_pred]
-y_true = np.argmax(test_actions, axis = 1)
-y_pred = np.argmax(y_pred, axis = 1)
+    model.save(f'models/hanabi_{format_acc}_large.h5')
 
-print(y_true)
-print(y_pred)
-
-print(classification_report(y_true, y_pred))
-
-model.save(f'models/hanabi_{format_acc}.h5')
+    makeplot(fit)

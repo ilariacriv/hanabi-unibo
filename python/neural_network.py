@@ -1,18 +1,47 @@
 import numpy as np
 import tensorflow as tf
 import matplotlib.pyplot as plt
-import json
-import sys
+import socket
+import random
+
 from io import StringIO
 from tensorflow.keras import layers
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report
 
-import sys
+def communicate(model):
+    HOST = "localhost"
+    PORT = 9999
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    print('Socket created')
 
-def prediction(state_list):
-    modelName = 'models/hanabi_52.h5'
+    try:
+        s.bind((HOST, PORT))
+    except socket.error as err:
+        print('Bind failed. Error Code : '.format(err))
+    s.listen(10)
+    print("Socket Listening")
+    conn, addr = s.accept()
+    while (True):
+
+        data = conn.recv(1024)
+        data = data.decode(encoding='UTF-8')
+        print(data)
+        if data == "":
+            return
+        action = prediction([data], model)
+        conn.send(bytes(f'{action}\n', 'UTF-8'))
+        print(action)
+        print("Message sent")
+
+def load(modelName):
     model = tf.keras.models.load_model(modelName)
+    return model
+
+def prediction(state_list, model):
+    #modelName = 'models/hanabi_52.h5'
+    #modelName = 'hanabi_52.h5'
+    #model = tf.keras.models.load_model(modelName)
 
     my_data = [[float(val) for val in current_state.split(',')] for current_state in state_list]
     data = np.array([np.array(xi) for xi in my_data])
@@ -22,12 +51,11 @@ def prediction(state_list):
 
     y_pred = model.predict(data)
     action_index = np.argmax(y_pred, axis=1)
-    return action_index
+    return action_index[0]
     #print "hello and that's your sum:", a + b
 
-def prova(a):
-    print(len(a))
-    print(len(a.split(",")))
+def random_action():
+    return random.randint(0,19)
 
 def train():
     ### LOAD MODEL ###
@@ -87,9 +115,13 @@ def train():
 
 if __name__ == "__main__":
 
-    current_state = [sys.argv[1]]
-    action_index = prediction(current_state)
-    print(action_index)
+    #current_state = [sys.argv[1]]
+    #action_index = prediction(current_state)
+    #print(action_index)
+    modelName = 'models/hanabi_79_100epochs.h5'
+    model = load(modelName)
+    while True:
+        communicate(model)
 
     # train()
     ### prova(current_state[0])
