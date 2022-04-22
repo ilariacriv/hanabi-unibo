@@ -1,25 +1,33 @@
 # ATTIVITÀ PROGETTUALE DI FONDAMENTI DI INTELLIGENZA ARTIFICIALE M
-Il progetto consiste in un framework java che consenta all'utente di giocare ad Hanabi insieme a bots o a giocatori reali.
-Il progetto è suddiviso in moduli, per ognuno dei quali è disponibile sorgente e jar.
+Il progetto consiste nell'ampliamento del server di gioco con un modulo che permette di giocare con una rete neurale.
 
-- hanabi-api: contiene classi di supporto agli altri moduli
-- json-v2: implementa oggetti json, attraverso i quali sono definite le entità di una partita
-- hanabi-game: eseguibile, implementa il server host della partita. 
-- hanabi-human-player: eseguibile, offre una GUI di gioco per utente reale.
-- hanabi-bot1: eseguibile, implementa un bot che segue una strategia predefinita
-- hanabi-bot2: eseguibile, implementa un bot che migliora le performance di bot1 adottando una nuova strategia predefinita più aggressiva
-- hanabi-bot3: incompleto, implementa un bot che segue una terza strategia che fa uso di convenzioni tra giocatori
-- hanabi-bot4: incompleto, implementa un bot che cerca di migliorare la seconda strategia facendo uso di convenzioni 
+E' stato aggiunto il modulo hanabi-neural-network, eseguibile solo nella versione a 2 giocatori, calcola l'azione da eseguire tramite una rete neurale.
+
+Per dettagli sul funzionamento della rete, leggere il report: [Hanabi_Report](https://github.com/ilariacriv/hanabi-unibo/blob/master/Hanabi_Report.pdf)
 
 ## Come giocare
-Per iniziare una partita avviare il server host hanabi-game.jar e attraverso la GUI impostare il numero e tipo di giocatori. 
-Successivamente avviare un jar (human-player o bot) per ogni giocatore definito come "aperto".
-Inserire attraverso la GUI del giocatore l'indirizzo ip e la porta della server host.
-La partita inizierà automaticamente quando tutti i giocatori saranno connessi.
-
-Se si volesse vedere il log di esecuzione del server host o di un giocatore avviare quel componente da riga di comando.
+- Si lancia lo script python che apre la socket e si mette in attesa.
+- Si lancia il server di gioco GameServer
+- Si seleziona NeuralNetwork come giocatore nel server di gioco.
+- Bot instaura la connessione con NN su una socket TCP.
+- Per ogni turno di NN:
+  - Bot riceve dal server di gioco lo stato in formato JSON
+  - Bot costruisce la stringa di double che rappresenta lo stato (FinalState)
+  - Bot invia la stringa a NN
+  - NN calcola l'azione da effettuare e restituisce un intero da 0 a 19 che rappresenta il codice dell'azione
+  - Bot esegue il parsing del risultato e restituisce al server l'azione richiesta
+- Al termine della partita Bot chiude la connessione e termina. In caso di partite multiple il server Pyhton riapre una socket per la partita successiva.
 
 ## Miglioramenti
-In esecuzione, il framework risulta pesante. Al termine di una partita il processo di un giocatore avrà allocato circa 200MB di ram; il serverhost ne chiede circa 150MB.
-Probabilmente la richiesta di spazio dipende dall'accumulo degli stati della partita, rappresentati tramite JSONObject e classi derivate dei moduli json-v2 e hanabi-api.
-Un'ottimizzazione di queste rappresentazioni dovrebbe permettere di guadagnare memoria. Il modulo json-v2 non è stato progettato per occupare la minor memoria possibile. Tuttavia è possibile anche che copie degli stati della partita create durante l'esplorazione delle mosse non siano eliminate dal garbage collector, quindi, forse, si può limitare la memoria usata senza compromettere l'esecuzione avviando gli eseguibili da riga di comando e inserendo i parametri di impostazione della memoria disponibile alla jvm. 
+Il modulo creato funziona solamente nel caso di partite a due giocatori, si potrebbe pensare di estendere il modulo con il supporto a 3 e/o 4 giocatori.
+Il dataset utilizzato per l'allenamento contiene i dati generati da 36.000 partite e probabilmente la rete funzionerebbe meglio se avesse a disposizione più stati per allenarsi. In fase di addestramento
+si è infatti notato come l'accuracy raggiunta con 1/4 del dataset fosse del 65%, mentre con il dataset
+completo è stato possibile raggiungere il 79.4% finale.
+
+La versione con ordinamento dei colori ha performance migliori per le azioni di suggerimento,
+mentre gioca e scarta molto male. Si potrebbe approfondire questa formattazione provando a
+capire se ci sono eventuali errori nell'ordinamento delle carte ed in caso affermativo risolverli per
+verificare un effettivo miglioramento nelle performance rispetto all'utilizzo del dataset standard.
+
+Per concludere, al fine di migliorare ulteriormente la stabilità e le performance della rete neurale,
+si potrebbe ricorrere all'utilizzo di tecniche come cross-validation.
